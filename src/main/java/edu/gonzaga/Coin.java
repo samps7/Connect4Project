@@ -8,4 +8,14 @@ public class Coin
     {
         coinLetter = letter;
     }
+
+    public Coin(Coin c1) // copy constructor (used by Players)
+    {
+        coinLetter = c1.getLetter(); 
+    }
+
+    public String getLetter()
+    {
+        return coinLetter;
+    }
 }
