@@ -18,4 +18,13 @@ public class Coin
     {
         return coinLetter;
     }
+
+    public boolean equals(Coin c2)
+    {
+        if(c2.getLetter() == coinLetter)
+        {
+            return true;
+        }
+        return false;
+    }
 }

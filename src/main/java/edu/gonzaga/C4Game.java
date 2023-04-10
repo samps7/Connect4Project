@@ -5,12 +5,16 @@ import java.lang.Math;
 
 public class C4Game 
 {
-    private Player p1;
-    private Player p2;
+    //private Player p1;
+    //private Player p2;
+    private Player[] players = new Player[2];
     private int mode; // 0 = ez bot, 1 = medium bot, 2 = hard bot, 3 = pvp
     private int moveCount = 0; // for while loop
+    
+    // these are here for bot matches mostly
     private boolean p1Win = false;
     private boolean p2Win = false;
+    
     private int playerTurn = 1;
 
 
@@ -26,12 +30,12 @@ public class C4Game
             System.out.println("Enter P1 name");
             // get name from UI textbox here
             // get coin from combobox here
-            p1 = new Player(scan1.nextLine(), new Coin("X"));
+            players[0] = new Player(scan1.nextLine(), new Coin("X"));
 
             System.out.println("Enter P2 name");
             // get name from UI textbox here
             // get coin from combobox here
-            p2 = new Player(scan1.nextLine(), new Coin("O"));
+            players[1] = new Player(scan1.nextLine(), new Coin("O"));
             
         }
         else
@@ -39,7 +43,7 @@ public class C4Game
             System.out.println("Enter P1 name");
             // get from UI textbox here
             // get coin from combobox here
-            p1 = new Player(scan1.nextLine(), new Coin("X"));
+            players[0] = new Player(scan1.nextLine(), new Coin("X"));
 
             if(mode == 0)
             {
@@ -80,38 +84,43 @@ public class C4Game
         
         while(!p1Win && !p2Win && moveCount < 42)
         {
-            if(playerTurn == 0)
-            {
-                System.out.println(p1.getName() + "'s turn");
-            }
-            else
-            {
-                System.out.println(p2.getName() + "'s turn");
-            }
+            System.out.println(players[playerTurn].getName() + "'s turn");
 
             System.out.println();
             System.out.println(grid.boardDisplay());
             System.out.println();
             System.out.println("Which column do you want to place a piece?");
 
-            if(playerTurn == 0)
+            while(!grid.acceptCoin(players[playerTurn].getCoin(), scan1.nextInt()))
             {
-                while(!grid.acceptCoin(p1.getCoin(), scan1.nextInt()))
+                System.out.println("invalid  column");
+            }
+
+            if(mode == 3) // if pvp
+            {
+                if(grid.checkWinner()) // <--- update winning board UI in here
                 {
-                    System.out.println("invalid  column");
+                    System.out.println(players[playerTurn].getName()+ " wins!!!!");
+                    System.out.println();
+                    System.out.println(grid.boardDisplay());
+
+                    moveCount = 1000; // (to break from loop)
                 }
             }
-            else
+            else // if bot match
             {
-                while(!grid.acceptCoin(p2.getCoin(), scan1.nextInt()))
-                {
-                    System.out.println("invalid  column");
-                }
+                //use p1win and p2win variables
             }
+
             playerTurn++;
             playerTurn = playerTurn % 2;
 
             moveCount++;
+        }
+
+        if(moveCount < 50)
+        {
+            System.out.println("Game Resulted In A Draw");
         }
     }
 
