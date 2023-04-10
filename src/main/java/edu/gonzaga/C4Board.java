@@ -16,7 +16,7 @@ public class C4Board
         {
             return false;
         }
-        for(int i = 5; i >= 0; i--)
+        for(int i = 0; i < 6; i++)
         {
             if(grid[i][col] == null)
             {
@@ -38,7 +38,7 @@ public class C4Board
     public String boardDisplay()
     {
         String str = "This is the board: \n";
-        for(int i = grid.length - 1; i >= 0; i--)
+        for(int i = 0; i < grid.length; i++)
         {
             for(int j = 0; j < grid[0].length; j++)
             {
