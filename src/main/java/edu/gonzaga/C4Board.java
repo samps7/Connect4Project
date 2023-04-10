@@ -121,7 +121,7 @@ public class C4Board
         // Diagonal Check 2
         for(int i = 2; i > -1; i--)
         {
-            for(int j = 0; j < 4; j++)
+            for(int j = 3; j < 7; j++)
             {
                 if(!(grid[i][j] == null || grid[i+1][j-1] == null || grid[i+2][j-2] == null || grid[i+3][j-3] == null))
                 {

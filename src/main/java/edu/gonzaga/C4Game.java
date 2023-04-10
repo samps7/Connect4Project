@@ -122,6 +122,11 @@ public class C4Game
         {
             System.out.println("Game Resulted In A Draw");
         }
+       
+        // soft reset for playing again
+        moveCount = 0;
+        p1Win = false;
+        p2Win = false;
     }
 
 
