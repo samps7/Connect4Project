@@ -1,5 +1,7 @@
 package edu.gonzaga;
 import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * TODO: Change the JButtons to JLabels and make them clickable
@@ -47,12 +49,80 @@ public class GUI_Skeleton extends JFrame
     {
         JPanel newTitlePanel = new JPanel();
         JLabel gameTitle =  new JLabel("Connect4");
-        gameTitle.setBounds(200,75,100,50);
-        JButton onePlayer = new JButton("One-Player");
-        onePlayer.setBounds(100,150,50,25);
-        JButton twoPlayer = new JButton("Two-Player");
-        twoPlayer.setBounds(250,150,50,25);
+        JLabel onePlayer = new JLabel("One Player");
+        JLabel twoPlayer = new JLabel("Two Player");
 
+        //Adding mouse listener to make the JLabel clickable
+        onePlayer.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                //Place holder for the actual part that would be going to the next page
+                onePlayer.setText("Starting One Player Game");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+                //Place holder for the actual part that would be going to the next page
+                onePlayer.setText("Starting One Player Game");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        //Added mouse listener to make the JLabel Clickable
+        twoPlayer.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                //Place holder for the actual part that would be going to the next page
+                twoPlayer.setText("Starting One Player Game");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+                //Place holder for the actual part that would be going to the next page
+                twoPlayer.setText("Starting One Player Game");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
         newTitlePanel.add(gameTitle);
         newTitlePanel.add(onePlayer);
         newTitlePanel.add(twoPlayer);
