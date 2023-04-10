@@ -6,7 +6,9 @@
  * 
  * 
  * Contributors:
- * 
+ * Samuel Sovi
+ * Ian Myers
+ * Connor Jones
  * 
  * Copyright: 2023
  */
@@ -14,11 +16,12 @@ package edu.gonzaga;
 
 
 /** Main program class for launching your team's program. */
-public class MainGame {
-    public static void main(String[] args) {
-        System.out.println("Hello Team Game");
-
-
+public class MainGame 
+{
+    public static void main(String[] args) 
+    {
         // Your code here. Good luck!
+        Menu m1 = new Menu();
+        m1.displayOptions();
     }
 }
