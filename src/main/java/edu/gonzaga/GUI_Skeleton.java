@@ -1,6 +1,7 @@
 package edu.gonzaga;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,7 +13,8 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane playerOneCustomizationPane;
     JLayeredPane twoPlayerCustomizationPane;
     JLayeredPane titlePane;
-
+    JLayeredPane gamePane;
+    private JLabel[][] gameBoard;
 
     public static void main(String[] args)
     {
@@ -43,11 +45,14 @@ public class GUI_Skeleton extends JFrame
         this.twoPlayerCustomizationPane.setVisible(false);
         this.gameModeSelectPane = new JLayeredPane();
         this.gameModeSelectPane.setVisible(false);
+        this.gamePane = new JLayeredPane();
+        this.gamePane.setVisible(false);
 
 
         this.playerOneCustomizationPane = getOnePlayerCustomizePane();
         this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
         this.gameModeSelectPane = getGameModeSelectPane();
+        this.gamePane = getGame();
         this.mainWindow.add(this.titlePane);
     }
 
@@ -235,6 +240,8 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player One Color: " + playerChoices.getSelectedItem());
                 System.out.println("Player Two Name: " + playerTwoInput.getText());
                 System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
+                twoPlayerCustomizationPane.setVisible(false);
+                mainWindow.add(gamePane);
             }
 
             @Override
@@ -413,5 +420,65 @@ public class GUI_Skeleton extends JFrame
     }
 
 
+    /**
+     * Here are the layers, and what will go into each layer
+     * 0: Game board, this will be from a 2d JLabel array
+     * 1: Picture of game board, this will allow for the cells of 2d JLabel to take shape of whatever we put.
+     * 3: Names
+     */
+    private JLayeredPane getGame()
+    {
+        JLayeredPane gamePane = new JLayeredPane();
+        int cols = 7, rows = 6;
+        this.gameBoard = new JLabel[cols][rows];
+        for(int i = 0; i<cols; i++)
+        {
+            for(int k = 0; k<rows; k++)
+            {
+                this.gameBoard[i][k] = new JLabel(":)");
+                int finalI = i;
+                int finalK = k;
+                this.gameBoard[i][k].addMouseListener(new MouseListener()
+                {
+                    @Override
+                    public void mouseClicked(MouseEvent e)
+                    {
+                        gameBoard[finalI][finalK].setText("Clicked");
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e)
+                    {
+
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e)
+                    {
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e)
+                    {
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e)
+                    {
+
+                    }
+                });
+                this.gameBoard[i][k].setHorizontalAlignment(SwingConstants.CENTER);
+                this.gameBoard[i][k].setBorder(new LineBorder(Color.BLUE));
+                gamePane.add(this.gameBoard[i][k]);
+            }
+        }
+
+
+        //gamePane.setLayout(null);
+        return gamePane;
+    }
 }
 
