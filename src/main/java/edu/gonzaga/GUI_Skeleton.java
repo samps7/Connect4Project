@@ -8,10 +8,11 @@ import java.awt.event.MouseListener;
 public class GUI_Skeleton extends JFrame
 {
     JFrame mainWindow;
-    JPanel gameModeSelectPanel;
-    JPanel playerOneCustomizationScreen;
-    JPanel twoPlayerCustomizationScreen;
+    JLayeredPane gameModeSelectPane;
+    JLayeredPane playerOneCustomizationPane;
+    JLayeredPane twoPlayerCustomizationPane;
     JLayeredPane titlePane;
+
 
     public static void main(String[] args)
     {
@@ -35,15 +36,15 @@ public class GUI_Skeleton extends JFrame
         this.mainWindow.setLocation(100,100);
 
         this.titlePane = getTitlePane();
-        this.gameModeSelectPanel = new JPanel();
-        this.playerOneCustomizationScreen = new JPanel();
-        this.playerOneCustomizationScreen.setVisible(false);
-        this.twoPlayerCustomizationScreen = new JPanel();
-        this.twoPlayerCustomizationScreen.setVisible(false);
+        this.gameModeSelectPane = new JLayeredPane();
+        this.playerOneCustomizationPane = new JLayeredPane();
+        this.playerOneCustomizationPane.setVisible(false);
+        this.twoPlayerCustomizationPane = new JLayeredPane();
+        this.twoPlayerCustomizationPane.setVisible(false);
 
 
-        this.playerOneCustomizationScreen = getOnePlayerCustomizeScreen();
-        this.twoPlayerCustomizationScreen = getTwoPlayerCustomizationScreen();
+        this.playerOneCustomizationPane = getOnePlayerCustomizePane();
+        this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
         this.mainWindow.add(this.titlePane);
     }
 
@@ -66,7 +67,7 @@ public class GUI_Skeleton extends JFrame
                 //placeholder for the actual part that would be going to the next page
                 onePlayer.setText("Starting One Player Game");
                 titlePane.setVisible(false);
-                mainWindow.add(playerOneCustomizationScreen);
+                mainWindow.add(playerOneCustomizationPane);
 
             }
 
@@ -104,7 +105,7 @@ public class GUI_Skeleton extends JFrame
                 //placeholder for the actual part that would be going to the next page
                 twoPlayer.setText("Starting Two Player Game");
                 titlePane.setVisible(false);
-                mainWindow.add(twoPlayerCustomizationScreen);
+                mainWindow.add(twoPlayerCustomizationPane);
             }
 
             @Override
@@ -137,18 +138,18 @@ public class GUI_Skeleton extends JFrame
         Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
         onePlayer.setBorder(border);
         twoPlayer.setBorder(border);
-        newPane.add(gameTitle);
-        newPane.add(onePlayer);
-        newPane.add(twoPlayer);
+        newPane.add(gameTitle,1);
+        newPane.add(onePlayer,1);
+        newPane.add(twoPlayer,1);
 
         newPane.setLayout(null);
         return newPane;
     }
 
-    private JPanel getOnePlayerCustomizeScreen()
+    private JLayeredPane getOnePlayerCustomizePane()
     {
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow", "Orange"};
-        JPanel newPanel = new JPanel();
+        JLayeredPane newPane = new JLayeredPane();
         JLabel playerOne = new JLabel("Player One Name: ");
         JLabel playerOneColor = new JLabel("Color: ");
         final JComboBox<String> playerChoices = new JComboBox<>(colorChoices);
@@ -194,21 +195,21 @@ public class GUI_Skeleton extends JFrame
         playerChoices.setBounds(250,250,175,25);
         startGame.setBounds(250,400,175,25);
 
-        newPanel.add(playerOne);
-        newPanel.add(playerOneInput);
-        newPanel.add(playerOneColor);
-        newPanel.add(playerChoices);
-        newPanel.add(startGame);
+        newPane.add(playerOne,1);
+        newPane.add(playerOneInput,1);
+        newPane.add(playerOneColor,1);
+        newPane.add(playerChoices,1);
+        newPane.add(startGame,1);
 
 
-        newPanel.setLayout(null);
-        return newPanel;
+        newPane.setLayout(null);
+        return newPane;
     }
 
-    private JPanel getTwoPlayerCustomizationScreen()
+    private JLayeredPane getTwoPlayerCustomizationPane()
     {
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow", "Orange"};
-        JPanel newPanel = new JPanel();
+        JLayeredPane newPane = new JLayeredPane();
         //Player 1
         JLabel playerOne = new JLabel("Player One Name: ");
         JLabel playerOneColor = new JLabel("Color: ");
@@ -268,21 +269,21 @@ public class GUI_Skeleton extends JFrame
 
         startGame.setBounds(250,400,175,25);
 
-        newPanel.add(playerOne);
-        newPanel.add(playerOneInput);
-        newPanel.add(playerOneColor);
-        newPanel.add(playerChoices);
+        newPane.add(playerOne,1);
+        newPane.add(playerOneInput,1);
+        newPane.add(playerOneColor,1);
+        newPane.add(playerChoices,1);
 
-        newPanel.add(playerTwo);
-        newPanel.add(playerTwoInput);
-        newPanel.add(playerTwoColor);
-        newPanel.add(playerTwoChoices);
+        newPane.add(playerTwo,1);
+        newPane.add(playerTwoInput,1);
+        newPane.add(playerTwoColor,1);
+        newPane.add(playerTwoChoices,1);
 
-        newPanel.add(startGame);
+        newPane.add(startGame,1);
 
 
-        newPanel.setLayout(null);
-        return newPanel;
+        newPane.setLayout(null);
+        return newPane;
     }
 
 }
