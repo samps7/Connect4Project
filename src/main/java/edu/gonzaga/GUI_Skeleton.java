@@ -41,10 +41,13 @@ public class GUI_Skeleton extends JFrame
         this.playerOneCustomizationPane.setVisible(false);
         this.twoPlayerCustomizationPane = new JLayeredPane();
         this.twoPlayerCustomizationPane.setVisible(false);
+        this.gameModeSelectPane = new JLayeredPane();
+        this.gameModeSelectPane.setVisible(false);
 
 
         this.playerOneCustomizationPane = getOnePlayerCustomizePane();
         this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
+        this.gameModeSelectPane = getGameModeSelectPane();
         this.mainWindow.add(this.titlePane);
     }
 
@@ -162,6 +165,8 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Player Name set to: " + playerOneInput.getText());
                 System.out.println("Player color set to: " + playerChoices.getSelectedItem());
+                playerOneCustomizationPane.setVisible(false);
+                mainWindow.add(gameModeSelectPane);
             }
 
             @Override
@@ -286,4 +291,127 @@ public class GUI_Skeleton extends JFrame
         return newPane;
     }
 
+    private JLayeredPane getGameModeSelectPane()
+    {
+        JLayeredPane newPane = new JLayeredPane();
+        JLabel gameModeText = new JLabel("Select Game Mode");
+        JLabel easy = new JLabel("Easy");
+        JLabel medium = new JLabel("Medium");
+        JLabel hard = new JLabel("Hard");
+
+        easy.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                System.out.println("Easy Mode Selected");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        medium.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                System.out.println("Medium Mode Selected");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        hard.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                System.out.println("Hard Mode Selected");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        gameModeText.setBounds(250,50,125,75);
+        easy.setBounds(25,250,50,25);
+        medium.setBounds(80,250,50,25);
+        hard.setBounds(135,250,50,25);
+
+        newPane.add(gameModeText,1);
+        newPane.add(easy,1);
+        newPane.add(medium,1);
+        newPane.add(hard,1);
+
+        newPane.setLayout(null);
+        return newPane;
+    }
+
+
 }
+
