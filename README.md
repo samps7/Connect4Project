@@ -1,12 +1,15 @@
-# CPSC 224 Final Project: [Your project name here]
+# CPSC 224 Final Project: [Connect 4]
 
 ### Project Description:
 
 
 ### Team Information:
 
-- Team Name:  
+- Team Name: SIC
 - Students on team:
+  - Samuel Sovi
+  - Ian Myers
+  - Connor Jones
 - Semester: Spring 2023
 
 
