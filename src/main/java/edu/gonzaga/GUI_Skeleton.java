@@ -8,11 +8,10 @@ import java.awt.event.MouseListener;
 public class GUI_Skeleton extends JFrame
 {
     JFrame mainWindow;
-    JPanel titlePanel;
     JPanel gameModeSelectPanel;
     JPanel playerOneCustomizationScreen;
     JPanel twoPlayerCustomizationScreen;
-
+    JLayeredPane titlePane;
 
     public static void main(String[] args)
     {
@@ -35,25 +34,25 @@ public class GUI_Skeleton extends JFrame
         this.mainWindow.setSize(600,500);
         this.mainWindow.setLocation(100,100);
 
-        this.titlePanel = new JPanel();
+        this.titlePane = getTitlePane();
         this.gameModeSelectPanel = new JPanel();
         this.playerOneCustomizationScreen = new JPanel();
         this.playerOneCustomizationScreen.setVisible(false);
         this.twoPlayerCustomizationScreen = new JPanel();
         this.twoPlayerCustomizationScreen.setVisible(false);
 
-        this.titlePanel = getTitlePanel();
+
         this.playerOneCustomizationScreen = getOnePlayerCustomizeScreen();
         this.twoPlayerCustomizationScreen = getTwoPlayerCustomizationScreen();
-        this.mainWindow.add(this.titlePanel);
+        this.mainWindow.add(this.titlePane);
     }
 
     //Ideally this gives us the main screen.
     //Doing this allows us the ability to turn off its visibility once
     //  the player has made their decision
-    private JPanel getTitlePanel()
+    private JLayeredPane getTitlePane()
     {
-        JPanel newTitlePanel = new JPanel();
+        JLayeredPane newPane = new JLayeredPane();
         JLabel gameTitle =  new JLabel("Connect4");
         JLabel onePlayer = new JLabel("One Player");
         JLabel twoPlayer = new JLabel("Two Player");
@@ -66,7 +65,7 @@ public class GUI_Skeleton extends JFrame
             {
                 //placeholder for the actual part that would be going to the next page
                 onePlayer.setText("Starting One Player Game");
-                titlePanel.setVisible(false);
+                titlePane.setVisible(false);
                 mainWindow.add(playerOneCustomizationScreen);
 
             }
@@ -104,7 +103,7 @@ public class GUI_Skeleton extends JFrame
             {
                 //placeholder for the actual part that would be going to the next page
                 twoPlayer.setText("Starting Two Player Game");
-                titlePanel.setVisible(false);
+                titlePane.setVisible(false);
                 mainWindow.add(twoPlayerCustomizationScreen);
             }
 
@@ -138,12 +137,12 @@ public class GUI_Skeleton extends JFrame
         Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
         onePlayer.setBorder(border);
         twoPlayer.setBorder(border);
-        newTitlePanel.add(gameTitle);
-        newTitlePanel.add(onePlayer);
-        newTitlePanel.add(twoPlayer);
+        newPane.add(gameTitle);
+        newPane.add(onePlayer);
+        newPane.add(twoPlayer);
 
-        newTitlePanel.setLayout(null);
-        return newTitlePanel;
+        newPane.setLayout(null);
+        return newPane;
     }
 
     private JPanel getOnePlayerCustomizeScreen()
