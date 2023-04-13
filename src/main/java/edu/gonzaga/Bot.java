@@ -11,7 +11,8 @@ public class Bot extends Player
         super(name1, c1);
     }
 
-    public int getBestMove( String s)
+    @Override
+    public int getMove( String s)
     {
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
         HtmlPage page;
@@ -25,14 +26,14 @@ public class Bot extends Player
             webClient.getOptions().setCssEnabled(false);
             webClient.getOptions().setJavaScriptEnabled(true);
             page = webClient.getPage(url);
-            webClient.waitForBackgroundJavaScript(400);
+            webClient.waitForBackgroundJavaScript(600);
             String pageText = page.asXml();
             pageText = pageText.substring(pageText.indexOf("sol0"), pageText.indexOf("class=\"board\""));
             String[] lines = pageText.split(System.getProperty("line.separator"));
             ArrayList<Integer[]> scores = new ArrayList<Integer[]>();
             ArrayList<Integer[]> best = new ArrayList<Integer[]>();
-            int max = -100;
-            int maxIndex = -1;
+            int max = -1000;
+            int maxIndex = -4;
             int pos = 0;
             for(int i = 0; i < lines.length; i++)
             {
@@ -52,7 +53,6 @@ public class Bot extends Player
                     pos++;
                 }
             }
-            
             // if max less than zero then do best possible move
             if(max < 0)
             {
@@ -84,11 +84,11 @@ public class Bot extends Player
                 return best.get((int)( Math.random()*best.size()))[0];
             }
 
-            return -1;
+            return -100;
         }
         catch (Exception ex) {
             ex.printStackTrace();
-            return -1;
+            return -10;
         }
     }
 

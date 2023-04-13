@@ -64,10 +64,10 @@ public class Menu
             {
                 // hard bots stuff here
 
-                //C4Game game = new C4Game(2);
+                C4Game game = new C4Game(2);
                 while(playing == 1)
                 {
-                    //game.startGame();
+                    game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
