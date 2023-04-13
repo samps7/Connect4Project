@@ -17,16 +17,25 @@ public class Bot extends Player
         WebClient webClient = new WebClient(BrowserVersion.CHROME);
         HtmlPage page;
         String url = "https://connect4.gamesolver.org/";
+        boolean[] flags = new boolean[7];
+
         if(s.length() > 0)
         {
             url += "?pos=" + s;
+            for(int i = 1; i <= 7; i++)
+            {
+                if(intCount(s, i) > 6)
+                {
+                    flags[i] = true;
+                }
+            }
         }
 
         try {
             webClient.getOptions().setCssEnabled(false);
             webClient.getOptions().setJavaScriptEnabled(true);
             page = webClient.getPage(url);
-            webClient.waitForBackgroundJavaScript(600);
+            webClient.waitForBackgroundJavaScript(400);
             String pageText = page.asXml();
             pageText = pageText.substring(pageText.indexOf("sol0"), pageText.indexOf("class=\"board\""));
             String[] lines = pageText.split(System.getProperty("line.separator"));
@@ -102,5 +111,18 @@ public class Bot extends Player
             return false;
         }
         return true;
+    }
+
+    public int intCount(String str, int num)
+    {
+        int count = 0;
+        for(int i = 0; i < str.length(); i++)
+        {
+            if(Integer.parseInt(str.substring(i, i+1)) == num)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }
