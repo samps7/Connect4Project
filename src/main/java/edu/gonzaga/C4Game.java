@@ -93,24 +93,20 @@ public class C4Game
             System.out.println();
             
 
-            if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn)
+            if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn) fix this...
             {
                 System.out.println("Which column do you want to place a piece?");
                 int currMove = scan1.nextInt();
                 boolean valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
-                System.out.println(valid);
-                if(valid == false)
+                while(!valid)
                 {
-                    while(valid == false);
-                    {
-                        System.out.println("invalid  column");
-                        currMove = scan1.nextInt();
-                        valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
-                    }
+                    System.out.println("invalid  column");
+                    currMove = scan1.nextInt();
+                    valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                 }
-                
                 currMove++; // change from 0-6 -> 1-7 (for moveChain)
                 moveChain += currMove;
+                
             }
             else
             {
