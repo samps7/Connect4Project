@@ -19,14 +19,14 @@ public class Bot extends Player
         String url = "https://connect4.gamesolver.org/";
         boolean[] flags = new boolean[7];
 
-        if(s.length() > 0)
+        if(s.length() > 0) // acted on this
         {
             url += "?pos=" + s;
             for(int i = 1; i <= 7; i++)
             {
-                if(intCount(s, i) > 6)
+                if(intCount(s, i) >= 6)
                 {
-                    flags[i] = true;
+                    flags[i-1] = true;
                 }
             }
         }
@@ -42,10 +42,14 @@ public class Bot extends Player
             ArrayList<Integer[]> scores = new ArrayList<Integer[]>();
             ArrayList<Integer[]> best = new ArrayList<Integer[]>();
             int max = -1000;
-            int maxIndex = -4;
+            //int maxIndex = -4;
             int pos = 0;
             for(int i = 0; i < lines.length; i++)
             {
+                while(pos < 7 && flags[pos] == true)
+                {
+                    pos++;
+                }
                 if(isNumeric(lines[i].replaceAll("\\s", "")))
                 {
                     Integer[] mapping = new Integer[2];
@@ -57,30 +61,30 @@ public class Bot extends Player
                     if(Integer.parseInt(lines[i].replaceAll("\\s", "")) > max)
                     {
                         max = Integer.parseInt(lines[i].replaceAll("\\s", ""));
-                        maxIndex = pos;
                     }
                     pos++;
                 }
             }
-            // if max less than zero then do best possible move
-            if(max < 0)
-            {
-                return maxIndex;
-            }
             
-            else if(max == 0)
+            // the following two are to randomize move selection 
+            // to make it harder for players to learn patterns
+
+            //if best <= 0 then do a move equivalent to best move
+
+            // if best > 0 then it can go to any move > 0
+
+            if(max <= 0)
             {
                 for(int i = 0; i < scores.size(); i++)
                 {
-                    if(scores.get(i)[1] == 0)
+                    if(scores.get(i)[1] == max)
                     {
                         best.add(scores.get(i));
                     }
                 }
                 return best.get((int)( Math.random()*best.size()))[0];
             }
-            // the following two else ifs are to randomize move selection 
-            // to make it harder for players to learn patterns
+            
             else if(max > 0)
             {
                 for(int i = 0; i < scores.size(); i++)
