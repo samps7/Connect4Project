@@ -1,7 +1,6 @@
 package edu.gonzaga;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,7 +13,6 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane twoPlayerCustomizationPane;
     JLayeredPane titlePane;
     JLayeredPane gamePane;
-    private JLabel[][] gameBoard;
 
     public static void main(String[] args)
     {
@@ -312,6 +310,8 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Easy Mode Selected");
+                gameModeSelectPane.setVisible(false);
+                mainWindow.add(gamePane);
             }
 
             @Override
@@ -345,6 +345,8 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Medium Mode Selected");
+                gameModeSelectPane.setVisible(false);
+                mainWindow.add(gamePane);
             }
 
             @Override
@@ -378,6 +380,8 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Hard Mode Selected");
+                gameModeSelectPane.setVisible(false);
+                mainWindow.add(gamePane);
             }
 
             @Override
@@ -429,21 +433,23 @@ public class GUI_Skeleton extends JFrame
     private JLayeredPane getGame()
     {
         JLayeredPane gamePane = new JLayeredPane();
+        JPanel containedPanel = new JPanel();
         int cols = 7, rows = 6;
-        this.gameBoard = new JLabel[cols][rows];
+        JLabel[][] slots = new JLabel[cols][rows];
         for(int i = 0; i<cols; i++)
         {
             for(int k = 0; k<rows; k++)
             {
-                this.gameBoard[i][k] = new JLabel(":)");
+                slots[i][k] = new JLabel(":)");
                 int finalI = i;
                 int finalK = k;
-                this.gameBoard[i][k].addMouseListener(new MouseListener()
+                slots[i][k].addMouseListener(new MouseListener()
                 {
                     @Override
                     public void mouseClicked(MouseEvent e)
                     {
-                        gameBoard[finalI][finalK].setText("Clicked");
+                        System.out.println("Clicked");
+                        System.out.println("Column: " + finalI + " row: " + finalK);
                     }
 
                     @Override
@@ -470,15 +476,22 @@ public class GUI_Skeleton extends JFrame
 
                     }
                 });
-                this.gameBoard[i][k].setHorizontalAlignment(SwingConstants.CENTER);
-                this.gameBoard[i][k].setBorder(new LineBorder(Color.BLUE));
-                gamePane.add(this.gameBoard[i][k]);
+                //gamePane.add(slots[i][k],0);
+                slots[i][k].setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 1),
+                        BorderFactory.createEmptyBorder(1,1,1,1)));
+                containedPanel.add(slots[i][k]);
             }
         }
 
-
-        //gamePane.setLayout(null);
+        containedPanel.setLayout(new GridLayout(rows, cols));
+        containedPanel.setBounds(25,25,250,250);
+        gamePane.add(containedPanel, 1);
+        gamePane.setLayout(null);
+        //gamePane.setLayout(new GridLayout(rows,cols));
+        //gamePane.setSize(25,25);
+        //gamePane.setBounds(300,300,500,500);
         return gamePane;
     }
+
 }
 
