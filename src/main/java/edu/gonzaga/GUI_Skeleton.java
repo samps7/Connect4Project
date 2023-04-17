@@ -14,6 +14,10 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane titlePane;
     JLayeredPane gamePane;
 
+    String player1Name;
+    String player2Name;
+
+
     public static void main(String[] args)
     {
         GUI_Skeleton app = new GUI_Skeleton();
@@ -168,6 +172,7 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Player Name set to: " + playerOneInput.getText());
                 System.out.println("Player color set to: " + playerChoices.getSelectedItem());
+
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
             }
@@ -238,6 +243,7 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player One Color: " + playerChoices.getSelectedItem());
                 System.out.println("Player Two Name: " + playerTwoInput.getText());
                 System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
+
                 twoPlayerCustomizationPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -410,9 +416,9 @@ public class GUI_Skeleton extends JFrame
         });
 
         gameModeText.setBounds(250,50,125,75);
-        easy.setBounds(25,250,50,25);
-        medium.setBounds(80,250,50,25);
-        hard.setBounds(135,250,50,25);
+        easy.setBounds(175,250,50,25);
+        medium.setBounds(290,250,50,25);
+        hard.setBounds(405,250,50,25);
 
         newPane.add(gameModeText,1);
         newPane.add(easy,1);
@@ -450,6 +456,7 @@ public class GUI_Skeleton extends JFrame
                     {
                         System.out.println("Clicked");
                         System.out.println("Column: " + finalI + " row: " + finalK);
+                        System.out.println(player1Name + " " + player2Name);
                     }
 
                     @Override
@@ -484,14 +491,14 @@ public class GUI_Skeleton extends JFrame
         }
 
         containedPanel.setLayout(new GridLayout(rows, cols));
-        containedPanel.setBounds(25,25,250,250);
+        containedPanel.setBounds(25,25,400,400);
+
         gamePane.add(containedPanel, 1);
+
         gamePane.setLayout(null);
-        //gamePane.setLayout(new GridLayout(rows,cols));
-        //gamePane.setSize(25,25);
-        //gamePane.setBounds(300,300,500,500);
         return gamePane;
     }
+
 
 }
 
