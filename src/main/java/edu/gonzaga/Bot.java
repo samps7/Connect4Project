@@ -40,14 +40,13 @@ public class Bot extends Player
                 webClient.getOptions().setCssEnabled(false);
                 webClient.getOptions().setJavaScriptEnabled(true);
                 page = webClient.getPage(url);
-                webClient.waitForBackgroundJavaScript(1000);
+                webClient.waitForBackgroundJavaScript(100000);
                 String pageText = page.asXml();
                 pageText = pageText.substring(pageText.indexOf("sol0"), pageText.indexOf("class=\"board\""));
                 String[] lines = pageText.split(System.getProperty("line.separator"));
                 ArrayList<Integer[]> scores = new ArrayList<Integer[]>();
                 ArrayList<Integer[]> best = new ArrayList<Integer[]>();
                 int max = -1000;
-                //int maxIndex = -4;
                 int pos = 0;
                 for(int i = 0; i < lines.length; i++)
                 {
