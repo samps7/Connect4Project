@@ -35,7 +35,7 @@ public class Bot extends Player
             webClient.getOptions().setCssEnabled(false);
             webClient.getOptions().setJavaScriptEnabled(true);
             page = webClient.getPage(url);
-            webClient.waitForBackgroundJavaScript(400);
+            webClient.waitForBackgroundJavaScript(400); // put this in a while loop maybe
             String pageText = page.asXml();
             pageText = pageText.substring(pageText.indexOf("sol0"), pageText.indexOf("class=\"board\""));
             String[] lines = pageText.split(System.getProperty("line.separator"));
