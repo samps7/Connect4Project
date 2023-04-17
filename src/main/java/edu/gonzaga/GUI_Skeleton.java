@@ -50,7 +50,6 @@ public class GUI_Skeleton extends JFrame
         this.gamePane = new JLayeredPane();
         this.gamePane.setVisible(false);
 
-
         this.playerOneCustomizationPane = getOnePlayerCustomizePane();
         this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
         this.gameModeSelectPane = getGameModeSelectPane();
@@ -180,25 +179,21 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mousePressed(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseReleased(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseEntered(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseExited(MouseEvent e)
             {
-
             }
         });
 
@@ -251,25 +246,21 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mousePressed(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseReleased(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseEntered(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseExited(MouseEvent e)
             {
-
             }
         });
 
@@ -323,25 +314,21 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mousePressed(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseReleased(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseEntered(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseExited(MouseEvent e)
             {
-
             }
         });
 
@@ -358,25 +345,21 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mousePressed(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseReleased(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseEntered(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseExited(MouseEvent e)
             {
-
             }
         });
 
@@ -393,25 +376,21 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mousePressed(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseReleased(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseEntered(MouseEvent e)
             {
-
             }
 
             @Override
             public void mouseExited(MouseEvent e)
             {
-
             }
         });
 
@@ -429,61 +408,54 @@ public class GUI_Skeleton extends JFrame
         return newPane;
     }
 
-
-    /**
-     * Here are the layers, and what will go into each layer
-     * 0: Game board, this will be from a 2d JLabel array
-     * 1: Picture of game board, this will allow for the cells of 2d JLabel to take shape of whatever we put.
-     * 3: Names
-     */
     private JLayeredPane getGame()
     {
         JLayeredPane gamePane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
-        int cols = 7, rows = 6;
+
+        int cols = 7, rows = 6, counter = 0;
         JLabel[][] slots = new JLabel[cols][rows];
+
         for(int i = 0; i<cols; i++)
         {
             for(int k = 0; k<rows; k++)
             {
-                slots[i][k] = new JLabel(":)");
-                int finalI = i;
-                int finalK = k;
+                slots[i][k] = new JLabel();
+                slots[i][k].setText(String.valueOf(counter));
+
+                int finalCounter = counter;
+                counter++;
+
                 slots[i][k].addMouseListener(new MouseListener()
                 {
                     @Override
                     public void mouseClicked(MouseEvent e)
                     {
-                        System.out.println("Clicked");
-                        System.out.println("Column: " + finalI + " row: " + finalK);
+                        System.out.println("Clicked: " + finalCounter);
                         System.out.println(player1Name + " " + player2Name);
                     }
 
                     @Override
                     public void mousePressed(MouseEvent e)
                     {
-
                     }
 
                     @Override
                     public void mouseReleased(MouseEvent e)
                     {
-
                     }
 
                     @Override
                     public void mouseEntered(MouseEvent e)
                     {
-
                     }
 
                     @Override
                     public void mouseExited(MouseEvent e)
                     {
-
                     }
                 });
-                //gamePane.add(slots[i][k],0);
+
                 slots[i][k].setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 1),
                         BorderFactory.createEmptyBorder(1,1,1,1)));
                 containedPanel.add(slots[i][k]);
@@ -498,7 +470,6 @@ public class GUI_Skeleton extends JFrame
         gamePane.setLayout(null);
         return gamePane;
     }
-
 
 }
 
