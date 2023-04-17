@@ -5,17 +5,15 @@ import java.lang.Math;
 
 public class C4Game 
 {
-    //private Player p1;
-    //private Player p2;
     private Player[] players = new Player[2];
     private int mode; // 0 = ez bot, 1 = medium bot, 2 = hard bot, 3 = pvp
     private int moveCount = 0; // for while loop
     
     // these are here for bot matches mostly
-    private boolean p1Win = false;
-    private boolean p2Win = false;
     
     private int playerTurn = 1;
+
+    private String moveChain = "";
 
 
     public C4Game(int mode1)
@@ -55,7 +53,7 @@ public class C4Game
             }
             else if(mode == 2)
             {
-                // init hard bot here
+                players[1] = new Bot("Hard Bot", new Coin("0"));
             }
         }
     }
@@ -76,25 +74,56 @@ public class C4Game
         }
         else if(mode == 2)
         {
-            // init hard bot if needed
+            // intro hard bot if needed
         }
         
         //Coin flip for who starts
         playerTurn = (int) Math.random()*2;
+        if(mode == 2)
+        {
+            playerTurn = 0;
+        }
         
-        while(!p1Win && !p2Win && moveCount < 42)
+        while(moveCount < 42)
         {
             System.out.println(players[playerTurn].getName() + "'s turn");
 
             System.out.println();
             System.out.println(grid.boardDisplay());
             System.out.println();
-            System.out.println("Which column do you want to place a piece?");
+            
 
-            while(!grid.acceptCoin(players[playerTurn].getCoin(), scan1.nextInt()))
+            if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn) fix this...
             {
-                System.out.println("invalid  column");
+                System.out.println("Which column do you want to place a piece?");
+                int currMove = scan1.nextInt();
+                boolean valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
+                while(!valid)
+                {
+                    System.out.println("invalid  column");
+                    currMove = scan1.nextInt();
+                    valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
+                }
+                currMove++; // change from 0-6 -> 1-7 (for moveChain)
+                moveChain += currMove;
+                
             }
+            else
+            {
+                System.out.println("Bot is deciding on a move...");
+                if(mode == 2)
+                {
+
+                    int currMove =  players[1].getMove(moveChain);
+                    //System.out.println(currMove + "<<<<<<<<<");
+
+                    grid.acceptCoin(players[playerTurn].getCoin(), currMove);
+                    currMove++; // change from 0-6 -> 1-7 (for moveChain)
+                    moveChain += currMove;
+                }
+                
+            }
+            System.out.println("movechain: " + moveChain);
 
             if(mode == 3) // if pvp
             {
@@ -109,7 +138,22 @@ public class C4Game
             }
             else // if bot match
             {
-                //use p1win and p2win variables
+                if(grid.checkWinner()) // <--- update winning board UI in here
+                {
+                    
+                    if(playerTurn == 0)
+                    {
+                        System.out.println("you win!");
+                    }
+                    else
+                    {
+                        System.out.println("you lose!");
+                    }
+
+                    System.out.println(grid.boardDisplay());
+
+                    moveCount = 1000; // (to break from loop)
+                }
             }
 
             playerTurn++;
@@ -124,9 +168,8 @@ public class C4Game
         }
        
         // soft reset for playing again
+        moveChain = "";
         moveCount = 0;
-        p1Win = false;
-        p2Win = false;
     }
 
 

@@ -18,6 +18,11 @@ public class Player
         return name;
     }
 
+    public int getMove(String s)
+    {
+        return -2;
+    }
+
     public Coin getCoin()
     {
         return new Coin(coin);
