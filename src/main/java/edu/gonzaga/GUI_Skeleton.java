@@ -17,6 +17,8 @@ public class GUI_Skeleton extends JFrame
     String player1Name;
     String player2Name;
 
+    int gameMode, gameDifficulty;
+    Menu m1;
 
     public static void main(String[] args)
     {
@@ -55,8 +57,13 @@ public class GUI_Skeleton extends JFrame
         this.gameModeSelectPane = getGameModeSelectPane();
         this.gamePane = getGame();
         this.mainWindow.add(this.titlePane);
+        startGame();
     }
 
+    private void startGame()
+    {
+        m1 = new Menu();
+    }
     //Ideally this gives us the main screen.
     //Doing this allows us the ability to turn off its visibility once
     //  the player has made their decision
@@ -77,7 +84,7 @@ public class GUI_Skeleton extends JFrame
                 onePlayer.setText("Starting One Player Game");
                 titlePane.setVisible(false);
                 mainWindow.add(playerOneCustomizationPane);
-
+                gameMode = 0;
             }
 
             @Override
@@ -115,6 +122,7 @@ public class GUI_Skeleton extends JFrame
                 twoPlayer.setText("Starting Two Player Game");
                 titlePane.setVisible(false);
                 mainWindow.add(twoPlayerCustomizationPane);
+                gameMode = 1;
             }
 
             @Override
@@ -309,6 +317,7 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Easy Mode Selected");
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
+                gameDifficulty = 0;
             }
 
             @Override
@@ -340,6 +349,7 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Medium Mode Selected");
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
+                gameDifficulty = 1;
             }
 
             @Override
@@ -371,6 +381,7 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Hard Mode Selected");
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
+                gameDifficulty = 3;
             }
 
             @Override
