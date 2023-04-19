@@ -3,14 +3,14 @@ package edu.gonzaga;
 import java.util.Scanner;
 import java.lang.Math;
 
-public class C4Game 
+public class C4Game
 {
     private Player[] players = new Player[2];
     private int mode; // 0 = ez bot, 1 = medium bot, 2 = hard bot, 3 = pvp
     private int moveCount = 0; // for while loop
-    
+
     // these are here for bot matches mostly
-    
+
     private int playerTurn = 1;
 
     private String moveChain = "";
@@ -34,7 +34,7 @@ public class C4Game
             // get name from UI textbox here
             // get coin from combobox here
             players[1] = new Player(scan1.nextLine(), new Coin("O"));
-            
+
         }
         else
         {
@@ -76,14 +76,14 @@ public class C4Game
         {
             // intro hard bot if needed
         }
-        
+
         //Coin flip for who starts
         playerTurn = (int) Math.random()*2;
         if(mode == 2)
         {
             playerTurn = 0;
         }
-        
+
         while(moveCount < 42)
         {
             System.out.println(players[playerTurn].getName() + "'s turn");
@@ -91,7 +91,7 @@ public class C4Game
             System.out.println();
             System.out.println(grid.boardDisplay());
             System.out.println();
-            
+
 
             if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn) fix this...
             {
@@ -106,7 +106,7 @@ public class C4Game
                 }
                 currMove++; // change from 0-6 -> 1-7 (for moveChain)
                 moveChain += currMove;
-                
+
             }
             else
             {
@@ -116,13 +116,13 @@ public class C4Game
 
                     int currMove =  players[1].getMove(moveChain);
 
-                    // check for illegal move before next line and 
+                    // check for illegal move before next line and
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
                     moveChain += currMove;
                 }
-                
+
             }
             System.out.println("movechain: " + moveChain);
 
@@ -141,7 +141,7 @@ public class C4Game
             {
                 if(grid.checkWinner()) // <--- update winning board UI in here
                 {
-                    
+
                     if(playerTurn == 0)
                     {
                         System.out.println("you win!");
@@ -167,7 +167,7 @@ public class C4Game
         {
             System.out.println("Game Resulted In A Draw");
         }
-       
+
         // soft reset for playing again
         moveChain = "";
         moveCount = 0;

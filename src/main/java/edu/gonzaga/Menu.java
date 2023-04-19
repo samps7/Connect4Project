@@ -2,10 +2,10 @@ package edu.gonzaga;
 
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner6;
 
 public class Menu 
 {
+
     public void displayOptions()
     {
         int playing = 1;
@@ -15,7 +15,7 @@ public class Menu
         if(mode == 1)
         {
             C4Game game = new C4Game(3);
-            
+
             while(playing == 1)
             {
                 game.startGame();
@@ -77,4 +77,5 @@ public class Menu
             }
         }
     }
+
 }
