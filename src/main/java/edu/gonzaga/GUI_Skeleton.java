@@ -17,6 +17,8 @@ public class GUI_Skeleton extends JFrame
     String player1Name;
     String player2Name;
 
+    Menu menu = new Menu();
+
 
     public static void main(String[] args)
     {
@@ -39,6 +41,7 @@ public class GUI_Skeleton extends JFrame
         this.mainWindow.setSize(600,500);
         this.mainWindow.setLocation(100,100);
 
+
         this.titlePane = getTitlePane();
         this.gameModeSelectPane = new JLayeredPane();
         this.playerOneCustomizationPane = new JLayeredPane();
@@ -49,7 +52,6 @@ public class GUI_Skeleton extends JFrame
         this.gameModeSelectPane.setVisible(false);
         this.gamePane = new JLayeredPane();
         this.gamePane.setVisible(false);
-
 
 
         this.playerOneCustomizationPane = getOnePlayerCustomizePane();
@@ -81,6 +83,7 @@ public class GUI_Skeleton extends JFrame
                 onePlayer.setText("Starting One Player Game");
                 titlePane.setVisible(false);
                 mainWindow.add(playerOneCustomizationPane);
+                menu.setGameMode(0);
             }
 
             @Override
@@ -118,6 +121,7 @@ public class GUI_Skeleton extends JFrame
                 twoPlayer.setText("Starting Two Player Game");
                 titlePane.setVisible(false);
                 mainWindow.add(twoPlayerCustomizationPane);
+                menu.setGameMode(1);
             }
 
             @Override
@@ -174,6 +178,8 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Player Name set to: " + playerOneInput.getText());
                 System.out.println("Player color set to: " + playerChoices.getSelectedItem());
+
+                menu.setPlayerName(playerOneInput.getText(),0);
 
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
@@ -243,6 +249,10 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Two Name: " + playerTwoInput.getText());
                 System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
 
+                menu.setPlayerName(playerOneInput.getText(),0);
+                menu.setPlayerName(playerTwoInput.getText(),1);
+                menu.setPlayAgain(1);
+
                 twoPlayerCustomizationPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -311,6 +321,10 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Easy Mode Selected");
+
+                menu.setDifficulty(0);
+                menu.setPlayAgain(1);
+
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -342,6 +356,10 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Medium Mode Selected");
+
+                menu.setDifficulty(1);
+                menu.setPlayAgain(1);
+
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -373,6 +391,10 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Hard Mode Selected");
+
+                menu.setDifficulty(2);
+                menu.setPlayAgain(1);
+
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }

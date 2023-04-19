@@ -5,7 +5,28 @@ import java.util.Scanner;
 
 public class Menu 
 {
+    //Setting up the game and making private member variables
+    //  to start to make the game based around the GUI instead
+    //  of the command line
+    C4Game theGame;
+    private int gameMode, playAgain, difficultySelect;
+    private String[] playerName;
 
+    //New function that will be called to begin the game once
+    //  all of the variables have been given values
+    //Most likely to be called when the player has hit the 'Start Game'
+    //  or difficulty to start the game
+    //Checks for PvP or PvE, then instantiates theGame getting a difficulty
+    //  from getDifficultySelect()
+    public void startGame()
+    {
+        if(getGameMode() == 1)
+            this.theGame = new C4Game(3);
+        else
+            this.theGame = new C4Game(getDifficultySelect());
+    }
+
+    //Sam's original Text-based C4 game
     public void displayOptions()
     {
         int playing = 1;
@@ -34,7 +55,7 @@ public class Menu
             {
                 // easy bots stuff here
 
-                //C4Game game = new C4Game(0);
+                C4Game game = new C4Game(0);
                 while(playing == 1)
                 {
                     //game.startGame();
@@ -49,7 +70,7 @@ public class Menu
             {
                 // medium bots stuff here
 
-                //C4Game game = new C4Game(1);
+                C4Game game = new C4Game(1);
                 while(playing == 1)
                 {
                     //game.startGame();
@@ -77,5 +98,54 @@ public class Menu
             }
         }
     }
+    //End of Sam's original Text-Based C4 game
+
+
+    //Getters and setters that will help with the integration of the game
+    public void setGameMode(int numericGameMode)
+    {
+        //0 for PvE, 1 for PvP
+        this.gameMode = numericGameMode;
+    }
+
+    public void setPlayAgain(int playAgain)
+    {
+        //0 for Quit, 1 for play again
+        this.playAgain = playAgain;
+    }
+
+    public void setDifficulty(int difficulty)
+    {
+        //0 for Easy, 1 for Medium, 2 for Hard
+        this.difficultySelect = difficulty;
+    }
+
+    public void setPlayerName(String name, int playerNumber)
+    {
+        //playerNumber = 0 for player1, playerNumber = 1 for player2
+        this.playerName[playerNumber] = name;
+    }
+
+    private int getGameMode()
+    {
+        return this.gameMode;
+    }
+
+    private int getPlayAgain()
+    {
+        return this.playAgain;
+    }
+
+    private int getDifficultySelect()
+    {
+        return this.difficultySelect;
+    }
+
+    private String getPlayerName(int playerNumber)
+    {
+        return this.playerName[playerNumber];
+    }
+
+
 
 }
