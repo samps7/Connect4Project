@@ -115,8 +115,9 @@ public class C4Game
                 {
 
                     int currMove =  players[1].getMove(moveChain);
-                    //System.out.println(currMove + "<<<<<<<<<");
 
+                    // check for illegal move before next line and 
+                    // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
                     moveChain += currMove;
