@@ -45,7 +45,7 @@ public class C4Game
 
             if(mode == 0)
             {
-                // init ez bot here
+                players[1] = new WorstBot("Easy Bot", new Coin("0"));
             }
             else if(mode == 1)
             {
@@ -79,7 +79,7 @@ public class C4Game
         
         //Coin flip for who starts
         playerTurn = (int) Math.random()*2;
-        if(mode == 2)
+        if(mode < 3)
         {
             playerTurn = 0;
         }
@@ -111,11 +111,11 @@ public class C4Game
             else
             {
                 System.out.println("Bot is deciding on a move...");
-                if(mode == 2)
+                if(mode < 3)
                 {
 
                     int currMove =  players[1].getMove(moveChain);
-
+                    System.out.println("Bot went " + currMove);
                     // check for illegal move before next line and 
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
