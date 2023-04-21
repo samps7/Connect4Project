@@ -48,6 +48,7 @@ public class BadBot extends Bot
                 ArrayList<Integer[]> best = new ArrayList<Integer[]>();
                 int max = -1000;
                 int pos = 0;
+                int min = 1000;
                 for(int i = 0; i < lines.length; i++)
                 {
                     while(pos < 7 && flags[pos] == true)
@@ -65,6 +66,10 @@ public class BadBot extends Bot
                         if(Integer.parseInt(lines[i].replaceAll("\\s", "")) > max)
                         {
                             max = Integer.parseInt(lines[i].replaceAll("\\s", ""));
+                        }
+                        if(Integer.parseInt(lines[i].replaceAll("\\s", "")) < min)
+                        {
+                            min = Integer.parseInt(lines[i].replaceAll("\\s", ""));
                         }
                         pos++;
                     }
@@ -91,14 +96,35 @@ public class BadBot extends Bot
                 
                 else if(max > 0)
                 {
-                    for(int i = 0; i < scores.size(); i++)
+                    if(max > 6)
                     {
-                        if(scores.get(i)[1] > 0)
+                        for(int i = 0; i < scores.size(); i++)
                         {
-                            best.add(scores.get(i));
+                            if(scores.get(i)[1] > 0)
+                            {
+                                best.add(scores.get(i));
+                            }
                         }
+                        return best.get((int)( Math.random()*best.size()))[0];
                     }
-                    return best.get((int)( Math.random()*best.size()))[0];
+                    else if(min < -12) 
+                    {
+                        // and only 1 instance of max
+                        for(int i = 0; i < scores.size(); i++)
+                        {
+                            if(scores.get(i)[1] == max)
+                            {
+                                return scores.get(i)[0];
+                            }
+
+                        }
+                        return -2077; // should never reach here 
+                    }
+                    else
+                    {
+                        return scores.get((int)( Math.random()*scores.size()))[0];
+                    }
+                    
                 }
 
                 return -100;
@@ -110,109 +136,11 @@ public class BadBot extends Bot
             }
         }
         /*
-            For first move we can hard code it to significantly reduce time.
-            
-            This is because move time exponentially decreases with the first move
-            having the most board state combinations that it has to check
+            For first move we just go anywhere cuz this is an easy bot...
          */
-        else 
+        else
         {
-            if(s.equals("1"))
-            {
-                int rand = (int) Math.random()*4;
-                if(rand == 0)
-                {
-                    return 1;
-                }
-                else if(rand == 1)
-                {
-                    return 2;
-                }
-                else if(rand == 2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-            else if(s.equals("2"))
-            {
-                return 2;
-            }
-            else if(s.equals("3"))
-            {
-                int rand = (int) Math.random()*4;
-                if(rand == 0)
-                {
-                    return 2;
-                }
-                else if(rand == 1)
-                {
-                    return 3;
-                }
-                else if(rand == 2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-            else if(s.equals("4"))
-            {
-                return 3;
-            }
-            else if(s.equals("5"))
-            {
-                int rand = (int) Math.random()*4;
-                if(rand == 0)
-                {
-                    return 1;
-                }
-                else if(rand == 1)
-                {
-                    return 2;
-                }
-                else if(rand == 2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-            else if(s.equals("6"))
-            {
-                return 2;
-            }
-            else if(s.equals("7"))
-            { 
-                int rand = (int) Math.random()*4;
-                if(rand == 0)
-                {
-                    return 1;
-                }
-                else if(rand == 1)
-                {
-                    return 3;
-                }
-                else if(rand == 2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }  
-            }
-            else
-            {
-                return -1; // error
-            }
+            return 3;
         }
     }
 
