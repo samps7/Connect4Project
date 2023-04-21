@@ -49,7 +49,7 @@ public class C4Game
             }
             else if(mode == 1)
             {
-                // init med bot here
+                players[1] = new BadBot("Medium Bot", new Coin("0"));
             }
             else if(mode == 2)
             {
