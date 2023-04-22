@@ -1,38 +1,40 @@
 package edu.gonzaga;
 
+import java.io.*;
 import java.util.Scanner;
 
 
 public class Menu 
 {
-    //Setting up the game and making private member variables
-    //  to start to make the game based around the GUI instead
-    //  of the command line
-    C4Game theGame;
-    private int gameMode, playAgain, difficultySelect;
-    private String[] playerName;
-
-    //New function that will be called to begin the game once
-    //  all of the variables have been given values
-    //Most likely to be called when the player has hit the 'Start Game'
-    //  or difficulty to start the game
-    //Checks for PvP or PvE, then instantiates theGame getting a difficulty
-    //  from getDifficultySelect()
-    public void startGame()
-    {
-        if(getGameMode() == 1)
-            this.theGame = new C4Game(3);
-        else
-            this.theGame = new C4Game(getDifficultySelect());
-    }
+    GUI_Skeleton gui = new GUI_Skeleton();
+    MessageBean mBean = new MessageBean();
 
     //Sam's original Text-based C4 game
-    public void displayOptions()
+    public void displayOptions() throws IOException
     {
+        gui.runGUI();
         int playing = 1;
         Scanner scan1 = new Scanner(System.in);
+
+
         System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
-        int mode = scan1.nextInt();
+
+        //int mode = scan1.nextInt();
+        /*
+          Here lies our attempt to use BAOS
+                  ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                  PrintStream ps = new PrintStream(baos);
+                  PrintStream old = System.out;
+                  System.setOut(ps);
+                  System.out.println("0");
+                  System.out.flush();
+                  System.setOut(old);
+                  System.out.println("hi" + Integer.parseInt("" + baos.toString("UTF-8")));
+                  int mode = Integer.parseInt(baos.toString());
+
+         */
+        int mode = Integer.parseInt(mBean.getValue());
+        System.out.println(mBean.getValue());
         if(mode == 1)
         {
             C4Game game = new C4Game(3);
@@ -99,52 +101,6 @@ public class Menu
         }
     }
     //End of Sam's original Text-Based C4 game
-
-
-    //Getters and setters that will help with the integration of the game
-    public void setGameMode(int numericGameMode)
-    {
-        //0 for PvE, 1 for PvP
-        this.gameMode = numericGameMode;
-    }
-
-    public void setPlayAgain(int playAgain)
-    {
-        //0 for Quit, 1 for play again
-        this.playAgain = playAgain;
-    }
-
-    public void setDifficulty(int difficulty)
-    {
-        //0 for Easy, 1 for Medium, 2 for Hard
-        this.difficultySelect = difficulty;
-    }
-
-    public void setPlayerName(String name, int playerNumber)
-    {
-        //playerNumber = 0 for player1, playerNumber = 1 for player2
-        this.playerName[playerNumber] = name;
-    }
-
-    private int getGameMode()
-    {
-        return this.gameMode;
-    }
-
-    private int getPlayAgain()
-    {
-        return this.playAgain;
-    }
-
-    private int getDifficultySelect()
-    {
-        return this.difficultySelect;
-    }
-
-    private String getPlayerName(int playerNumber)
-    {
-        return this.playerName[playerNumber];
-    }
 
 
 

@@ -14,10 +14,9 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane titlePane;
     JLayeredPane gamePane;
 
-    String player1Name;
-    String player2Name;
 
-    Menu menu = new Menu();
+    private C4Game game;
+    MessageBean mBean = new MessageBean();
 
 
     public static void main(String[] args)
@@ -81,9 +80,11 @@ public class GUI_Skeleton extends JFrame
             {
                 //placeholder for the actual part that would be going to the next page
                 onePlayer.setText("Starting One Player Game");
+
+                mBean.setValue("0");
+
                 titlePane.setVisible(false);
                 mainWindow.add(playerOneCustomizationPane);
-                menu.setGameMode(0);
             }
 
             @Override
@@ -119,9 +120,11 @@ public class GUI_Skeleton extends JFrame
             {
                 //placeholder for the actual part that would be going to the next page
                 twoPlayer.setText("Starting Two Player Game");
+
+                mBean.setValue("1");
+
                 titlePane.setVisible(false);
                 mainWindow.add(twoPlayerCustomizationPane);
-                menu.setGameMode(1);
             }
 
             @Override
@@ -179,7 +182,7 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Name set to: " + playerOneInput.getText());
                 System.out.println("Player color set to: " + playerChoices.getSelectedItem());
 
-                menu.setPlayerName(playerOneInput.getText(),0);
+                mBean.setValue(playerOneInput.getText());
 
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
@@ -249,9 +252,7 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Two Name: " + playerTwoInput.getText());
                 System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
 
-                menu.setPlayerName(playerOneInput.getText(),0);
-                menu.setPlayerName(playerTwoInput.getText(),1);
-                menu.setPlayAgain(1);
+                mBean.setValue(playerOneInput.getText());
 
                 twoPlayerCustomizationPane.setVisible(false);
                 mainWindow.add(gamePane);
@@ -322,8 +323,6 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Easy Mode Selected");
 
-                menu.setDifficulty(0);
-                menu.setPlayAgain(1);
 
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
@@ -357,8 +356,6 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Medium Mode Selected");
 
-                menu.setDifficulty(1);
-                menu.setPlayAgain(1);
 
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
@@ -391,9 +388,6 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Hard Mode Selected");
-
-                menu.setDifficulty(2);
-                menu.setPlayAgain(1);
 
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
@@ -440,25 +434,25 @@ public class GUI_Skeleton extends JFrame
         JPanel containedPanel = new JPanel();
 
         int cols = 7, rows = 6, counter = 0;
-        JLabel[][] slots = new JLabel[cols][rows];
+        JLabel[][] slots = new JLabel[rows][cols];
 
         for(int i = 0; i<cols; i++)
         {
             for(int k = 0; k<rows; k++)
             {
-                slots[i][k] = new JLabel();
-                slots[i][k].setText(String.valueOf(counter));
+                slots[k][i] = new JLabel();
+                slots[k][i].setText(String.valueOf(counter));
 
                 int finalCounter = counter;
                 counter++;
 
-                slots[i][k].addMouseListener(new MouseListener()
+                slots[k][i].addMouseListener(new MouseListener()
                 {
                     @Override
                     public void mouseClicked(MouseEvent e)
                     {
-                        System.out.println("Clicked: " + finalCounter);
-                        System.out.println(player1Name + " " + player2Name);
+                        System.out.println("Column located: " + getCol_Located(finalCounter));
+
                     }
 
                     @Override
@@ -482,9 +476,9 @@ public class GUI_Skeleton extends JFrame
                     }
                 });
 
-                slots[i][k].setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 1),
+                slots[k][i].setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 1),
                         BorderFactory.createEmptyBorder(1,1,1,1)));
-                containedPanel.add(slots[i][k]);
+                containedPanel.add(slots[k][i]);
             }
         }
 
@@ -495,6 +489,16 @@ public class GUI_Skeleton extends JFrame
 
         gamePane.setLayout(null);
         return gamePane;
+    }
+
+    public void getC4Game(C4Game game)
+    {
+        this.game = game;
+    }
+
+    private int getCol_Located(int panelNum)
+    {
+        return panelNum % 7;
     }
 
 }
