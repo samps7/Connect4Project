@@ -506,6 +506,10 @@ public class GUI_Skeleton extends JFrame
 
         //containedPanel.setVisible(false);
 
+        ImageIcon image  = new ImageIcon("https://studio.code.org/v3/assets/qOrtceIfe4F4g3q5NDoLfm0GYaN2iuIJL0rN4cA_-hY/Connect4Board.png");
+        JLabel grid = new JLabel(image);
+
+        gamePane.add(grid,2);
         gamePane.add(containedPanel, 1);
 
         gamePane.setLayout(null);
