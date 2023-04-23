@@ -19,7 +19,7 @@ public class Menu
 
         System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
 
-        //int mode = scan1.nextInt();
+        int mode = scan1.nextInt();
         /*
           Here lies our attempt to use BAOS
                   ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -33,12 +33,12 @@ public class Menu
                   int mode = Integer.parseInt(baos.toString());
 
          */
-        int mode = Integer.parseInt(mBean.getValue());
+        //int mode = Integer.parseInt(mBean.getValue());
         System.out.println(mBean.getValue());
         if(mode == 1)
         {
             C4Game game = new C4Game(3);
-
+            gui.setC4Game(game);
             while(playing == 1)
             {
                 game.startGame();
@@ -58,6 +58,7 @@ public class Menu
                 // easy bots stuff here
 
                 C4Game game = new C4Game(0);
+                gui.setC4Game(game);
                 while(playing == 1)
                 {
                     //game.startGame();
@@ -73,6 +74,7 @@ public class Menu
                 // medium bots stuff here
 
                 C4Game game = new C4Game(1);
+                gui.setC4Game(game);
                 while(playing == 1)
                 {
                     //game.startGame();
@@ -88,6 +90,7 @@ public class Menu
                 // hard bots stuff here
 
                 C4Game game = new C4Game(2);
+                gui.setC4Game(game);
                 while(playing == 1)
                 {
                     game.startGame();

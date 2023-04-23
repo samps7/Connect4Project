@@ -511,7 +511,7 @@ public class GUI_Skeleton extends JFrame
         return gamePane;
     }
 
-    public void getC4Game(C4Game game)
+    public void setC4Game(C4Game game)
     {
         this.game = game;
     }
