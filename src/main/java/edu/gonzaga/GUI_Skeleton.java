@@ -534,8 +534,7 @@ public class GUI_Skeleton extends JFrame
                 {
                 }
             });
-            buttons[i].setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 1),
-                    BorderFactory.createEmptyBorder(1,1,1,1)));
+
             containedPanel.add(buttons[i]);
         }
 
