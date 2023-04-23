@@ -505,6 +505,7 @@ public class GUI_Skeleton extends JFrame
         containedPanel.setBounds(25,25,400,400);
 
         //containedPanel.setVisible(false);
+
         gamePane.add(containedPanel, 1);
 
         gamePane.setLayout(null);
@@ -520,5 +521,8 @@ public class GUI_Skeleton extends JFrame
     {
         return panelNum % 7;
     }
+
+    //Here is the url for the grid
+    //https://studio.code.org/v3/assets/qOrtceIfe4F4g3q5NDoLfm0GYaN2iuIJL0rN4cA_-hY/Connect4Board.png
 
 }
