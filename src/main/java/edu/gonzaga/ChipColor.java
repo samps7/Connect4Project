@@ -2,18 +2,18 @@ package edu.gonzaga;
 
 public class ChipColor
 {
-    private String red = "https://kevinshannon.com/connect4/img/bestchipred.png";
-    private String blue = "https://kevinshannon.com/connect4/img/bestchipblue.png";
-    private String green = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Eo_circle_green_blank.svg/2048px-Eo_circle_green_blank.svg.png";
+    private final String red = "https://kevinshannon.com/connect4/img/bestchipred.png";
+    private final String blue = "https://kevinshannon.com/connect4/img/bestchipblue.png";
+    private final String green = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Eo_circle_green_blank.svg/2048px-Eo_circle_green_blank.svg.png";
 
     private String selectedColor;
     public void setColor(String color)
     {
-        if(color == "Green")
+        if(color.equals("Green"))
             this.selectedColor = this.green;
-        if(color == "Blue")
+        if(color.equals("Blue"))
             this.selectedColor = this.blue;
-        if(color == "Red")
+        if(color.equals("Red"))
             this.selectedColor = this.red;
     }
     public String getColor()
