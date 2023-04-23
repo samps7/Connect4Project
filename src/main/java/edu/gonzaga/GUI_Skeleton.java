@@ -25,7 +25,31 @@ public class GUI_Skeleton extends JFrame
     {
         GUI_Skeleton app = new GUI_Skeleton();
         app.runGUI();
+
+        /*
+        JFrame test = new JFrame();
+        JLayeredPane testPane = new JLayeredPane();
+        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        test.setSize(600,500);
+        test.setLocation(100,100);
+
+        ImageIcon image  = new ImageIcon("Resources/Connect4Board.png");
+        JPanel grid = new JPanel();
+        JLabel gridLabel = new JLabel(image);
+
+        grid.setBounds(200,200,200,200);
+        //grid.setOpaque(true);
+
+        grid.add(gridLabel);
+        testPane.add(grid);
+        test.add(testPane);
+
+        test.setVisible(true);
+        */
+
+
     }
+
     void runGUI()
     {
         System.out.println("Starting GUI Connect4");
@@ -165,6 +189,7 @@ public class GUI_Skeleton extends JFrame
         newPane.add(gameTitle,1);
         newPane.add(onePlayer,1);
         newPane.add(twoPlayer,1);
+
 
         newPane.setLayout(null);
         return newPane;
@@ -458,22 +483,35 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mouseClicked(MouseEvent e)
                 {
+                    ImageIcon image  = new ImageIcon("Resources/Connect4Board.png");
+                    JLabel grid = new JLabel(image);
+
+                    grid.setBounds(250,250,400,400);
+                    //grid.setOpaque(true);
+
+
+                    gamePane.add(grid,2);
+
                     System.out.println("Column located: " + getCol_Located(finalCounter));
                     if(turn%2 == 0)
                     {
                         buttons[finalI].setBackground(Color.red);
 
-                        ImageIcon icon = new ImageIcon(player1_Color.getColor());
-                        buttons[finalI].setIcon(icon);
                     }
                     if(turn%2 == 1)
                     {
                         buttons[finalI].setBackground(Color.BLUE);
 
-                        ImageIcon icon = new ImageIcon(player2_Color.getColor());
-                        buttons[finalI].setIcon(icon);
                     }
                     turn++;
+                    image  = new ImageIcon("Resources/Connect4Board.png");
+                    grid = new JLabel(image);
+
+                    grid.setBounds(250,250,400,400);
+                    //grid.setOpaque(true);
+
+
+                    gamePane.add(grid,2);
                 }
 
                 @Override
@@ -506,8 +544,12 @@ public class GUI_Skeleton extends JFrame
 
         //containedPanel.setVisible(false);
 
-        ImageIcon image  = new ImageIcon("https://studio.code.org/v3/assets/qOrtceIfe4F4g3q5NDoLfm0GYaN2iuIJL0rN4cA_-hY/Connect4Board.png");
+        ImageIcon image  = new ImageIcon("Resources/Connect4Board.png");
         JLabel grid = new JLabel(image);
+
+        grid.setBounds(250,250,400,400);
+        //grid.setOpaque(true);
+
 
         gamePane.add(grid,2);
         gamePane.add(containedPanel, 1);
