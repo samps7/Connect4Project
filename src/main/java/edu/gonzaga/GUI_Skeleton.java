@@ -4,6 +4,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
 public class GUI_Skeleton extends JFrame
 {
@@ -14,8 +15,9 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane titlePane;
     JLayeredPane gamePane;
 
-
     private C4Game game;
+    private ChipColor player1_Color, player2_Color;
+    private Integer turn = 0;
     MessageBean mBean = new MessageBean();
 
 
@@ -35,6 +37,9 @@ public class GUI_Skeleton extends JFrame
 
     void setupGUI()
     {
+        player1_Color = new ChipColor();
+        player2_Color = new ChipColor();
+
         this.mainWindow = new JFrame("Connect4");
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.mainWindow.setSize(600,500);
@@ -254,6 +259,9 @@ public class GUI_Skeleton extends JFrame
 
                 mBean.setValue(playerOneInput.getText());
 
+                player1_Color.setColor(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
+                player2_Color.setColor(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
+
                 twoPlayerCustomizationPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -434,57 +442,69 @@ public class GUI_Skeleton extends JFrame
         JPanel containedPanel = new JPanel();
 
         int cols = 7, rows = 6, counter = 0;
-        JLabel[][] slots = new JLabel[rows][cols];
-
-        for(int i = 0; i<cols; i++)
+        JLabel[] buttons = new JLabel[42];
+        for(int i = 0; i<42; i++)
         {
-            for(int k = 0; k<rows; k++)
+            buttons[i] = new JLabel();
+            buttons[i].setText(String.valueOf(counter));
+            buttons[i].setOpaque(true);
+
+            int finalCounter = counter;
+            counter++;
+            int finalI = i;
+
+            buttons[i].addMouseListener(new MouseListener()
             {
-                slots[k][i] = new JLabel();
-                slots[k][i].setText(String.valueOf(counter));
-
-                int finalCounter = counter;
-                counter++;
-
-                slots[k][i].addMouseListener(new MouseListener()
+                @Override
+                public void mouseClicked(MouseEvent e)
                 {
-                    @Override
-                    public void mouseClicked(MouseEvent e)
+                    System.out.println("Column located: " + getCol_Located(finalCounter));
+                    if(turn%2 == 0)
                     {
-                        System.out.println("Column located: " + getCol_Located(finalCounter));
+                        buttons[finalI].setBackground(Color.red);
 
+                        ImageIcon icon = new ImageIcon(player1_Color.getColor());
+                        buttons[finalI].setIcon(icon);
                     }
-
-                    @Override
-                    public void mousePressed(MouseEvent e)
+                    if(turn%2 == 1)
                     {
-                    }
+                        buttons[finalI].setBackground(Color.BLUE);
 
-                    @Override
-                    public void mouseReleased(MouseEvent e)
-                    {
+                        ImageIcon icon = new ImageIcon(player2_Color.getColor());
+                        buttons[finalI].setIcon(icon);
                     }
+                    turn++;
+                }
 
-                    @Override
-                    public void mouseEntered(MouseEvent e)
-                    {
-                    }
+                @Override
+                public void mousePressed(MouseEvent e)
+                {
+                }
 
-                    @Override
-                    public void mouseExited(MouseEvent e)
-                    {
-                    }
-                });
+                @Override
+                public void mouseReleased(MouseEvent e)
+                {
+                }
 
-                slots[k][i].setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 1),
-                        BorderFactory.createEmptyBorder(1,1,1,1)));
-                containedPanel.add(slots[k][i]);
-            }
+                @Override
+                public void mouseEntered(MouseEvent e)
+                {
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e)
+                {
+                }
+            });
+            buttons[i].setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.black, 1),
+                    BorderFactory.createEmptyBorder(1,1,1,1)));
+            containedPanel.add(buttons[i]);
         }
 
         containedPanel.setLayout(new GridLayout(rows, cols));
         containedPanel.setBounds(25,25,400,400);
 
+        //containedPanel.setVisible(false);
         gamePane.add(containedPanel, 1);
 
         gamePane.setLayout(null);
