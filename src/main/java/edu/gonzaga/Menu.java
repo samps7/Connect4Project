@@ -34,10 +34,10 @@ public class Menu
             {
                 // easy bots stuff here
 
-                //C4Game game = new C4Game(0);
+                C4Game game = new C4Game(0);
                 while(playing == 1)
                 {
-                    //game.startGame();
+                    game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
@@ -49,10 +49,10 @@ public class Menu
             {
                 // medium bots stuff here
 
-                //C4Game game = new C4Game(1);
+                C4Game game = new C4Game(1);
                 while(playing == 1)
                 {
-                    //game.startGame();
+                    game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
