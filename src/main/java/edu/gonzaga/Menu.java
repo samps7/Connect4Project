@@ -37,7 +37,7 @@ public class Menu
         System.out.println(mBean.getValue());
         if(mode == 1)
         {
-            C4Game game = new C4Game(3);
+            C4Game game = new C4Game(3, gui);
             gui.setC4Game(game);
             while(playing == 1)
             {
@@ -57,7 +57,7 @@ public class Menu
             {
                 // easy bots stuff here
 
-                C4Game game = new C4Game(0);
+                C4Game game = new C4Game(0, gui);
                 gui.setC4Game(game);
                 while(playing == 1)
                 {
@@ -73,7 +73,7 @@ public class Menu
             {
                 // medium bots stuff here
 
-                C4Game game = new C4Game(1);
+                C4Game game = new C4Game(1, gui);
                 gui.setC4Game(game);
                 while(playing == 1)
                 {
@@ -89,7 +89,7 @@ public class Menu
             {
                 // hard bots stuff here
 
-                C4Game game = new C4Game(2);
+                C4Game game = new C4Game(2, gui);
                 gui.setC4Game(game);
                 while(playing == 1)
                 {

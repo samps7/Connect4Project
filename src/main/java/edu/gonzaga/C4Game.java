@@ -8,7 +8,7 @@ public class C4Game
     private Player[] players = new Player[2];
     private int mode; // 0 = ez bot, 1 = medium bot, 2 = hard bot, 3 = pvp
     private int moveCount = 0; // for while loop
-
+    private GUI_Skeleton gui;
     // these are here for bot matches mostly
 
     private int playerTurn = 1;
@@ -16,8 +16,9 @@ public class C4Game
     private String moveChain = "";
 
 
-    public C4Game(int mode1)
+    public C4Game(int mode1,GUI_Skeleton gui1)
     {
+        gui = gui1;
         mode = mode1;
         Scanner scan1 = new Scanner(System.in);
         //note, we will have some code duplication here (since 2p will have different screen)
