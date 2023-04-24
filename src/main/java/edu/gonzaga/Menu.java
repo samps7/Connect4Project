@@ -15,6 +15,7 @@ public class Menu
 
     public void displayOptions() throws Exception
     {
+        mp.loopSound("resources/music/Botique.wav");
         int playing = 1;
         Scanner scan1 = new Scanner(System.in);
         System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");

@@ -22,7 +22,6 @@ public class MainGame
     {
         // Your code here. Good luck!
         MusicPlayer mp = new MusicPlayer();
-        mp.loopSound("resources/music/Botique.wav");
         Menu m1 = new Menu(mp);
         m1.displayOptions();
     }
