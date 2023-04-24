@@ -486,7 +486,7 @@ public class GUI_Skeleton extends JFrame
                 public void mouseClicked(MouseEvent e)
                 {
 
-                    //System.out.println("Column located: " + getCol_Located(finalCounter));
+                    System.out.println("Column located: " + getCol_Located(finalCounter));
                     if(finalI%7==0)
                         oneClicked();
                     if(finalI%7==1)
