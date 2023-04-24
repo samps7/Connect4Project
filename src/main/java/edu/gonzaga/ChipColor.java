@@ -1,5 +1,7 @@
 package edu.gonzaga;
 
+import javax.swing.*;
+
 public class ChipColor
 {
     private final String red = "https://kevinshannon.com/connect4/img/bestchipred.png";
@@ -19,5 +21,15 @@ public class ChipColor
     public String getColor()
     {
         return this.selectedColor;
+    }
+
+    private ImageIcon setIcon()
+    {
+        return new ImageIcon(this.selectedColor);
+    }
+
+    public JLabel newChip()
+    {
+        return new JLabel(setIcon());
     }
 }

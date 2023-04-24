@@ -483,35 +483,17 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mouseClicked(MouseEvent e)
                 {
-                    ImageIcon image  = new ImageIcon("Resources/Connect4Board.png");
-                    JLabel grid = new JLabel(image);
-
-                    grid.setBounds(250,250,400,400);
-                    //grid.setOpaque(true);
-
-
-                    gamePane.add(grid,2);
 
                     System.out.println("Column located: " + getCol_Located(finalCounter));
                     if(turn%2 == 0)
                     {
                         buttons[finalI].setBackground(Color.red);
-
                     }
                     if(turn%2 == 1)
                     {
                         buttons[finalI].setBackground(Color.BLUE);
-
                     }
                     turn++;
-                    image  = new ImageIcon("Resources/Connect4Board.png");
-                    grid = new JLabel(image);
-
-                    grid.setBounds(250,250,400,400);
-                    //grid.setOpaque(true);
-
-
-                    gamePane.add(grid,2);
                 }
 
                 @Override
