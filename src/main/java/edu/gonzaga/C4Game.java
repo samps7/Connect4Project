@@ -29,7 +29,12 @@ public class C4Game
             System.out.println("Enter P1 name");
             // get name from UI textbox here
             // get coin from combobox here
-            players[0] = new Player(scan1.nextLine(), new Coin("X"));
+
+            while(!gui.getPlayerOneName().isEmpty() && !gui.getPlayerTwoName().isEmpty())
+            {
+
+            }
+            players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
 
             System.out.println("Enter P2 name");
             // get name from UI textbox here

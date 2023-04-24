@@ -20,6 +20,7 @@ public class GUI_Skeleton extends JFrame
     private Integer turn = 0;
     private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
     private JLabel[] buttons;
+    private String playerOneName, playerTwoName;
     MessageBean mBean = new MessageBean();
 
 
@@ -216,6 +217,8 @@ public class GUI_Skeleton extends JFrame
 
                 mBean.setValue(playerOneInput.getText());
 
+                playerOneName = playerOneInput.getText();
+
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
 
@@ -285,6 +288,9 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
 
                 mBean.setValue(playerOneInput.getText());
+
+                playerOneName = playerOneInput.getText();
+                playerTwoName = playerTwoInput.getText();
 
                 player1_Color.setColor(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 player2_Color.setColor(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
@@ -624,6 +630,16 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[twoCount*7 - (1)].setBackground(Color.BLUE);
         sevenCount--;
+    }
+
+    public String getPlayerOneName()
+    {
+        return this.playerOneName;
+    }
+
+    public String getPlayerTwoName()
+    {
+        return this.playerTwoName;
     }
 
     //Here is the url for the grid
