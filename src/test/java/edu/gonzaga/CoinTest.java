@@ -8,7 +8,8 @@ import java.util.Scanner;
 
 public class CoinTest {
     @Test
-    void alwaysTrue() {
+    void createCoinTest() {
+        Coin c = new Coin("x");
         Assertions.assertTrue(true);
     }
 

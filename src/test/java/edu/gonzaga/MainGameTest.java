@@ -8,15 +8,9 @@ import java.util.Scanner;
 
 public class MainGameTest {
     @Test
-    void alwaysTrue() {
+    void mainExceptionTest() {
+        MainGame m1 = new MainGame();
         Assertions.assertTrue(true);
     }
 
-    @Test
-    void display() {
-        Menu m1 = new Menu();
-        m1.displayOptions();
-
-        Assertions.assertTrue(true);
-    }
 }

@@ -1,4 +1,4 @@
-package edu;
+package edu.gonzaga;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +10,9 @@ public class PlayerTest {
 
 
     @Test
-    void alwaysTrue() {
+    void createPlayerTest() {
+        Coin c = new Coin("x");
+        Player p = new Player("Ian", c);
         Assertions.assertTrue(true);
     }
 
@@ -28,7 +30,16 @@ public class PlayerTest {
         Coin c = new Coin("x");
         Player p = new Player("Ian", c);
         String checkCoin = "x";
-        String actual = p1.getCoin().getLetter();
+        String actual = p.getCoin().getLetter();
+        Assertions.assertEquals(checkCoin, actual);
+    }
+
+    @Test
+    void getMoveTest() {
+        Coin c = new Coin("x");
+        Player p = new Player("Ian", c);
+        Integer check = -2;
+        Integer actual = p.getMove(p.getCoin().getLetter());
         Assertions.assertEquals(check, actual);
     }
 }

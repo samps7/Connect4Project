@@ -11,6 +11,13 @@ public class Bot extends Player
         super(name1, c1);
     }
 
+    /* 
+    This a method in the 'Bot' class that overrides the 'getMove'
+     method in the 'Player' class. It takes a 'String' parameter 's' which represents the current
+    state of the game board. The method uses the HtmlUnit library to scrape a website that provides
+    the optimal move for the current game state. It then selects a random move from the list of
+    optimal moves and returns the column number of that move.
+    */
     @Override
     public int getMove( String s)
     {
@@ -105,6 +112,15 @@ public class Bot extends Player
         }
     }
 
+    /**
+     * The function checks if a given string can be parsed as an integer.
+     * 
+     * @param str The parameter "str" is a String variable that represents the input value that we want
+     * to check if it is numeric or not.
+     * @return The method is checking if the input string can be parsed as an integer or not. If it can
+     * be parsed as an integer, the method returns true. If it cannot be parsed as an integer, the
+     * method returns false.
+     */
     public boolean isNumeric(String str)
     {
         try
@@ -116,7 +132,16 @@ public class Bot extends Player
         }
         return true;
     }
-
+ 
+    /**
+     * The function counts the number of occurrences of a given integer in a string.
+     * 
+     * @param str The input string that we want to count the occurrences of a specific integer in.
+     * @param num The parameter "num" in the method "intCount" is an integer that represents the number
+     * that we want to count the occurrences of in the given string "str".
+     * @return The method is returning an integer value which represents the number of times the given
+     * integer "num" appears in the given string "str".
+     */
     public int intCount(String str, int num)
     {
         int count = 0;
