@@ -18,6 +18,8 @@ public class GUI_Skeleton extends JFrame
     private C4Game game;
     private ChipColor player1_Color, player2_Color;
     private Integer turn = 0;
+    private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
+    private JLabel[] buttons;
     MessageBean mBean = new MessageBean();
 
 
@@ -467,7 +469,7 @@ public class GUI_Skeleton extends JFrame
         JPanel containedPanel = new JPanel();
 
         int cols = 7, rows = 6, counter = 0;
-        JLabel[] buttons = new JLabel[42];
+        this.buttons = new JLabel[42];
         for(int i = 0; i<42; i++)
         {
             buttons[i] = new JLabel();
@@ -484,16 +486,27 @@ public class GUI_Skeleton extends JFrame
                 public void mouseClicked(MouseEvent e)
                 {
 
-                    System.out.println("Column located: " + getCol_Located(finalCounter));
-                    if(turn%2 == 0)
-                    {
-                        buttons[finalI].setBackground(Color.red);
-                    }
-                    if(turn%2 == 1)
-                    {
-                        buttons[finalI].setBackground(Color.BLUE);
-                    }
+                    //System.out.println("Column located: " + getCol_Located(finalCounter));
+                    if(finalI%7==0)
+                        oneClicked();
+                    if(finalI%7==1)
+                        twoClicked();
+                    if(finalI%7==2)
+                        threeClicked();
+                    if(finalI%7==3)
+                        fourClicked();
+                    if(finalI%7==4)
+                        fiveClicked();
+                    if(finalI%7==5)
+                        sixClicked();
+                    if(finalI%7==6)
+                        sevenClicked();
                     turn++;
+                    ImageIcon image  = new ImageIcon(new ImageIcon("Resources/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
+                    JLabel grid = new JLabel(image);
+
+                    grid.setBounds(25,25,400,400);
+
                 }
 
                 @Override
@@ -525,15 +538,16 @@ public class GUI_Skeleton extends JFrame
 
         //containedPanel.setVisible(false);
 
-        ImageIcon image  = new ImageIcon("Resources/Connect4Board.png");
+        ImageIcon image  = new ImageIcon(new ImageIcon("Resources/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
         JLabel grid = new JLabel(image);
 
-        grid.setBounds(250,250,400,400);
+        grid.setBounds(25,25,400,400);
         //grid.setOpaque(true);
 
 
-        gamePane.add(grid,2);
-        gamePane.add(containedPanel, 1);
+        
+        gamePane.add(containedPanel, Integer.valueOf(1));
+        gamePane.add(grid, Integer.valueOf(2));
 
         gamePane.setLayout(null);
         return gamePane;
@@ -549,7 +563,71 @@ public class GUI_Skeleton extends JFrame
         return panelNum % 7;
     }
 
+    private void oneClicked()
+    {
+        if(turn%2==0)
+            this.buttons[oneCount*7 - (7)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[oneCount*7 - (7)].setBackground(Color.BLUE);
+        oneCount--;
+    }
+
+    private void twoClicked()
+    {
+        if(turn%2==0)
+            this.buttons[twoCount*7 - (6)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[twoCount*7 - (6)].setBackground(Color.BLUE);
+        twoCount--;
+    }
+
+    private void threeClicked()
+    {
+        if(turn%2==0)
+            this.buttons[threeCount*7 - (5)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[threeCount*7 - (5)].setBackground(Color.BLUE);
+        threeCount--;
+    }
+
+    private void fourClicked()
+    {
+        if(turn%2==0)
+            this.buttons[fourCount*7 - (4)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[fourCount*7 - (4)].setBackground(Color.BLUE);
+        fourCount--;
+    }
+
+    private void fiveClicked()
+    {
+        if(turn%2==0)
+            this.buttons[fiveCount*7 - (3)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[fiveCount*7 - (3)].setBackground(Color.BLUE);
+        fiveCount--;
+    }
+
+    private void sixClicked()
+    {
+        if(turn%2==0)
+            this.buttons[sixCount*7 - (2)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[sixCount*7 - (2)].setBackground(Color.BLUE);
+        sixCount--;
+    }
+
+    private void sevenClicked()
+    {
+        if(turn%2==0)
+            this.buttons[sevenCount*7 - (1)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[twoCount*7 - (1)].setBackground(Color.BLUE);
+        sevenCount--;
+    }
+
     //Here is the url for the grid
     //https://studio.code.org/v3/assets/qOrtceIfe4F4g3q5NDoLfm0GYaN2iuIJL0rN4cA_-hY/Connect4Board.png
+
 
 }
