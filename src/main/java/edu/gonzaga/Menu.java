@@ -43,6 +43,7 @@ public class Menu
                 // easy bots stuff here
 
                 C4Game game = new C4Game(0, mp);
+
                 while(playing == 1)
                 {
                     game.startGame();
@@ -58,6 +59,7 @@ public class Menu
                 // medium bots stuff here
 
                 C4Game game = new C4Game(1, mp);
+
                 while(playing == 1)
                 {
                     game.startGame();
