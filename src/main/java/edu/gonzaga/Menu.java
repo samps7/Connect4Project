@@ -6,7 +6,14 @@ import javax.lang.model.util.ElementScanner6;
 
 public class Menu 
 {
-    public void displayOptions()
+    private MusicPlayer mp;
+
+    public Menu(MusicPlayer mp1)
+    {
+        mp = mp1;
+    }
+
+    public void displayOptions() throws Exception
     {
         int playing = 1;
         Scanner scan1 = new Scanner(System.in);
@@ -14,7 +21,7 @@ public class Menu
         int mode = scan1.nextInt();
         if(mode == 1)
         {
-            C4Game game = new C4Game(3);
+            C4Game game = new C4Game(3, mp);
             
             while(playing == 1)
             {
@@ -34,7 +41,7 @@ public class Menu
             {
                 // easy bots stuff here
 
-                C4Game game = new C4Game(0);
+                C4Game game = new C4Game(0, mp);
                 while(playing == 1)
                 {
                     game.startGame();
@@ -49,7 +56,7 @@ public class Menu
             {
                 // medium bots stuff here
 
-                C4Game game = new C4Game(1);
+                C4Game game = new C4Game(1, mp);
                 while(playing == 1)
                 {
                     game.startGame();
@@ -64,7 +71,7 @@ public class Menu
             {
                 // hard bots stuff here
 
-                C4Game game = new C4Game(2);
+                C4Game game = new C4Game(2, mp);
                 while(playing == 1)
                 {
                     game.startGame();

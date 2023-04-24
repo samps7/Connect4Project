@@ -15,11 +15,14 @@ public class C4Game
 
     private String moveChain = "";
 
+    private MusicPlayer mp;
 
-    public C4Game(int mode1)
+
+    public C4Game(int mode1, MusicPlayer mp1)
     {
         mode = mode1;
         Scanner scan1 = new Scanner(System.in);
+        mp = mp1;
         //note, we will have some code duplication here (since 2p will have different screen)
 
         if(mode == 3)
@@ -58,7 +61,7 @@ public class C4Game
         }
     }
 
-    public void startGame()
+    public void startGame() throws Exception
     {
         Scanner scan1 = new Scanner(System.in); // remove this once UI working
         C4Board grid = new C4Board();
@@ -67,14 +70,17 @@ public class C4Game
         if(mode == 0)
         {
             // intro ez bot if needed
+            mp.loopSound("resources/music/Bramble.wav");
         }
         else if(mode == 1)
         {
             // intro med bot if needed
+            mp.loopSound("resources/music/Bramble.wav");
         }
         else if(mode == 2)
         {
             // intro hard bot if needed
+            mp.loopSound("resources/music/Bramble.wav");
         }
         
         //Coin flip for who starts
