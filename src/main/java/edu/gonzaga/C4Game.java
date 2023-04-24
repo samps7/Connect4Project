@@ -78,12 +78,16 @@ public class C4Game
         else if(mode == 1)
         {
             // intro med bot if needed
-            mp.loopSound("resources/music/Bramble.wav");
+            mp.loopSound("resources/music/Castle.wav");
         }
         else if(mode == 2)
         {
             // intro hard bot if needed
-            mp.loopSound("resources/music/Bramble.wav");
+            mp.loopSound("resources/music/Zen.wav");
+        }
+        else
+        {
+            mp.loopSound("resources/music/PVP.wav");
         }
         
         //Coin flip for who starts
@@ -139,6 +143,8 @@ public class C4Game
             {
                 if(grid.checkWinner()) // <--- update winning board UI in here
                 {
+                    mp.loopSound("resources/music/Results.wav");
+                    
                     System.out.println(players[playerTurn].getName()+ " wins!!!!");
                     System.out.println();
                     System.out.println(grid.boardDisplay());
@@ -150,7 +156,8 @@ public class C4Game
             {
                 if(grid.checkWinner()) // <--- update winning board UI in here
                 {
-                    
+                    mp.loopSound("resources/music/Results.wav");
+
                     if(playerTurn == 0)
                     {
                         System.out.println("you win!");
