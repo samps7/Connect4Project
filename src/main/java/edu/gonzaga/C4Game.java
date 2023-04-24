@@ -1,6 +1,9 @@
 package edu.gonzaga;
 
 import java.util.Scanner;
+
+import org.apache.xalan.templates.ElemSort;
+
 import java.lang.Math;
 
 public class C4Game 
@@ -171,7 +174,15 @@ public class C4Game
 
         if(moveCount < 50)
         {
-            System.out.println("Game Resulted In A Draw");
+            if(mode == 2)
+            {
+                System.out.println("Hard Bot Wins By Draw");
+            }
+            else
+            {
+                System.out.println("Game Resulted In A Draw");
+            }
+            
         }
        
         // soft reset for playing again
