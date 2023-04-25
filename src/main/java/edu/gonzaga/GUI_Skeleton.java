@@ -490,7 +490,7 @@ public class GUI_Skeleton extends JFrame
                     if(finalI%7==6)
                         sevenClicked();
                     turn++;
-                    ImageIcon image  = new ImageIcon(new ImageIcon("Resources/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
+                    ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
 
                     grid.setBounds(25,25,400,400);
@@ -554,7 +554,7 @@ public class GUI_Skeleton extends JFrame
 
         //containedPanel.setVisible(false);
 
-        ImageIcon image  = new ImageIcon(new ImageIcon("Resources/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
+        ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
         JLabel grid = new JLabel(image);
 
         grid.setBounds(25,25,400,400);
