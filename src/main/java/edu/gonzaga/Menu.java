@@ -19,22 +19,28 @@ public class Menu
 
         System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
 
-        int mode = scan1.nextInt();
-        /*
-          Here lies our attempt to use BAOS
-                  ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                  PrintStream ps = new PrintStream(baos);
-                  PrintStream old = System.out;
-                  System.setOut(ps);
-                  System.out.println("0");
-                  System.out.flush();
-                  System.setOut(old);
-                  System.out.println("hi" + Integer.parseInt("" + baos.toString("UTF-8")));
-                  int mode = Integer.parseInt(baos.toString());
+        while(true)
+        {
+            if(gui.getGameMode() == 0)
+            {
+                System.out.println(gui.getGameMode());
+                break;
+            }
+            else if(gui.getGameMode() == 1)
+            {
+                System.out.println(gui.getGameMode());
+                break;
+            }
+            else if(gui.getGameMode() == 2)
+            {
+                System.out.println(gui.getGameMode());
+                break;
+            }
+            else
+                System.out.println("Game Mode Not Received");
+        }
+        int mode = gui.getGameMode();
 
-         */
-        //int mode = Integer.parseInt(mBean.getValue());
-        System.out.println(mBean.getValue());
         if(mode == 1)
         {
             C4Game game = new C4Game(3, gui);
@@ -52,7 +58,28 @@ public class Menu
         else if( mode == 0)
         {
             System.out.println("Type 0 for Easy | Type 1 for Medium | Type 2 for Hard");
-            mode = scan1.nextInt();
+            while(true)
+            {
+                if(gui.getDifficulty() == 0)
+                {
+                    System.out.println(gui.getDifficulty());
+                    break;
+                }
+
+                else if(gui.getDifficulty() == 1)
+                {
+                    System.out.println(gui.getDifficulty());
+                    break;
+                }
+                else if(gui.getDifficulty() == 2)
+                {
+                    System.out.println(gui.getDifficulty());
+                    break;
+                }
+                else
+                    System.out.println("Difficulty Not Received");
+            }
+            mode = gui.getDifficulty();
             if(mode == 0)
             {
                 // easy bots stuff here

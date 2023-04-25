@@ -21,6 +21,7 @@ public class GUI_Skeleton extends JFrame
     private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
     private JLabel[] buttons;
     private String playerOneName, playerTwoName;
+    private int gameMode = -1, difficulty = -1;
     MessageBean mBean = new MessageBean();
 
 
@@ -28,28 +29,6 @@ public class GUI_Skeleton extends JFrame
     {
         GUI_Skeleton app = new GUI_Skeleton();
         app.runGUI();
-
-        /*
-        JFrame test = new JFrame();
-        JLayeredPane testPane = new JLayeredPane();
-        test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        test.setSize(600,500);
-        test.setLocation(100,100);
-
-        ImageIcon image  = new ImageIcon("Resources/Connect4Board.png");
-        JPanel grid = new JPanel();
-        JLabel gridLabel = new JLabel(image);
-
-        grid.setBounds(200,200,200,200);
-        //grid.setOpaque(true);
-
-        grid.add(gridLabel);
-        testPane.add(grid);
-        test.add(testPane);
-
-        test.setVisible(true);
-        */
-
 
     }
 
@@ -89,6 +68,7 @@ public class GUI_Skeleton extends JFrame
         this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
         this.gameModeSelectPane = getGameModeSelectPane();
         this.gamePane = getGame();
+
         this.mainWindow.add(this.titlePane);
 
     }
@@ -114,6 +94,7 @@ public class GUI_Skeleton extends JFrame
                 onePlayer.setText("Starting One Player Game");
 
                 mBean.setValue("0");
+                gameMode = 0;
 
                 titlePane.setVisible(false);
                 mainWindow.add(playerOneCustomizationPane);
@@ -154,6 +135,7 @@ public class GUI_Skeleton extends JFrame
                 twoPlayer.setText("Starting Two Player Game");
 
                 mBean.setValue("1");
+                gameMode = 1;
 
                 titlePane.setVisible(false);
                 mainWindow.add(twoPlayerCustomizationPane);
@@ -364,7 +346,7 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Easy Mode Selected");
 
-
+                difficulty = 0;
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -397,7 +379,7 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Medium Mode Selected");
 
-
+                difficulty = 1;
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -429,7 +411,7 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Hard Mode Selected");
-
+                difficulty = 2;
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -518,7 +500,6 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mousePressed(MouseEvent e)
                 {
-
                 }
 
                 @Override
@@ -657,7 +638,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==0)
             this.buttons[sevenCount*7 - (1)].setBackground(Color.red);
         if(turn%2==1)
-            this.buttons[twoCount*7 - (1)].setBackground(Color.BLUE);
+            this.buttons[sevenCount*7 - (1)].setBackground(Color.BLUE);
         sevenCount--;
     }
 
@@ -757,12 +738,22 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==0)
             this.buttons[sevenCount*7 - (1)].setBackground(Color.red);
         if(turn%2==1)
-            this.buttons[twoCount*7 - (1)].setBackground(Color.BLUE);
+            this.buttons[sevenCount*7 - (1)].setBackground(Color.BLUE);
     }
 
     private void sevenUnHovered()
     {
-        this.buttons[twoCount*7 - (1)].setBackground(Color.white);
+        this.buttons[sevenCount*7 - (1)].setBackground(Color.white);
+    }
+
+    public int getGameMode()
+    {
+        return this.gameMode;
+    }
+
+    public int getDifficulty()
+    {
+        return this.difficulty;
     }
 
 }
