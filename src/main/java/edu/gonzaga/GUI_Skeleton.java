@@ -518,6 +518,7 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mousePressed(MouseEvent e)
                 {
+
                 }
 
                 @Override
@@ -528,11 +529,39 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mouseEntered(MouseEvent e)
                 {
+                    if(finalI%7 == 0)
+                        oneHovered();
+                    if(finalI%7==1)
+                        twoHovered();
+                    if(finalI%7==2)
+                        threeHovered();
+                    if(finalI%7==3)
+                        fourHovered();
+                    if(finalI%7==4)
+                        fiveHovered();
+                    if(finalI%7==5)
+                        sixHovered();
+                    if(finalI%7==6)
+                        sevenHovered();
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e)
                 {
+                    if(finalI%7 == 0)
+                        oneUnHovered();
+                    if(finalI%7==1)
+                        twoUnHovered();
+                    if(finalI%7==2)
+                        threeUnHovered();
+                    if(finalI%7==3)
+                        fourUnHovered();
+                    if(finalI%7==4)
+                        fiveUnHovered();
+                    if(finalI%7==5)
+                        sixUnHovered();
+                    if(finalI%7==6)
+                        sevenUnHovered();
                 }
             });
 
@@ -645,5 +674,95 @@ public class GUI_Skeleton extends JFrame
     //Here is the url for the grid
     //https://studio.code.org/v3/assets/qOrtceIfe4F4g3q5NDoLfm0GYaN2iuIJL0rN4cA_-hY/Connect4Board.png
 
+    private void oneHovered()
+    {
+        if(turn%2 == 0)
+            this.buttons[oneCount*7 - (7)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[oneCount*7 - (7)].setBackground(Color.BLUE);
+    }
+
+    private void oneUnHovered()
+    {
+            this.buttons[oneCount*7 - 7].setBackground(Color.white);
+    }
+
+    private void twoHovered()
+    {
+        if(turn%2==0)
+            this.buttons[twoCount*7 - (6)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[twoCount*7 - (6)].setBackground(Color.BLUE);
+    }
+
+    private void twoUnHovered()
+    {
+        this.buttons[twoCount*7 - (6)].setBackground(Color.white);
+    }
+
+    private void threeHovered()
+    {
+        if(turn%2==0)
+            this.buttons[threeCount*7 - (5)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[threeCount*7 - (5)].setBackground(Color.BLUE);
+    }
+
+    private void threeUnHovered()
+    {
+        this.buttons[threeCount*7 - (5)].setBackground(Color.white);
+    }
+
+    private void fourHovered()
+    {
+        if(turn%2==0)
+            this.buttons[fourCount*7 - (4)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[fourCount*7 - (4)].setBackground(Color.BLUE);
+    }
+
+    private void fourUnHovered()
+    {
+        this.buttons[fourCount*7 - (4)].setBackground(Color.white);
+    }
+
+    private void fiveHovered()
+    {
+        if(turn%2==0)
+            this.buttons[fiveCount*7 - (3)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[fiveCount*7 - (3)].setBackground(Color.BLUE);
+    }
+
+    private void fiveUnHovered()
+    {
+        this.buttons[fiveCount*7 - (3)].setBackground(Color.white);
+    }
+
+    private void sixHovered()
+    {
+        if(turn%2==0)
+            this.buttons[sixCount*7 - (2)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[sixCount*7 - (2)].setBackground(Color.BLUE);
+    }
+
+    private void sixUnHovered()
+    {
+        this.buttons[sixCount*7 - (2)].setBackground(Color.white);
+    }
+
+    private void sevenHovered()
+    {
+        if(turn%2==0)
+            this.buttons[sevenCount*7 - (1)].setBackground(Color.red);
+        if(turn%2==1)
+            this.buttons[twoCount*7 - (1)].setBackground(Color.BLUE);
+    }
+
+    private void sevenUnHovered()
+    {
+        this.buttons[twoCount*7 - (1)].setBackground(Color.white);
+    }
 
 }
