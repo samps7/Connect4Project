@@ -6,14 +6,14 @@ import org.apache.xalan.templates.ElemSort;
 
 import java.lang.Math;
 
-public class C4Game 
+public class C4Game
 {
     private Player[] players = new Player[2];
     private int mode; // 0 = ez bot, 1 = medium bot, 2 = hard bot, 3 = pvp
     private int moveCount = 0; // for while loop
-    
+    private GUI_Skeleton gui;
     // these are here for bot matches mostly
-    
+
     private int playerTurn = 1;
 
     private String moveChain = "";
@@ -21,8 +21,10 @@ public class C4Game
     private MusicPlayer mp;
 
 
-    public C4Game(int mode1, MusicPlayer mp1)
+
+    public C4Game(int mode1, MusicPlayer mp1,GUI_Skeleton gui1)
     {
+        gui = gui1;
         mode = mode1;
         Scanner scan1 = new Scanner(System.in);
         mp = mp1;
@@ -34,20 +36,44 @@ public class C4Game
             System.out.println("Enter P1 name");
             // get name from UI textbox here
             // get coin from combobox here
-            players[0] = new Player(scan1.nextLine(), new Coin("X"));
+
+            while(true)
+            {
+                if(gui.getPlayerOneName().isBlank())
+                {
+                    System.out.println("Player One Name Blank");
+                }
+                else if(gui.getPlayerTwoName().isBlank())
+                {
+                    System.out.println("Player Two Name Blank");
+                }
+                else if(!gui.getPlayerOneName().isBlank() && !gui.getPlayerTwoName().isBlank())
+                    break;
+                else
+                {
+                    System.out.println("Here are the names");
+                    System.out.println(gui.getPlayerOneName());
+                    System.out.println(gui.getPlayerTwoName());
+                }
+            }
+            players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
 
             System.out.println("Enter P2 name");
             // get name from UI textbox here
             // get coin from combobox here
-            players[1] = new Player(scan1.nextLine(), new Coin("O"));
-            
+            players[1] = new Player(gui.getPlayerTwoName(), new Coin("O"));
+
         }
         else
         {
             System.out.println("Enter P1 name");
             // get from UI textbox here
             // get coin from combobox here
-            players[0] = new Player(scan1.nextLine(), new Coin("X"));
+            while(!gui.getPlayerOneName().isBlank())
+            {
+
+            }
+            players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
 
             if(mode == 0)
             {
@@ -89,14 +115,14 @@ public class C4Game
         {
             mp.loopSound("resources/music/PVP.wav");
         }
-        
+
         //Coin flip for who starts
         playerTurn = (int) Math.random()*2;
         if(mode < 3)
         {
             playerTurn = 0;
         }
-        
+
         while(moveCount < 42)
         {
             System.out.println(players[playerTurn].getName() + "'s turn");
@@ -104,7 +130,7 @@ public class C4Game
             System.out.println();
             System.out.println(grid.boardDisplay());
             System.out.println();
-            
+
 
             if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn) fix this...
             {
@@ -119,7 +145,7 @@ public class C4Game
                 }
                 currMove++; // change from 0-6 -> 1-7 (for moveChain)
                 moveChain += currMove;
-                
+
             }
             else
             {
@@ -128,14 +154,16 @@ public class C4Game
                 {
 
                     int currMove =  players[1].getMove(moveChain);
+
                     System.out.println("Bot went " + currMove);
                     // check for illegal move before next line and 
+
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
                     moveChain += currMove;
                 }
-                
+
             }
             System.out.println("movechain: " + moveChain);
 
@@ -191,7 +219,7 @@ public class C4Game
             }
             
         }
-       
+
         // soft reset for playing again
         moveChain = "";
         moveCount = 0;

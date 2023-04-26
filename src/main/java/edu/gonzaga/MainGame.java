@@ -15,6 +15,8 @@
 package edu.gonzaga;
 
 
+import java.io.IOException;
+
 /** Main program class for launching your team's program. */
 public class MainGame 
 {
