@@ -1,6 +1,9 @@
 package edu.gonzaga;
 
 import java.util.Scanner;
+
+import org.apache.xalan.templates.ElemSort;
+
 import java.lang.Math;
 
 public class C4Game
@@ -15,12 +18,16 @@ public class C4Game
 
     private String moveChain = "";
 
+    private MusicPlayer mp;
 
-    public C4Game(int mode1,GUI_Skeleton gui1)
+
+
+    public C4Game(int mode1, MusicPlayer mp1,GUI_Skeleton gui1)
     {
         gui = gui1;
         mode = mode1;
         Scanner scan1 = new Scanner(System.in);
+        mp = mp1;
         //note, we will have some code duplication here (since 2p will have different screen)
 
         if(mode == 3)
@@ -70,11 +77,11 @@ public class C4Game
 
             if(mode == 0)
             {
-                // init ez bot here
+                players[1] = new WorstBot("Easy Bot", new Coin("0"));
             }
             else if(mode == 1)
             {
-                // init med bot here
+                players[1] = new BadBot("Medium Bot", new Coin("0"));
             }
             else if(mode == 2)
             {
@@ -83,7 +90,7 @@ public class C4Game
         }
     }
 
-    public void startGame()
+    public void startGame() throws Exception
     {
         Scanner scan1 = new Scanner(System.in); // remove this once UI working
         C4Board grid = new C4Board();
@@ -92,19 +99,26 @@ public class C4Game
         if(mode == 0)
         {
             // intro ez bot if needed
+            mp.loopSound("resources/music/Bramble.wav");
         }
         else if(mode == 1)
         {
             // intro med bot if needed
+            mp.loopSound("resources/music/Castle.wav");
         }
         else if(mode == 2)
         {
             // intro hard bot if needed
+            mp.loopSound("resources/music/Zen.wav");
+        }
+        else
+        {
+            mp.loopSound("resources/music/PVP.wav");
         }
 
         //Coin flip for who starts
         playerTurn = (int) Math.random()*2;
-        if(mode == 2)
+        if(mode < 3)
         {
             playerTurn = 0;
         }
@@ -136,12 +150,14 @@ public class C4Game
             else
             {
                 System.out.println("Bot is deciding on a move...");
-                if(mode == 2)
+                if(mode < 3)
                 {
 
                     int currMove =  players[1].getMove(moveChain);
 
-                    // check for illegal move before next line and
+                    System.out.println("Bot went " + currMove);
+                    // check for illegal move before next line and 
+
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
@@ -155,6 +171,8 @@ public class C4Game
             {
                 if(grid.checkWinner()) // <--- update winning board UI in here
                 {
+                    mp.loopSound("resources/music/Results.wav");
+                    
                     System.out.println(players[playerTurn].getName()+ " wins!!!!");
                     System.out.println();
                     System.out.println(grid.boardDisplay());
@@ -166,6 +184,7 @@ public class C4Game
             {
                 if(grid.checkWinner()) // <--- update winning board UI in here
                 {
+                    mp.loopSound("resources/music/Results.wav");
 
                     if(playerTurn == 0)
                     {
@@ -190,7 +209,15 @@ public class C4Game
 
         if(moveCount < 50)
         {
-            System.out.println("Game Resulted In A Draw");
+            if(mode == 2)
+            {
+                System.out.println("Hard Bot Wins By Draw");
+            }
+            else
+            {
+                System.out.println("Game Resulted In A Draw");
+            }
+            
         }
 
         // soft reset for playing again

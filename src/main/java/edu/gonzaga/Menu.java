@@ -8,11 +8,17 @@ public class Menu
 {
     GUI_Skeleton gui = new GUI_Skeleton();
     MessageBean mBean = new MessageBean();
+    private MusicPlayer mp;
 
+    public Menu(MusicPlayer mp1)
+    {
+        mp = mp1;
+    }
     //Sam's original Text-based C4 game
-    public void displayOptions() throws IOException
+    public void displayOptions() throws Exception
     {
         gui.runGUI();
+        mp.loopSound("resources/music/Botique.wav");
         int playing = 1;
         Scanner scan1 = new Scanner(System.in);
 
@@ -43,7 +49,7 @@ public class Menu
 
         if(mode == 1)
         {
-            C4Game game = new C4Game(3, gui);
+            C4Game game = new C4Game(3, mp, gui);
             gui.setC4Game(game);
             while(playing == 1)
             {
@@ -84,11 +90,12 @@ public class Menu
             {
                 // easy bots stuff here
 
-                C4Game game = new C4Game(0, gui);
+                C4Game game = new C4Game(0, mp, gui);
                 gui.setC4Game(game);
+                
                 while(playing == 1)
                 {
-                    //game.startGame();
+                    game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
@@ -100,11 +107,12 @@ public class Menu
             {
                 // medium bots stuff here
 
-                C4Game game = new C4Game(1, gui);
+                C4Game game = new C4Game(1, mp, gui);
                 gui.setC4Game(game);
+                
                 while(playing == 1)
                 {
-                    //game.startGame();
+                    game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
@@ -116,7 +124,8 @@ public class Menu
             {
                 // hard bots stuff here
 
-                C4Game game = new C4Game(2, gui);
+
+                C4Game game = new C4Game(2, mp, gui);
                 gui.setC4Game(game);
                 while(playing == 1)
                 {
