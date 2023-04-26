@@ -4,7 +4,6 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Objects;
 
 public class GUI_Skeleton extends JFrame
 {
@@ -16,12 +15,13 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane gamePane;
 
     private C4Game game;
-    private ChipColor player1_Color, player2_Color;
     private Integer turn = 0;
     private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
     private JLabel[] buttons;
-    private String playerOneName, playerTwoName;
+    private String playerOneName = null, playerTwoName = null;
     private int gameMode = -1, difficulty = -1;
+    private final Color botColor = Color.orange;
+    private Color player1Color, player2Color;
     MessageBean mBean = new MessageBean();
 
 
@@ -43,8 +43,6 @@ public class GUI_Skeleton extends JFrame
 
     void setupGUI()
     {
-        player1_Color = new ChipColor();
-        player2_Color = new ChipColor();
 
         this.mainWindow = new JFrame("Connect4");
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -182,7 +180,7 @@ public class GUI_Skeleton extends JFrame
 
     private JLayeredPane getOnePlayerCustomizePane()
     {
-        String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow", "Orange"};
+        String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
         JLayeredPane newPane = new JLayeredPane();
         JLabel playerOne = new JLabel("Player One Name: ");
         JLabel playerOneColor = new JLabel("Color: ");
@@ -246,7 +244,7 @@ public class GUI_Skeleton extends JFrame
 
     private JLayeredPane getTwoPlayerCustomizationPane()
     {
-        String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow", "Orange"};
+        String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
         JLayeredPane newPane = new JLayeredPane();
         //Player 1
         JLabel playerOne = new JLabel("Player One Name: ");
@@ -274,8 +272,8 @@ public class GUI_Skeleton extends JFrame
                 playerOneName = playerOneInput.getText();
                 playerTwoName = playerTwoInput.getText();
 
-                player1_Color.setColor(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
-                player2_Color.setColor(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
+                //player1_Color.setColor(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
+                //player2_Color.setColor(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
 
                 twoPlayerCustomizationPane.setVisible(false);
                 mainWindow.add(gamePane);
@@ -754,6 +752,55 @@ public class GUI_Skeleton extends JFrame
     public int getDifficulty()
     {
         return this.difficulty;
+    }
+
+    private void resetGame()
+    {
+        this.turn = 0;
+        this.oneCount = 6;
+        this.twoCount = 6;
+        this.threeCount = 6;
+        this.fourCount = 6;
+        this.fiveCount = 6;
+        this.sixCount = 6;
+        this.sevenCount = 6;
+
+    }
+
+    private void setPlayer1Color(String color)
+    {
+        //"Green", "Blue", "Red", "Purple", "Black", "Yellow"
+        if(color.equals("Yellow"))
+            this.player1Color = Color.yellow;
+        else if(color.equals("Black"))
+            this.player1Color = Color.black;
+        else if(color.equals("Purple"))
+            this.player1Color = new Color(128,0,128);
+        else if(color.equals("Red"))
+            this.player1Color = Color.red;
+        else if(color.equals("Blue"))
+            this.player1Color = Color.BLUE;
+        else
+            this.player1Color = Color.green;
+
+    }
+
+    private void setPlayer2Color(String color)
+    {
+        //"Green", "Blue", "Red", "Purple", "Black", "Yellow"
+        if(color.equals("Yellow"))
+            this.player2Color = Color.yellow;
+        else if(color.equals("Black"))
+            this.player2Color = Color.black;
+        else if(color.equals("Purple"))
+            this.player2Color = new Color(128,0,128);
+        else if(color.equals("Red"))
+            this.player2Color = Color.red;
+        else if(color.equals("Blue"))
+            this.player2Color = Color.BLUE;
+        else
+            this.player2Color = Color.green;
+
     }
 
 }
