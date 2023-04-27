@@ -471,9 +471,7 @@ public class GUI_Skeleton extends JFrame
     {
         JLayeredPane gamePane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
-
-        URL url = this.getClass().getResource(getBackground_image_path());
-        ImageIcon background_Theme = new ImageIcon(url);
+        ImageIcon background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
         JLabel background = new JLabel(background_Theme);
 
 
