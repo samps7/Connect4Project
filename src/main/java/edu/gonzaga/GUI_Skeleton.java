@@ -4,8 +4,6 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.net.URL;
 import java.util.Objects;
 
 public class GUI_Skeleton extends JFrame
@@ -27,7 +25,8 @@ public class GUI_Skeleton extends JFrame
     private Color player1Color, player2Color;
     private Color player1Hover, player2Hover;
     private String background_image_path;
-    private String ez_bg = "resources/img/easybot.gif", medium_bg, hard_bg, pvp_bg;
+    private final String ez_bg = "resources/img/easybot.gif";
+    private String medium_bg, hard_bg, pvp_bg;
     MessageBean mBean = new MessageBean();
 
 
@@ -472,9 +471,9 @@ public class GUI_Skeleton extends JFrame
         JLayeredPane gamePane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
         containedPanel.setBackground(new Color(0,0,0,0));
-        ImageIcon background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
+        ImageIcon background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
         JLabel background = new JLabel(background_Theme);
-
+        background.setBounds(0,0,600,600);
 
 
 
@@ -483,7 +482,7 @@ public class GUI_Skeleton extends JFrame
         for(int i = 0; i<42; i++)
         {
             buttons[i] = new JLabel();
-            buttons[i].setText(String.valueOf(counter));
+            //buttons[i].setText(String.valueOf(counter));
             buttons[i].setOpaque(true);
             buttons[i].setBackground(new Color(0,0,0,0));
 
@@ -498,19 +497,19 @@ public class GUI_Skeleton extends JFrame
                 {
 
                     System.out.println("Column located: " + getCol_Located(finalCounter));
-                    if(finalI%7==0)
+                    if(finalI%7==0 && oneCount>0)
                         oneClicked();
-                    if(finalI%7==1)
+                    if(finalI%7==1 && twoCount>0)
                         twoClicked();
-                    if(finalI%7==2)
+                    if(finalI%7==2 && threeCount>0)
                         threeClicked();
-                    if(finalI%7==3)
+                    if(finalI%7==3 && fourCount>0)
                         fourClicked();
-                    if(finalI%7==4)
+                    if(finalI%7==4 && fiveCount>0)
                         fiveClicked();
-                    if(finalI%7==5)
+                    if(finalI%7==5 && sixCount>0)
                         sixClicked();
-                    if(finalI%7==6)
+                    if(finalI%7==6 && sevenCount>0)
                         sevenClicked();
                     turn++;
                     ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
@@ -533,38 +532,38 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mouseEntered(MouseEvent e)
                 {
-                    if(finalI%7 == 0)
+                    if(finalI%7==0 && oneCount>0)
                         oneHovered();
-                    if(finalI%7==1)
+                    if(finalI%7==1 && twoCount>0)
                         twoHovered();
-                    if(finalI%7==2)
+                    if(finalI%7==2 && threeCount>0)
                         threeHovered();
-                    if(finalI%7==3)
+                    if(finalI%7==3 && fourCount>0)
                         fourHovered();
-                    if(finalI%7==4)
+                    if(finalI%7==4 && fiveCount>0)
                         fiveHovered();
-                    if(finalI%7==5)
+                    if(finalI%7==5 && sixCount>0)
                         sixHovered();
-                    if(finalI%7==6)
+                    if(finalI%7==6 && sevenCount>0)
                         sevenHovered();
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e)
                 {
-                    if(finalI%7 == 0)
+                    if(finalI%7==0 && oneCount>0)
                         oneUnHovered();
-                    if(finalI%7==1)
+                    if(finalI%7==1 && twoCount>0)
                         twoUnHovered();
-                    if(finalI%7==2)
+                    if(finalI%7==2 && threeCount>0)
                         threeUnHovered();
-                    if(finalI%7==3)
+                    if(finalI%7==3 && fourCount>0)
                         fourUnHovered();
-                    if(finalI%7==4)
+                    if(finalI%7==4 && fiveCount>0)
                         fiveUnHovered();
-                    if(finalI%7==5)
+                    if(finalI%7==5 && sixCount>0)
                         sixUnHovered();
-                    if(finalI%7==6)
+                    if(finalI%7==6 && sevenCount>0)
                         sevenUnHovered();
                 }
             });
@@ -689,7 +688,7 @@ public class GUI_Skeleton extends JFrame
     }
 
     private void oneUnHovered()
-    {  
+    {
         this.buttons[oneCount*7 - 7].setOpaque(false);
     }
 
