@@ -685,11 +685,12 @@ public class GUI_Skeleton extends JFrame
             this.buttons[oneCount*7 - (7)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[oneCount*7 - (7)].setBackground(this.player2Hover);
+        this.buttons[oneCount*7 - 7].setOpaque(true);
     }
 
     private void oneUnHovered()
-    {
-            this.buttons[oneCount*7 - 7].setBackground(new Color(0,0,0,0));
+    {  
+        this.buttons[oneCount*7 - 7].setOpaque(false);
     }
 
     private void twoHovered()
@@ -698,11 +699,12 @@ public class GUI_Skeleton extends JFrame
             this.buttons[twoCount*7 - (6)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[twoCount*7 - (6)].setBackground(this.player2Hover);
+        this.buttons[twoCount*7 - (6)].setOpaque(true);
     }
 
     private void twoUnHovered()
     {
-        this.buttons[twoCount*7 - (6)].setBackground(new Color(0,0,0,0));
+        this.buttons[twoCount*7 - (6)].setOpaque(false);
     }
 
     private void threeHovered()
@@ -711,11 +713,12 @@ public class GUI_Skeleton extends JFrame
             this.buttons[threeCount*7 - (5)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[threeCount*7 - (5)].setBackground(this.player2Hover);
+        this.buttons[threeCount*7 - (5)].setOpaque(true);
     }
 
     private void threeUnHovered()
     {
-        this.buttons[threeCount*7 - (5)].setBackground(new Color(0,0,0,0));
+        this.buttons[threeCount*7 - (5)].setOpaque(false);
     }
 
     private void fourHovered()
@@ -724,11 +727,12 @@ public class GUI_Skeleton extends JFrame
             this.buttons[fourCount*7 - (4)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[fourCount*7 - (4)].setBackground(this.player2Hover);
+        this.buttons[fourCount*7 - (4)].setOpaque(true);
     }
 
     private void fourUnHovered()
     {
-        this.buttons[fourCount*7 - (4)].setBackground(new Color(0,0,0,0));
+        this.buttons[fourCount*7 - (4)].setOpaque(false);
     }
 
     private void fiveHovered()
@@ -737,11 +741,12 @@ public class GUI_Skeleton extends JFrame
             this.buttons[fiveCount*7 - (3)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[fiveCount*7 - (3)].setBackground(this.player2Hover);
+        this.buttons[fiveCount*7 - (3)].setOpaque(true);
     }
 
     private void fiveUnHovered()
     {
-        this.buttons[fiveCount*7 - (3)].setBackground(new Color(0,0,0,0));
+        this.buttons[fiveCount*7 - (3)].setOpaque(false);
     }
 
     private void sixHovered()
@@ -750,11 +755,12 @@ public class GUI_Skeleton extends JFrame
             this.buttons[sixCount*7 - (2)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[sixCount*7 - (2)].setBackground(this.player2Hover);
+        this.buttons[sixCount*7 - (2)].setOpaque(true);
     }
 
     private void sixUnHovered()
     {
-        this.buttons[sixCount*7 - (2)].setBackground(new Color(0,0,0,0));
+        this.buttons[sixCount*7 - (2)].setOpaque(false);
     }
 
     private void sevenHovered()
@@ -763,11 +769,12 @@ public class GUI_Skeleton extends JFrame
             this.buttons[sevenCount*7 - (1)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[sevenCount*7 - (1)].setBackground(this.player2Hover);
+        this.buttons[sevenCount*7 - (1)].setOpaque(true);
     }
 
     private void sevenUnHovered()
     {
-        this.buttons[sevenCount*7 - (1)].setBackground(new Color(0,0,0,0));
+        this.buttons[sevenCount*7 - (1)].setOpaque(false);
     }
 
     public int getGameMode()
