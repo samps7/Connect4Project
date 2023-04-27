@@ -471,9 +471,8 @@ public class GUI_Skeleton extends JFrame
     {
         JLayeredPane gamePane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
-
-        URL url = this.getClass().getResource(getBackground_image_path());
-        ImageIcon background_Theme = new ImageIcon(url);
+        containedPanel.setBackground(new Color(0,0,0,0));
+        ImageIcon background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
         JLabel background = new JLabel(background_Theme);
 
 
@@ -486,6 +485,7 @@ public class GUI_Skeleton extends JFrame
             buttons[i] = new JLabel();
             buttons[i].setText(String.valueOf(counter));
             buttons[i].setOpaque(true);
+            buttons[i].setBackground(new Color(0,0,0,0));
 
             int finalCounter = counter;
             counter++;
@@ -689,7 +689,7 @@ public class GUI_Skeleton extends JFrame
 
     private void oneUnHovered()
     {
-            this.buttons[oneCount*7 - 7].setBackground(Color.white);
+            this.buttons[oneCount*7 - 7].setBackground(new Color(0,0,0,0));
     }
 
     private void twoHovered()
@@ -702,7 +702,7 @@ public class GUI_Skeleton extends JFrame
 
     private void twoUnHovered()
     {
-        this.buttons[twoCount*7 - (6)].setBackground(Color.white);
+        this.buttons[twoCount*7 - (6)].setBackground(new Color(0,0,0,0));
     }
 
     private void threeHovered()
@@ -715,7 +715,7 @@ public class GUI_Skeleton extends JFrame
 
     private void threeUnHovered()
     {
-        this.buttons[threeCount*7 - (5)].setBackground(Color.white);
+        this.buttons[threeCount*7 - (5)].setBackground(new Color(0,0,0,0));
     }
 
     private void fourHovered()
@@ -728,7 +728,7 @@ public class GUI_Skeleton extends JFrame
 
     private void fourUnHovered()
     {
-        this.buttons[fourCount*7 - (4)].setBackground(Color.white);
+        this.buttons[fourCount*7 - (4)].setBackground(new Color(0,0,0,0));
     }
 
     private void fiveHovered()
@@ -741,7 +741,7 @@ public class GUI_Skeleton extends JFrame
 
     private void fiveUnHovered()
     {
-        this.buttons[fiveCount*7 - (3)].setBackground(Color.white);
+        this.buttons[fiveCount*7 - (3)].setBackground(new Color(0,0,0,0));
     }
 
     private void sixHovered()
@@ -754,7 +754,7 @@ public class GUI_Skeleton extends JFrame
 
     private void sixUnHovered()
     {
-        this.buttons[sixCount*7 - (2)].setBackground(Color.white);
+        this.buttons[sixCount*7 - (2)].setBackground(new Color(0,0,0,0));
     }
 
     private void sevenHovered()
@@ -767,7 +767,7 @@ public class GUI_Skeleton extends JFrame
 
     private void sevenUnHovered()
     {
-        this.buttons[sevenCount*7 - (1)].setBackground(Color.white);
+        this.buttons[sevenCount*7 - (1)].setBackground(new Color(0,0,0,0));
     }
 
     public int getGameMode()
