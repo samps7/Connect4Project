@@ -39,16 +39,19 @@ public class C4Game
 
             while(true)
             {
-                if(gui.getPlayerOneName().isBlank())
+                if(gui.getPlayerOneName() == null)
                 {
                     System.out.println("Player One Name Blank");
                 }
-                else if(gui.getPlayerTwoName().isBlank())
+                else if(gui.getPlayerTwoName() == null)
                 {
                     System.out.println("Player Two Name Blank");
                 }
-                else if(!gui.getPlayerOneName().isBlank() && !gui.getPlayerTwoName().isBlank())
+                else if(gui.getPlayerOneName() != null && gui.getPlayerTwoName() != null)
+                {
+                    System.out.println("Waiting on names");
                     break;
+                }
                 else
                 {
                     System.out.println("Here are the names");
@@ -69,9 +72,15 @@ public class C4Game
             System.out.println("Enter P1 name");
             // get from UI textbox here
             // get coin from combobox here
-            while(!gui.getPlayerOneName().isBlank())
+            while(true)
             {
-
+                if(gui.getPlayerOneName() != null)
+                {
+                    System.out.println("Player 1 Name: " + gui.getPlayerOneName());
+                    break;
+                }
+                else
+                    System.out.println("Waiting on player 1 name");
             }
             players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
 

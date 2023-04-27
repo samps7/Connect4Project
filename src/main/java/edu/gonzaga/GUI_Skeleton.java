@@ -4,6 +4,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Objects;
 
 public class GUI_Skeleton extends JFrame
 {
@@ -18,10 +19,11 @@ public class GUI_Skeleton extends JFrame
     private Integer turn = 0;
     private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
     private JLabel[] buttons;
-    private String playerOneName = null, playerTwoName = null;
+    private String playerOneName, playerTwoName;
     private int gameMode = -1, difficulty = -1;
     private final Color botColor = Color.orange;
     private Color player1Color, player2Color;
+    private Color player1Hover, player2Hover;
     MessageBean mBean = new MessageBean();
 
 
@@ -198,6 +200,9 @@ public class GUI_Skeleton extends JFrame
                 mBean.setValue(playerOneInput.getText());
 
                 playerOneName = playerOneInput.getText();
+                setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
+                setPlayer1Hover(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
+                player2Color = botColor;
 
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
@@ -271,6 +276,11 @@ public class GUI_Skeleton extends JFrame
 
                 playerOneName = playerOneInput.getText();
                 playerTwoName = playerTwoInput.getText();
+
+                setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
+                setPlayer1Hover(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
+                setPlayer2Color(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
+                setPlayer2Hover(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
 
                 //player1_Color.setColor(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 //player2_Color.setColor(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
@@ -580,63 +590,63 @@ public class GUI_Skeleton extends JFrame
     private void oneClicked()
     {
         if(turn%2==0)
-            this.buttons[oneCount*7 - (7)].setBackground(Color.red);
+            this.buttons[oneCount*7 - (7)].setBackground(player1Color);
         if(turn%2==1)
-            this.buttons[oneCount*7 - (7)].setBackground(Color.BLUE);
+            this.buttons[oneCount*7 - (7)].setBackground(player2Color);
         oneCount--;
     }
 
     private void twoClicked()
     {
         if(turn%2==0)
-            this.buttons[twoCount*7 - (6)].setBackground(Color.red);
+            this.buttons[twoCount*7 - (6)].setBackground(player1Color);
         if(turn%2==1)
-            this.buttons[twoCount*7 - (6)].setBackground(Color.BLUE);
+            this.buttons[twoCount*7 - (6)].setBackground(player2Color);
         twoCount--;
     }
 
     private void threeClicked()
     {
         if(turn%2==0)
-            this.buttons[threeCount*7 - (5)].setBackground(Color.red);
+            this.buttons[threeCount*7 - (5)].setBackground(player1Color);
         if(turn%2==1)
-            this.buttons[threeCount*7 - (5)].setBackground(Color.BLUE);
+            this.buttons[threeCount*7 - (5)].setBackground(player2Color);
         threeCount--;
     }
 
     private void fourClicked()
     {
         if(turn%2==0)
-            this.buttons[fourCount*7 - (4)].setBackground(Color.red);
+            this.buttons[fourCount*7 - (4)].setBackground(player1Color);
         if(turn%2==1)
-            this.buttons[fourCount*7 - (4)].setBackground(Color.BLUE);
+            this.buttons[fourCount*7 - (4)].setBackground(player2Color);
         fourCount--;
     }
 
     private void fiveClicked()
     {
         if(turn%2==0)
-            this.buttons[fiveCount*7 - (3)].setBackground(Color.red);
+            this.buttons[fiveCount*7 - (3)].setBackground(player1Color);
         if(turn%2==1)
-            this.buttons[fiveCount*7 - (3)].setBackground(Color.BLUE);
+            this.buttons[fiveCount*7 - (3)].setBackground(player2Color);
         fiveCount--;
     }
 
     private void sixClicked()
     {
         if(turn%2==0)
-            this.buttons[sixCount*7 - (2)].setBackground(Color.red);
+            this.buttons[sixCount*7 - (2)].setBackground(player1Color);
         if(turn%2==1)
-            this.buttons[sixCount*7 - (2)].setBackground(Color.BLUE);
+            this.buttons[sixCount*7 - (2)].setBackground(player2Color);
         sixCount--;
     }
 
     private void sevenClicked()
     {
         if(turn%2==0)
-            this.buttons[sevenCount*7 - (1)].setBackground(Color.red);
+            this.buttons[sevenCount*7 - (1)].setBackground(player1Color);
         if(turn%2==1)
-            this.buttons[sevenCount*7 - (1)].setBackground(Color.BLUE);
+            this.buttons[sevenCount*7 - (1)].setBackground(player2Color);
         sevenCount--;
     }
 
@@ -656,9 +666,9 @@ public class GUI_Skeleton extends JFrame
     private void oneHovered()
     {
         if(turn%2 == 0)
-            this.buttons[oneCount*7 - (7)].setBackground(Color.red);
+            this.buttons[oneCount*7 - (7)].setBackground(this.player1Hover);
         if(turn%2==1)
-            this.buttons[oneCount*7 - (7)].setBackground(Color.BLUE);
+            this.buttons[oneCount*7 - (7)].setBackground(this.player2Hover);
     }
 
     private void oneUnHovered()
@@ -669,9 +679,9 @@ public class GUI_Skeleton extends JFrame
     private void twoHovered()
     {
         if(turn%2==0)
-            this.buttons[twoCount*7 - (6)].setBackground(Color.red);
+            this.buttons[twoCount*7 - (6)].setBackground(this.player1Hover);
         if(turn%2==1)
-            this.buttons[twoCount*7 - (6)].setBackground(Color.BLUE);
+            this.buttons[twoCount*7 - (6)].setBackground(this.player2Hover);
     }
 
     private void twoUnHovered()
@@ -682,9 +692,9 @@ public class GUI_Skeleton extends JFrame
     private void threeHovered()
     {
         if(turn%2==0)
-            this.buttons[threeCount*7 - (5)].setBackground(Color.red);
+            this.buttons[threeCount*7 - (5)].setBackground(this.player1Hover);
         if(turn%2==1)
-            this.buttons[threeCount*7 - (5)].setBackground(Color.BLUE);
+            this.buttons[threeCount*7 - (5)].setBackground(this.player2Hover);
     }
 
     private void threeUnHovered()
@@ -695,9 +705,9 @@ public class GUI_Skeleton extends JFrame
     private void fourHovered()
     {
         if(turn%2==0)
-            this.buttons[fourCount*7 - (4)].setBackground(Color.red);
+            this.buttons[fourCount*7 - (4)].setBackground(this.player1Hover);
         if(turn%2==1)
-            this.buttons[fourCount*7 - (4)].setBackground(Color.BLUE);
+            this.buttons[fourCount*7 - (4)].setBackground(this.player2Hover);
     }
 
     private void fourUnHovered()
@@ -708,9 +718,9 @@ public class GUI_Skeleton extends JFrame
     private void fiveHovered()
     {
         if(turn%2==0)
-            this.buttons[fiveCount*7 - (3)].setBackground(Color.red);
+            this.buttons[fiveCount*7 - (3)].setBackground(this.player1Hover);
         if(turn%2==1)
-            this.buttons[fiveCount*7 - (3)].setBackground(Color.BLUE);
+            this.buttons[fiveCount*7 - (3)].setBackground(this.player2Hover);
     }
 
     private void fiveUnHovered()
@@ -721,9 +731,9 @@ public class GUI_Skeleton extends JFrame
     private void sixHovered()
     {
         if(turn%2==0)
-            this.buttons[sixCount*7 - (2)].setBackground(Color.red);
+            this.buttons[sixCount*7 - (2)].setBackground(this.player1Hover);
         if(turn%2==1)
-            this.buttons[sixCount*7 - (2)].setBackground(Color.BLUE);
+            this.buttons[sixCount*7 - (2)].setBackground(this.player2Hover);
     }
 
     private void sixUnHovered()
@@ -734,9 +744,9 @@ public class GUI_Skeleton extends JFrame
     private void sevenHovered()
     {
         if(turn%2==0)
-            this.buttons[sevenCount*7 - (1)].setBackground(Color.red);
+            this.buttons[sevenCount*7 - (1)].setBackground(this.player1Hover);
         if(turn%2==1)
-            this.buttons[sevenCount*7 - (1)].setBackground(Color.BLUE);
+            this.buttons[sevenCount*7 - (1)].setBackground(this.player2Hover);
     }
 
     private void sevenUnHovered()
@@ -770,37 +780,105 @@ public class GUI_Skeleton extends JFrame
     private void setPlayer1Color(String color)
     {
         //"Green", "Blue", "Red", "Purple", "Black", "Yellow"
-        if(color.equals("Yellow"))
-            this.player1Color = Color.yellow;
-        else if(color.equals("Black"))
-            this.player1Color = Color.black;
-        else if(color.equals("Purple"))
-            this.player1Color = new Color(128,0,128);
-        else if(color.equals("Red"))
-            this.player1Color = Color.red;
-        else if(color.equals("Blue"))
-            this.player1Color = Color.BLUE;
-        else
-            this.player1Color = Color.green;
+        switch (color)
+        {
+            case "Yellow":
+                this.player1Color = Color.yellow;
+                break;
+            case "Black":
+                this.player1Color = Color.black;
+                break;
+            case "Purple":
+                this.player1Color = new Color(128, 0, 128);
+                break;
+            case "Red":
+                this.player1Color = Color.red;
+                break;
+            case "Blue":
+                this.player1Color = Color.BLUE;
+                break;
+            default:
+                this.player1Color = Color.green;
+                break;
+        }
 
     }
 
     private void setPlayer2Color(String color)
     {
         //"Green", "Blue", "Red", "Purple", "Black", "Yellow"
-        if(color.equals("Yellow"))
-            this.player2Color = Color.yellow;
-        else if(color.equals("Black"))
-            this.player2Color = Color.black;
-        else if(color.equals("Purple"))
-            this.player2Color = new Color(128,0,128);
-        else if(color.equals("Red"))
-            this.player2Color = Color.red;
-        else if(color.equals("Blue"))
-            this.player2Color = Color.BLUE;
-        else
-            this.player2Color = Color.green;
+        switch (color)
+        {
+            case "Yellow":
+                this.player2Color = Color.yellow;
+                break;
+            case "Black":
+                this.player2Color = Color.black;
+                break;
+            case "Purple":
+                this.player2Color = new Color(128, 0, 128);
+                break;
+            case "Red":
+                this.player2Color = Color.red;
+                break;
+            case "Blue":
+                this.player2Color = Color.BLUE;
+                break;
+            default:
+                this.player2Color = Color.green;
+                break;
+        }
 
+    }
+
+    private void setPlayer1Hover(String color)
+    {
+        switch (color)
+        {
+            case "Yellow":
+                this.player1Hover = new Color(255, 255, 0, 128);
+                break;
+            case "Black":
+                this.player1Hover = new Color(105,105,105,128);
+                break;
+            case "Purple":
+                this.player1Hover = new Color(128, 0, 128,128);
+                break;
+            case "Red":
+                this.player1Hover = new Color(255,0,0,128);
+                break;
+            case "Blue":
+                this.player1Hover = new Color(0,0,255,128);
+                break;
+            default:
+                this.player1Hover = new Color(0,255,0,128);
+                break;
+        }
+    }
+
+    private void setPlayer2Hover(String color)
+    {
+        switch (color)
+        {
+            case "Yellow":
+                this.player2Hover = new Color(255, 255, 0, 128);
+                break;
+            case "Black":
+                this.player2Hover = new Color(105,105,105,128);
+                break;
+            case "Purple":
+                this.player2Hover = new Color(128, 0, 128,128);
+                break;
+            case "Red":
+                this.player2Hover = new Color(255,0,0,128);
+                break;
+            case "Blue":
+                this.player2Hover = new Color(0,0,255,128);
+                break;
+            default:
+                this.player2Hover = new Color(0,255,0,128);
+                break;
+        }
     }
 
 }
