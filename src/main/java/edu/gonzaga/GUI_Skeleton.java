@@ -949,6 +949,7 @@ public class GUI_Skeleton extends JFrame
             sixClicked();
         if(move == 6)
             sevenClicked();
+        this.turn++;
     }
 
     public void resetBotMove()
@@ -959,6 +960,11 @@ public class GUI_Skeleton extends JFrame
     public void botMovesFirst()
     {
         this.turn++;
+    }
+
+    public int getBotMove()
+    {
+        return this.botMove;
     }
 
 }

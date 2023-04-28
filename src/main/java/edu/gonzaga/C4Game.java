@@ -54,6 +54,7 @@ public class C4Game
                     System.out.println("Here are the names");
                     System.out.println(gui.getPlayerOneName());
                     System.out.println(gui.getPlayerTwoName());
+                    break;
                 }
             }
             players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
@@ -179,9 +180,11 @@ public class C4Game
                     int currMove =  players[1].getMove(moveChain);
 
                     System.out.println("Bot went " + currMove);
-                    // check for illegal move before next line and 
-                    gui.setBotNextMove(currMove);
-                    gui.resetBotMove();
+                    // check for illegal move before next line and
+
+                     gui.setBotNextMove(currMove);
+
+                    //gui.resetBotMove();
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
