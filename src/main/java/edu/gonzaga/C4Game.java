@@ -39,12 +39,9 @@ public class C4Game
 
             while(true)
             {
-                if(gui.getPlayerOneName() == null)
+                if(gui.getPlayerOneName() == null && gui.getPlayerTwoName() == null)
                 {
                     System.out.println("Player One Name Blank");
-                }
-                else if(gui.getPlayerTwoName() == null)
-                {
                     System.out.println("Player Two Name Blank");
                 }
                 else if(gui.getPlayerOneName() != null && gui.getPlayerTwoName() != null)
@@ -61,7 +58,7 @@ public class C4Game
             }
             players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
 
-            System.out.println("Enter P2 name");
+            //System.out.println("Enter P2 name");
             // get name from UI textbox here
             // get coin from combobox here
             players[1] = new Player(gui.getPlayerTwoName(), new Coin("O"));
@@ -144,17 +141,32 @@ public class C4Game
             if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn) fix this...
             {
                 System.out.println("Which column do you want to place a piece?");
-                int currMove = scan1.nextInt();
+                while(true)
+                {
+                    if(gui.getMove()>0 && gui.getMove()<7)
+                        break;
+                    else
+                        System.out.println("Waiting for move");
+                }
+                int currMove = gui.getMove();
                 boolean valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                 while(!valid)
                 {
                     System.out.println("invalid  column");
-                    currMove = scan1.nextInt();
+                    while(true)
+                    {
+                        if(gui.getMove()>0 && gui.getMove()<7)
+                            break;
+                        else
+                            System.out.println("Waiting for move");
+                    }
+                    currMove = gui.getMove();
                     valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                 }
                 currMove++; // change from 0-6 -> 1-7 (for moveChain)
                 moveChain += currMove;
 
+                gui.resetMoveInt();
             }
             else
             {

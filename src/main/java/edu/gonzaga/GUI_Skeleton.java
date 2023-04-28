@@ -27,6 +27,7 @@ public class GUI_Skeleton extends JFrame
     private String background_image_path;
     private final String ez_bg = "resources/img/easybot.gif";
     private String medium_bg, hard_bg, pvp_bg;
+    private int move = -1;
     MessageBean mBean = new MessageBean();
 
 
@@ -512,6 +513,7 @@ public class GUI_Skeleton extends JFrame
                     if(finalI%7==6 && sevenCount>0)
                         sevenClicked();
                     turn++;
+                    makeMove(finalI);
                     ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
 
@@ -914,5 +916,20 @@ public class GUI_Skeleton extends JFrame
     private String getBackground_image_path()
     {
         return this.background_image_path;
+    }
+
+    public void resetMoveInt()
+    {
+        this.move = -1;
+    }
+
+    private void makeMove(int column)
+    {
+        this.move = column%7;
+    }
+
+    public int getMove()
+    {
+        return this.move;
     }
 }
