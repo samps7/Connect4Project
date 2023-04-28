@@ -27,7 +27,7 @@ public class GUI_Skeleton extends JFrame
     private String background_image_path;
     private final String ez_bg = "resources/img/easybot.gif";
     private String medium_bg, hard_bg, pvp_bg;
-    private int move = -1;
+    private int move = -1, botMove = -1;
     MessageBean mBean = new MessageBean();
 
 
@@ -932,4 +932,33 @@ public class GUI_Skeleton extends JFrame
     {
         return this.move;
     }
+
+    public void setBotNextMove(int move)
+    {
+        if(move == 0)
+            oneClicked();
+        if(move == 1)
+            twoClicked();
+        if(move == 2)
+            threeClicked();
+        if(move == 3)
+            fourClicked();
+        if(move == 4)
+            fiveClicked();
+        if(move == 5)
+            sixClicked();
+        if(move == 6)
+            sevenClicked();
+    }
+
+    public void resetBotMove()
+    {
+        this.botMove = -1;
+    }
+
+    public void botMovesFirst()
+    {
+        this.turn++;
+    }
+
 }

@@ -128,6 +128,8 @@ public class C4Game
         {
             playerTurn = 0;
         }
+        if(playerTurn == 1)
+            gui.botMovesFirst();
 
         while(moveCount < 42)
         {
@@ -178,7 +180,8 @@ public class C4Game
 
                     System.out.println("Bot went " + currMove);
                     // check for illegal move before next line and 
-
+                    gui.setBotNextMove(currMove);
+                    gui.resetBotMove();
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
