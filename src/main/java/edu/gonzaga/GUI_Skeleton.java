@@ -513,7 +513,6 @@ public class GUI_Skeleton extends JFrame
                         sixClicked();
                     if(finalI%7==6 && sevenCount>0)
                         sevenClicked();
-                    turn++;
                     makeMove(finalI);
                     ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
@@ -612,6 +611,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[oneCount*7 - (7)].setBackground(player2Color);
         oneCount--;
+        turn++;
         this.buttons[(oneCount+1)*7 - 7].setOpaque(true); // Note: ordering is very intentional
     }
 
@@ -622,6 +622,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[twoCount*7 - (6)].setBackground(player2Color);
         twoCount--;
+        turn++;
         this.buttons[(twoCount+1)*7 - (6)].setOpaque(true);
     }
 
@@ -632,6 +633,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[threeCount*7 - (5)].setBackground(player2Color);
         threeCount--;
+        turn++;
         this.buttons[(threeCount+1)*7 - (5)].setOpaque(true);
     }
 
@@ -642,6 +644,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fourCount*7 - (4)].setBackground(player2Color);
         fourCount--;
+        turn++;
         this.buttons[(fourCount+1)*7 - (4)].setOpaque(true);
     }
 
@@ -652,6 +655,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fiveCount*7 - (3)].setBackground(player2Color);
         fiveCount--;
+        turn++;
         this.buttons[(fiveCount+1)*7 - (3)].setOpaque(true);
     }
 
@@ -662,6 +666,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sixCount*7 - (2)].setBackground(player2Color);
         sixCount--;
+        turn++;
         this.buttons[(sixCount+1)*7 - (2)].setOpaque(true);
     }
 
@@ -672,6 +677,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sevenCount*7 - (1)].setBackground(player2Color);
         sevenCount--;
+        turn++;
         this.buttons[(sevenCount+1)*7 - (1)].setOpaque(true);
     }
 
