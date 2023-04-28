@@ -981,4 +981,15 @@ public class GUI_Skeleton extends JFrame
         return this.botMove;
     }
 
+    public void gameEnd()
+    {
+        oneCount = 0;
+        twoCount = 0;
+        threeCount = 0;
+        fourCount = 0;
+        fiveCount = 0;
+        sixCount = 0;
+        sevenCount = 0;
+    }
+
 }

@@ -203,7 +203,7 @@ public class C4Game
                     System.out.println(players[playerTurn].getName()+ " wins!!!!");
                     System.out.println();
                     System.out.println(grid.boardDisplay());
-
+                    gui.gameEnd();
                     moveCount = 1000; // (to break from loop)
                 }
             }
