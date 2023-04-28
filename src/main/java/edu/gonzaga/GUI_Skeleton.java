@@ -473,6 +473,7 @@ public class GUI_Skeleton extends JFrame
         JPanel containedPanel = new JPanel();
         containedPanel.setBackground(new Color(0,0,0,0));
         ImageIcon background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+
         JLabel background = new JLabel(background_Theme);
         background.setBounds(0,0,600,600);
 
