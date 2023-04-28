@@ -143,7 +143,7 @@ public class C4Game
                 System.out.println("Which column do you want to place a piece?");
                 while(true)
                 {
-                    if(gui.getMove()>0 && gui.getMove()<7)
+                    if(gui.getMove()>=0 && gui.getMove()<7)
                         break;
                     else
                         System.out.println("Waiting for move");
@@ -155,7 +155,7 @@ public class C4Game
                     System.out.println("invalid  column");
                     while(true)
                     {
-                        if(gui.getMove()>0 && gui.getMove()<7)
+                        if(gui.getMove()>=0 && gui.getMove()<7)
                             break;
                         else
                             System.out.println("Waiting for move");
