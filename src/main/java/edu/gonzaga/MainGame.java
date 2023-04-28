@@ -15,13 +15,16 @@
 package edu.gonzaga;
 
 
+import java.io.IOException;
+
 /** Main program class for launching your team's program. */
 public class MainGame 
 {
-    public static void main(String[] args) 
+    public static void main(String[] args) throws Exception
     {
         // Your code here. Good luck!
-        Menu m1 = new Menu();
+        MusicPlayer mp = new MusicPlayer();
+        Menu m1 = new Menu(mp);
         m1.displayOptions();
     }
 }

@@ -1,21 +1,56 @@
 package edu.gonzaga;
 
+import java.io.*;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner6;
 
 public class Menu 
 {
-    public void displayOptions()
+    GUI_Skeleton gui = new GUI_Skeleton();
+    MessageBean mBean = new MessageBean();
+    private MusicPlayer mp;
+
+    public Menu(MusicPlayer mp1)
     {
+        mp = mp1;
+    }
+    //Sam's original Text-based C4 game
+    public void displayOptions() throws Exception
+    {
+        gui.runGUI();
+        mp.loopSound("resources/music/Botique.wav");
         int playing = 1;
         Scanner scan1 = new Scanner(System.in);
+
+
         System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
-        int mode = scan1.nextInt();
+
+        while(true)
+        {
+            if(gui.getGameMode() == 0)
+            {
+                System.out.println(gui.getGameMode());
+                break;
+            }
+            else if(gui.getGameMode() == 1)
+            {
+                System.out.println(gui.getGameMode());
+                break;
+            }
+            else if(gui.getGameMode() == 2)
+            {
+                System.out.println(gui.getGameMode());
+                break;
+            }
+            else
+                System.out.println("Game Mode Not Received");
+        }
+        int mode = gui.getGameMode();
+
         if(mode == 1)
         {
-            C4Game game = new C4Game(3);
-            
+            C4Game game = new C4Game(3, mp, gui);
+            gui.setC4Game(game);
             while(playing == 1)
             {
                 game.startGame();
@@ -29,15 +64,38 @@ public class Menu
         else if( mode == 0)
         {
             System.out.println("Type 0 for Easy | Type 1 for Medium | Type 2 for Hard");
-            mode = scan1.nextInt();
+            while(true)
+            {
+                if(gui.getDifficulty() == 0)
+                {
+                    System.out.println(gui.getDifficulty());
+                    break;
+                }
+
+                else if(gui.getDifficulty() == 1)
+                {
+                    System.out.println(gui.getDifficulty());
+                    break;
+                }
+                else if(gui.getDifficulty() == 2)
+                {
+                    System.out.println(gui.getDifficulty());
+                    break;
+                }
+                else
+                    System.out.println("Difficulty Not Received");
+            }
+            mode = gui.getDifficulty();
             if(mode == 0)
             {
                 // easy bots stuff here
 
-                //C4Game game = new C4Game(0);
+                C4Game game = new C4Game(0, mp, gui);
+                gui.setC4Game(game);
+                
                 while(playing == 1)
                 {
-                    //game.startGame();
+                    game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
@@ -49,10 +107,12 @@ public class Menu
             {
                 // medium bots stuff here
 
-                //C4Game game = new C4Game(1);
+                C4Game game = new C4Game(1, mp, gui);
+                gui.setC4Game(game);
+                
                 while(playing == 1)
                 {
-                    //game.startGame();
+                    game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
@@ -64,7 +124,9 @@ public class Menu
             {
                 // hard bots stuff here
 
-                C4Game game = new C4Game(2);
+
+                C4Game game = new C4Game(2, mp, gui);
+                gui.setC4Game(game);
                 while(playing == 1)
                 {
                     game.startGame();
@@ -77,4 +139,8 @@ public class Menu
             }
         }
     }
+    //End of Sam's original Text-Based C4 game
+
+
+
 }
