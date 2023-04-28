@@ -611,6 +611,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[oneCount*7 - (7)].setBackground(player2Color);
         oneCount--;
+        this.buttons[(oneCount+1)*7 - 7].setOpaque(true); // Note: ordering is very intentional
     }
 
     private void twoClicked()
@@ -620,6 +621,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[twoCount*7 - (6)].setBackground(player2Color);
         twoCount--;
+        this.buttons[(twoCount+1)*7 - (6)].setOpaque(true);
     }
 
     private void threeClicked()
@@ -629,6 +631,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[threeCount*7 - (5)].setBackground(player2Color);
         threeCount--;
+        this.buttons[(threeCount+1)*7 - (5)].setOpaque(true);
     }
 
     private void fourClicked()
@@ -638,6 +641,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fourCount*7 - (4)].setBackground(player2Color);
         fourCount--;
+        this.buttons[(fourCount+1)*7 - (4)].setOpaque(true);
     }
 
     private void fiveClicked()
@@ -647,6 +651,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fiveCount*7 - (3)].setBackground(player2Color);
         fiveCount--;
+        this.buttons[(fiveCount+1)*7 - (3)].setOpaque(true);
     }
 
     private void sixClicked()
@@ -656,6 +661,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sixCount*7 - (2)].setBackground(player2Color);
         sixCount--;
+        this.buttons[(sixCount+1)*7 - (2)].setOpaque(true);
     }
 
     private void sevenClicked()
@@ -665,6 +671,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sevenCount*7 - (1)].setBackground(player2Color);
         sevenCount--;
+        this.buttons[(sevenCount+1)*7 - (1)].setOpaque(true);
     }
 
     public String getPlayerOneName()
