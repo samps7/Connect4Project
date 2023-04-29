@@ -28,7 +28,7 @@ public class GUI_Skeleton extends JFrame
     private String background_image_path;
     private final String ez_bg = "resources/img/easybot.gif";
     private int move = -1, botMove = -1;
-    private boolean wait;
+    private boolean wait = false;
 
 
 
