@@ -2,7 +2,6 @@ package edu.gonzaga;
 
 import java.util.Scanner;
 
-import org.apache.xalan.templates.ElemSort;
 
 import java.lang.Math;
 
@@ -12,6 +11,7 @@ public class C4Game
     private int mode; // 0 = ez bot, 1 = medium bot, 2 = hard bot, 3 = pvp
     private int moveCount = 0; // for while loop
     private GUI_Skeleton gui;
+    private boolean waitingBot;
     // these are here for bot matches mostly
 
     private int playerTurn = 1;
@@ -39,12 +39,9 @@ public class C4Game
 
             while(true)
             {
-                if(gui.getPlayerOneName() == null)
+                if(gui.getPlayerOneName() == null && gui.getPlayerTwoName() == null)
                 {
                     System.out.println("Player One Name Blank");
-                }
-                else if(gui.getPlayerTwoName() == null)
-                {
                     System.out.println("Player Two Name Blank");
                 }
                 else if(gui.getPlayerOneName() != null && gui.getPlayerTwoName() != null)
@@ -57,11 +54,12 @@ public class C4Game
                     System.out.println("Here are the names");
                     System.out.println(gui.getPlayerOneName());
                     System.out.println(gui.getPlayerTwoName());
+                    break;
                 }
             }
             players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
 
-            System.out.println("Enter P2 name");
+            //System.out.println("Enter P2 name");
             // get name from UI textbox here
             // get coin from combobox here
             players[1] = new Player(gui.getPlayerTwoName(), new Coin("O"));
@@ -131,6 +129,8 @@ public class C4Game
         {
             playerTurn = 0;
         }
+        if(playerTurn == 1)
+            gui.botMovesFirst();
 
         while(moveCount < 42)
         {
@@ -144,33 +144,52 @@ public class C4Game
             if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn) fix this...
             {
                 System.out.println("Which column do you want to place a piece?");
-                int currMove = scan1.nextInt();
+                while(true)
+                {
+                    if(gui.getMove()>=0 && gui.getMove()<7)
+                        break;
+                    else
+                        System.out.println("Waiting for move");
+                }
+                int currMove = gui.getMove();
                 boolean valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                 while(!valid)
                 {
                     System.out.println("invalid  column");
-                    currMove = scan1.nextInt();
+                    while(true)
+                    {
+                        if(gui.getMove()>=0 && gui.getMove()<7)
+                            break;
+                        else
+                            System.out.println("Waiting for move");
+                    }
+                    currMove = gui.getMove();
                     valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                 }
                 currMove++; // change from 0-6 -> 1-7 (for moveChain)
                 moveChain += currMove;
 
+                gui.resetMoveInt();
             }
             else
             {
                 System.out.println("Bot is deciding on a move...");
                 if(mode < 3)
                 {
-
-                    int currMove =  players[1].getMove(moveChain);
-
+                    gui.setWaitTrue();
+                    int currMove = players[1].getMove(moveChain);
                     System.out.println("Bot went " + currMove);
-                    // check for illegal move before next line and 
+                    // check for illegal move before next line and
 
+                     gui.setBotNextMove(currMove);
+                     gui.setWaitFalse();
+
+                    //gui.resetBotMove();
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
                     moveChain += currMove;
+
                 }
 
             }
@@ -185,7 +204,7 @@ public class C4Game
                     System.out.println(players[playerTurn].getName()+ " wins!!!!");
                     System.out.println();
                     System.out.println(grid.boardDisplay());
-
+                    gui.gameEnd();
                     moveCount = 1000; // (to break from loop)
                 }
             }
@@ -205,6 +224,7 @@ public class C4Game
                     }
 
                     System.out.println(grid.boardDisplay());
+                    gui.gameEnd();
 
                     moveCount = 1000; // (to break from loop)
                 }
@@ -233,6 +253,8 @@ public class C4Game
         moveChain = "";
         moveCount = 0;
     }
+
+
 
 
 }
