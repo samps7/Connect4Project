@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class GUI_Skeleton extends JFrame
 {
@@ -27,7 +26,6 @@ public class GUI_Skeleton extends JFrame
     private final Color botColor = Color.orange;
     private Color player1Color, player2Color;
     private Color player1Hover, player2Hover;
-    private String background_image_path;
     private final String ez_bg = "resources/img/easybot.gif";
     private final String med_bg = "resources/img/medbot.gif";
     private final String hard_bg = "resources/img/hardbot.gif";
@@ -287,7 +285,6 @@ public class GUI_Skeleton extends JFrame
                 playerOneName = playerOneInput.getText();
                 playerTwoName = playerTwoInput.getText();
 
-                setBackground_image_path(-1); //-1 forces to default case, which is the pvp background
 
                 setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 setPlayer1Hover(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
@@ -365,7 +362,6 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Easy Mode Selected");
 
                 difficulty = 0;
-                setBackground_image_path(difficulty);
                 setEz_bg();
                 gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
@@ -401,7 +397,6 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Medium Mode Selected");
 
                 difficulty = 1;
-                setBackground_image_path(difficulty);
                 setMed_bg();
                 gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
@@ -436,7 +431,6 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Hard Mode Selected");
                 difficulty = 2;
-                setBackground_image_path(difficulty);
                 gameModeSelectPane.setVisible(false);
                 setHard_bg();
                 gamePane = getGame();
@@ -556,10 +550,10 @@ public class GUI_Skeleton extends JFrame
 
 
                     makeMove(finalI);
-                    ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
+                    ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
 
-                    grid.setBounds(100,25,640,480);
+                    grid.setBounds(100,25,400,400);
 
                 }
 
@@ -953,14 +947,6 @@ public class GUI_Skeleton extends JFrame
                 this.player2Hover = new Color(0,255,0,128);
                 break;
         }
-    }
-
-    private void setBackground_image_path(int mode)
-    {
-        if(mode == 0)
-            this.background_image_path = this.ez_bg;
-        else
-            this.background_image_path = this.ez_bg;
     }
 
     public void resetMoveInt()
