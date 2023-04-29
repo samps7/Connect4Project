@@ -62,6 +62,7 @@ public class GUI_Skeleton extends JFrame
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.mainWindow.setSize(600,500);
         this.mainWindow.setLocation(100,100);
+        this.mainWindow.setResizable(false);
 
 
         this.titlePane = getTitlePane();
