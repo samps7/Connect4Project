@@ -550,10 +550,10 @@ public class GUI_Skeleton extends JFrame
 
 
                     makeMove(finalI);
-                    ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
+                    ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
 
-                    grid.setBounds(100,25,400,400);
+                    grid.setBounds(100,25,400,300);
 
                 }
 
@@ -610,14 +610,14 @@ public class GUI_Skeleton extends JFrame
         }
 
         containedPanel.setLayout(new GridLayout(rows, cols));
-        containedPanel.setBounds(100,25,400,400);
+        containedPanel.setBounds(100,25,400,300);
 
         //containedPanel.setVisible(false);
 
-        ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
+        ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
         JLabel grid = new JLabel(image);
 
-        grid.setBounds(100,25,400,400);
+        grid.setBounds(100,25,400,300);
         //grid.setOpaque(true);
 
         background.setBounds(0,0,600,600);
