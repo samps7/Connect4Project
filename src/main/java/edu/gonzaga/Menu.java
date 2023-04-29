@@ -15,6 +15,10 @@ public class Menu
         mp = mp1;
     }
     //Sam's original Text-based C4 game
+    /**
+     * This function displays options for the user to choose from, including game mode and difficulty,
+     * and starts a Connect Four game based on the user's choices.
+     */
     public void displayOptions() throws Exception
     {
         gui.runGUI();

@@ -13,6 +13,12 @@ public class MusicPlayer
     public AudioInputStream audIn;
     public Clip clip;
 
+    /**
+     * The function plays a sound file in a continuous loop.
+     * 
+     * @param str The parameter "str" is a String variable that represents the file name of a .wav
+     * audio file that will be played in a loop using the Java Sound API.
+     */
     public void loopSound(String str) throws Exception
     {
 
@@ -40,8 +46,12 @@ public class MusicPlayer
     }
 
     /**
-     plays the specified .wav file asynchronously
-    */
+     * This function plays a sound file in a new thread using the Java AudioSystem and Clip classes.
+     * 
+     * @param sound The parameter "sound" is a String that represents the file path or name of the
+     * audio file that needs to be played. It is used to retrieve the audio file using the
+     * getResourceAsStream() method.
+     */
     public static synchronized void playSound(String sound) {
         new Thread(
         new Runnable() {

@@ -15,6 +15,12 @@ public class BadBot extends Bot
     }
 
     @Override
+    // `public int getMove( String s)` is a method in the `BadBot` class that overrides the `getMove`
+    // method in the `Bot` class. It takes in a `String` parameter `s` which represents the current
+    // state of the Connect Four game board. The method uses the `HtmlUnit` library to scrape a website
+    // that provides a solution to the Connect Four game and returns the recommended move for the
+    // current state of the game board. The method also includes some logic to randomize the move
+    // selection to make it harder for players to learn patterns.
     public int getMove( String s)
     {
         if(s.length() > 1)
@@ -144,6 +150,15 @@ public class BadBot extends Bot
         }
     }
 
+    /**
+     * The function checks if a given string can be parsed as an integer.
+     * 
+     * @param str The parameter "str" is a String variable that represents the input value that needs
+     * to be checked if it is a numeric value or not.
+     * @return The method is checking if the input string can be parsed as an integer or not. If it can
+     * be parsed as an integer, the method returns true. If it cannot be parsed as an integer, the
+     * method returns false.
+     */
     public boolean isNumeric(String str)
     {
         try
@@ -156,6 +171,15 @@ public class BadBot extends Bot
         return true;
     }
 
+    /**
+     * The function counts the number of occurrences of a given integer in a string.
+     * 
+     * @param str The input string that we want to count the occurrences of a specific integer in.
+     * @param num The parameter "num" in the method "intCount" is an integer that represents the number
+     * that we want to count the occurrences of in the given string "str".
+     * @return The method is returning an integer value which represents the number of times the given
+     * integer "num" appears in the given string "str".
+     */
     public int intCount(String str, int num)
     {
         int count = 0;

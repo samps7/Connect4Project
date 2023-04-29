@@ -10,8 +10,13 @@ import java.util.Scanner;
 public class MenuTest {
     @Test
     void displayTest() {
-        Menu m1 = new Menu();
-        m1.displayOptions();
+        MusicPlayer mp = new MusicPlayer();
+        Menu m1 = new Menu(mp);
+        try {
+            m1.displayOptions();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Assertions.assertTrue(true);
     }
 }

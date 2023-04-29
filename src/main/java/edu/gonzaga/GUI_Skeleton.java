@@ -38,6 +38,9 @@ public class GUI_Skeleton extends JFrame
 
     }
 
+    /**
+     * This function sets up and displays a GUI for a Connect4 game.
+     */
     void runGUI()
     {
         System.out.println("Starting GUI Connect4");
@@ -47,6 +50,9 @@ public class GUI_Skeleton extends JFrame
         System.out.println("Done in GUI app");
     }
 
+    /**
+     * The function sets up the graphical user interface for a Connect4 game.
+     */
     void setupGUI()
     {
 
@@ -81,6 +87,12 @@ public class GUI_Skeleton extends JFrame
     //Ideally this gives us the main screen.
     //Doing this allows us the ability to turn off its visibility once
     //  the player has made their decision
+    /**
+     * The function creates a JLayeredPane with a game title and two clickable JLabels for selecting
+     * one or two player mode.
+     * 
+     * @return The method `getTitlePane()` returns a `JLayeredPane` object.
+     */
     private JLayeredPane getTitlePane()
     {
         JLayeredPane newPane = new JLayeredPane();
@@ -184,6 +196,11 @@ public class GUI_Skeleton extends JFrame
         return newPane;
     }
 
+    /**
+     * The function creates a JLayeredPane for customizing player one's name and color in a game.
+     * 
+     * @return A JLayeredPane object is being returned.
+     */
     private JLayeredPane getOnePlayerCustomizePane()
     {
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
@@ -251,6 +268,12 @@ public class GUI_Skeleton extends JFrame
         return newPane;
     }
 
+    /**
+     * The function creates a JLayeredPane for customizing player names and colors in a two-player
+     * game.
+     * 
+     * @return The method is returning a JLayeredPane object.
+     */
     private JLayeredPane getTwoPlayerCustomizationPane()
     {
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
@@ -343,6 +366,12 @@ public class GUI_Skeleton extends JFrame
         return newPane;
     }
 
+    /**
+     * This function creates a JLayeredPane with labels for selecting the game difficulty and adds
+     * mouse listeners to each label to set the difficulty and switch to the game pane.
+     * 
+     * @return A JLayeredPane object is being returned.
+     */
     private JLayeredPane getGameModeSelectPane()
     {
         JLayeredPane newPane = new JLayeredPane();
@@ -467,6 +496,12 @@ public class GUI_Skeleton extends JFrame
         return newPane;
     }
 
+    /**
+     * This function creates a JLayeredPane containing a Connect 4 game board with clickable and
+     * hoverable buttons.
+     * 
+     * @return The method is returning a JLayeredPane object.
+     */
     private JLayeredPane getGame()
     {
         JLayeredPane gamePane = new JLayeredPane();
@@ -593,16 +628,36 @@ public class GUI_Skeleton extends JFrame
         return gamePane;
     }
 
+    /**
+     * This function sets the C4Game object for the current instance.
+     * 
+     * @param game The parameter "game" is an object of the class C4Game. The method "setC4Game" sets
+     * the value of the instance variable "game" to the value of the parameter "game".
+     */
     public void setC4Game(C4Game game)
     {
         this.game = game;
     }
 
+    /**
+     * The function returns the column number of a panel based on its position in a grid with 7
+     * columns.
+     * 
+     * @param panelNum The parameter panelNum is an integer representing the number of the panel in a
+     * grid layout.
+     * @return The method is returning an integer value which represents the column number of a panel
+     * located in a grid. The column number is calculated by taking the remainder of the panel number
+     * divided by 7.
+     */
     private int getCol_Located(int panelNum)
     {
         return panelNum % 7;
     }
 
+    /**
+     * This function changes the background color of a button based on the turn count and decreases a
+     * counter.
+     */
     private void oneClicked()
     {
         if(turn%2==0)
@@ -612,6 +667,10 @@ public class GUI_Skeleton extends JFrame
         oneCount--;
     }
 
+    /**
+     * This function changes the background color of a button based on the turn count and decreases a
+     * counter.
+     */
     private void twoClicked()
     {
         if(turn%2==0)
@@ -621,6 +680,10 @@ public class GUI_Skeleton extends JFrame
         twoCount--;
     }
 
+    /**
+     * This function changes the background color of a button based on the turn count and decreases a
+     * counter.
+     */
     private void threeClicked()
     {
         if(turn%2==0)
@@ -630,6 +693,10 @@ public class GUI_Skeleton extends JFrame
         threeCount--;
     }
 
+    /**
+     * This function changes the background color of a button based on the turn count and decrements a
+     * counter.
+     */
     private void fourClicked()
     {
         if(turn%2==0)
@@ -639,6 +706,10 @@ public class GUI_Skeleton extends JFrame
         fourCount--;
     }
 
+    /**
+     * This function changes the background color of a button based on the turn count and decrements a
+     * counter.
+     */
     private void fiveClicked()
     {
         if(turn%2==0)
@@ -648,6 +719,10 @@ public class GUI_Skeleton extends JFrame
         fiveCount--;
     }
 
+    /**
+     * This function changes the background color of a button based on the turn count and decrements a
+     * counter.
+     */
     private void sixClicked()
     {
         if(turn%2==0)
@@ -657,6 +732,10 @@ public class GUI_Skeleton extends JFrame
         sixCount--;
     }
 
+    /**
+     * This function changes the background color of a button based on the turn count and decrements a
+     * counter.
+     */
     private void sevenClicked()
     {
         if(turn%2==0)
@@ -666,11 +745,23 @@ public class GUI_Skeleton extends JFrame
         sevenCount--;
     }
 
+    /**
+     * This Java function returns the name of player one.
+     * 
+     * @return The method `getPlayerOneName()` is returning the value of the instance variable
+     * `playerOneName`, which is a `String`.
+     */
     public String getPlayerOneName()
     {
         return this.playerOneName;
     }
 
+    /**
+     * This function returns the name of player two.
+     * 
+     * @return The method `getPlayerTwoName()` is returning the value of the instance variable
+     * `playerTwoName`, which is a `String`.
+     */
     public String getPlayerTwoName()
     {
         return this.playerTwoName;
@@ -679,6 +770,9 @@ public class GUI_Skeleton extends JFrame
     //Here is the url for the grid
     //https://studio.code.org/v3/assets/qOrtceIfe4F4g3q5NDoLfm0GYaN2iuIJL0rN4cA_-hY/Connect4Board.png
 
+    /**
+     * This function changes the background color of a button based on the current turn and player.
+     */
     private void oneHovered()
     {
         if(turn%2 == 0)
@@ -687,11 +781,17 @@ public class GUI_Skeleton extends JFrame
             this.buttons[oneCount*7 - (7)].setBackground(this.player2Hover);
     }
 
+    /**
+     * The function changes the background color of a button to transparent when it is unhovered.
+     */
     private void oneUnHovered()
     {
             this.buttons[oneCount*7 - 7].setBackground(new Color(0,0,0,0));
     }
 
+    /**
+     * This function changes the background color of a button based on the current turn in a game.
+     */
     private void twoHovered()
     {
         if(turn%2==0)
@@ -700,11 +800,17 @@ public class GUI_Skeleton extends JFrame
             this.buttons[twoCount*7 - (6)].setBackground(this.player2Hover);
     }
 
+    /**
+     * The function sets the background color of a button to transparent.
+     */
     private void twoUnHovered()
     {
         this.buttons[twoCount*7 - (6)].setBackground(new Color(0,0,0,0));
     }
 
+    /**
+     * This function changes the background color of a button based on the current turn in a game.
+     */
     private void threeHovered()
     {
         if(turn%2==0)
@@ -713,11 +819,17 @@ public class GUI_Skeleton extends JFrame
             this.buttons[threeCount*7 - (5)].setBackground(this.player2Hover);
     }
 
+    /**
+     * The function sets the background color of a button to transparent.
+     */
     private void threeUnHovered()
     {
         this.buttons[threeCount*7 - (5)].setBackground(new Color(0,0,0,0));
     }
 
+    /**
+     * This function changes the background color of a button based on the current turn in a game.
+     */
     private void fourHovered()
     {
         if(turn%2==0)
@@ -726,11 +838,17 @@ public class GUI_Skeleton extends JFrame
             this.buttons[fourCount*7 - (4)].setBackground(this.player2Hover);
     }
 
+    /**
+     * The function sets the background color of a specific button to transparent.
+     */
     private void fourUnHovered()
     {
         this.buttons[fourCount*7 - (4)].setBackground(new Color(0,0,0,0));
     }
 
+    /**
+     * This function changes the background color of a button based on the current turn in a game.
+     */
     private void fiveHovered()
     {
         if(turn%2==0)
@@ -739,11 +857,17 @@ public class GUI_Skeleton extends JFrame
             this.buttons[fiveCount*7 - (3)].setBackground(this.player2Hover);
     }
 
+    /**
+     * The function sets the background color of a button to transparent.
+     */
     private void fiveUnHovered()
     {
         this.buttons[fiveCount*7 - (3)].setBackground(new Color(0,0,0,0));
     }
 
+    /**
+     * This function changes the background color of a button based on the current turn in a game.
+     */
     private void sixHovered()
     {
         if(turn%2==0)
@@ -752,11 +876,18 @@ public class GUI_Skeleton extends JFrame
             this.buttons[sixCount*7 - (2)].setBackground(this.player2Hover);
     }
 
+    /**
+     * The function sets the background color of a button to transparent when it is not being hovered
+     * over.
+     */
     private void sixUnHovered()
     {
         this.buttons[sixCount*7 - (2)].setBackground(new Color(0,0,0,0));
     }
 
+    /**
+     * This function changes the background color of a button based on the current turn in a game.
+     */
     private void sevenHovered()
     {
         if(turn%2==0)
@@ -765,21 +896,39 @@ public class GUI_Skeleton extends JFrame
             this.buttons[sevenCount*7 - (1)].setBackground(this.player2Hover);
     }
 
+    /**
+     * The function sets the background color of a button to transparent when it is unhovered.
+     */
     private void sevenUnHovered()
     {
         this.buttons[sevenCount*7 - (1)].setBackground(new Color(0,0,0,0));
     }
 
+    /**
+     * The function returns the game mode.
+     * 
+     * @return The method `getGameMode()` is returning an integer value which represents the current
+     * game mode.
+     */
     public int getGameMode()
     {
         return this.gameMode;
     }
 
+    /**
+     * This function returns the difficulty level.
+     * 
+     * @return The method is returning an integer value which represents the difficulty level.
+     */
     public int getDifficulty()
     {
         return this.difficulty;
     }
 
+    /**
+     * The function resets the game by setting the turn to 0 and resetting the count of each numbered
+     * piece to 6.
+     */
     private void resetGame()
     {
         this.turn = 0;
@@ -793,6 +942,12 @@ public class GUI_Skeleton extends JFrame
 
     }
 
+    /**
+     * The function sets the color of player 1 based on a given string input.
+     * 
+     * @param color The parameter "color" is a String that represents the color chosen by player 1. It
+     * can be one of the following values: "Green", "Blue", "Red", "Purple", "Black", or "Yellow".
+     */
     private void setPlayer1Color(String color)
     {
         //"Green", "Blue", "Red", "Purple", "Black", "Yellow"
@@ -820,6 +975,12 @@ public class GUI_Skeleton extends JFrame
 
     }
 
+    /**
+     * The function sets the color of player 2 based on the input string.
+     * 
+     * @param color The parameter "color" is a String that represents the color chosen by the player.
+     * It can be one of the following values: "Green", "Blue", "Red", "Purple", "Black", or "Yellow".
+     */
     private void setPlayer2Color(String color)
     {
         //"Green", "Blue", "Red", "Purple", "Black", "Yellow"
@@ -847,6 +1008,13 @@ public class GUI_Skeleton extends JFrame
 
     }
 
+    /**
+     * This function sets the hover color for player 1 based on the input color string.
+     * 
+     * @param color A string representing the color of the player's hover effect. It can be "Yellow",
+     * "Black", "Purple", "Red", "Blue", or any other color (in which case the default green color will
+     * be used).
+     */
     private void setPlayer1Hover(String color)
     {
         switch (color)
@@ -872,6 +1040,13 @@ public class GUI_Skeleton extends JFrame
         }
     }
 
+    /**
+     * This function sets the hover color for player 2 based on the input color.
+     * 
+     * @param color A string representing the color of player 2. It is used to set the player2Hover
+     * color, which is a semi-transparent color that is displayed when the mouse hovers over player 2's
+     * game piece. The switch statement sets the player2Hover color based on the input color string. If
+     */
     private void setPlayer2Hover(String color)
     {
         switch (color)
@@ -897,6 +1072,13 @@ public class GUI_Skeleton extends JFrame
         }
     }
 
+    /**
+     * This function sets the background image path based on the mode parameter.
+     * 
+     * @param mode An integer variable that determines which background image path to set. If mode is
+     * 0, the background image path will be set to the value of the "ez_bg" variable. If mode is any
+     * other value, the background image path will also be set to the value of the "ez_bg"
+     */
     private void setBackground_image_path(int mode)
     {
         if(mode == 0)
@@ -905,6 +1087,12 @@ public class GUI_Skeleton extends JFrame
             this.background_image_path = this.ez_bg;
     }
 
+    /**
+     * This is a private Java function that returns the background image path.
+     * 
+     * @return The method is returning a String value which represents the path of the background
+     * image.
+     */
     private String getBackground_image_path()
     {
         return this.background_image_path;
