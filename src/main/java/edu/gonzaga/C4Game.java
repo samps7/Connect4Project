@@ -2,7 +2,6 @@ package edu.gonzaga;
 
 import java.util.Scanner;
 
-import org.apache.xalan.templates.ElemSort;
 
 import java.lang.Math;
 
@@ -255,17 +254,7 @@ public class C4Game
         moveCount = 0;
     }
 
-    public void waitingOnBot(int move)
-    {
-        if(move>=0)
-            waitingBot = true;
-        else
-            waitingBot = false;
-    }
 
-    public boolean getWaitingBot()
-    {
-        return waitingBot;
-    }
+
 
 }

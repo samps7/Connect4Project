@@ -27,6 +27,13 @@ public class GUI_Skeleton extends JFrame
     private Color player1Hover, player2Hover;
     private String background_image_path;
     private final String ez_bg = "resources/img/easybot.gif";
+    private final String med_bg = "resources/img/medbot.gif";
+    private final String hard_bg = "resources/img/hardbot.gif";
+    private final String pvp_bg = "resources/img/PVP.gif";
+    private ImageIcon background_Theme_Used = new ImageIcon(new ImageIcon(pvp_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+    private ImageIcon ez_background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+    private ImageIcon med_background_Theme = new ImageIcon(new ImageIcon(med_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+    private ImageIcon hard_background_Theme = new ImageIcon(new ImageIcon(hard_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
     private int move = -1, botMove = -1;
     private boolean wait = false;
 
@@ -357,7 +364,7 @@ public class GUI_Skeleton extends JFrame
 
                 difficulty = 0;
                 setBackground_image_path(difficulty);
-
+                setEz_bg();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -392,6 +399,7 @@ public class GUI_Skeleton extends JFrame
 
                 difficulty = 1;
                 setBackground_image_path(difficulty);
+                setMed_bg();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -426,6 +434,7 @@ public class GUI_Skeleton extends JFrame
                 difficulty = 2;
                 setBackground_image_path(difficulty);
                 gameModeSelectPane.setVisible(false);
+                setHard_bg();
                 mainWindow.add(gamePane);
             }
 
@@ -469,7 +478,8 @@ public class GUI_Skeleton extends JFrame
         JLayeredPane gamePane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
         containedPanel.setBackground(new Color(0,0,0,0));
-        ImageIcon background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+        ImageIcon background_Theme = background_Theme_Used;
+
 
         JLabel background = new JLabel(background_Theme);
         background.setBounds(0,0,600,600);
@@ -544,7 +554,7 @@ public class GUI_Skeleton extends JFrame
                     ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
 
-                    grid.setBounds(25,25,400,400);
+                    grid.setBounds(100,25,400,400);
 
                 }
 
@@ -601,14 +611,14 @@ public class GUI_Skeleton extends JFrame
         }
 
         containedPanel.setLayout(new GridLayout(rows, cols));
-        containedPanel.setBounds(25,25,400,400);
+        containedPanel.setBounds(100,25,400,400);
 
         //containedPanel.setVisible(false);
 
         ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
         JLabel grid = new JLabel(image);
 
-        grid.setBounds(25,25,400,400);
+        grid.setBounds(100,25,400,400);
         //grid.setOpaque(true);
 
         background.setBounds(0,0,600,600);
@@ -1017,5 +1027,20 @@ public class GUI_Skeleton extends JFrame
     private boolean getWait()
     {
         return this.wait;
+    }
+
+    public void setEz_bg()
+    {
+        background_Theme_Used = ez_background_Theme ;
+    }
+
+    public void setMed_bg()
+    {
+        background_Theme_Used = med_background_Theme;
+    }
+
+    public void setHard_bg()
+    {
+        background_Theme_Used = hard_background_Theme;
     }
 }
