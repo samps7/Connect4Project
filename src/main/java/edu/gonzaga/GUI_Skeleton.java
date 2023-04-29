@@ -16,6 +16,8 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane titlePane;
     JLayeredPane gamePane;
 
+    JLabel background;
+
     private C4Game game;
     private Integer turn = 0;
     private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
@@ -365,6 +367,7 @@ public class GUI_Skeleton extends JFrame
                 difficulty = 0;
                 setBackground_image_path(difficulty);
                 setEz_bg();
+                gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -400,6 +403,7 @@ public class GUI_Skeleton extends JFrame
                 difficulty = 1;
                 setBackground_image_path(difficulty);
                 setMed_bg();
+                gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -435,6 +439,7 @@ public class GUI_Skeleton extends JFrame
                 setBackground_image_path(difficulty);
                 gameModeSelectPane.setVisible(false);
                 setHard_bg();
+                gamePane = getGame();
                 mainWindow.add(gamePane);
             }
 
@@ -481,7 +486,7 @@ public class GUI_Skeleton extends JFrame
         ImageIcon background_Theme = background_Theme_Used;
 
 
-        JLabel background = new JLabel(background_Theme);
+        this.background = new JLabel(background_Theme);
         background.setBounds(0,0,600,600);
 
 
@@ -554,7 +559,7 @@ public class GUI_Skeleton extends JFrame
                     ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
 
-                    grid.setBounds(100,25,400,400);
+                    grid.setBounds(100,25,640,480);
 
                 }
 
@@ -1031,7 +1036,9 @@ public class GUI_Skeleton extends JFrame
 
     public void setEz_bg()
     {
-        background_Theme_Used = ez_background_Theme ;
+        background_Theme_Used = ez_background_Theme;
+        gamePane.repaint();
+        gamePane.revalidate();
     }
 
     public void setMed_bg()
