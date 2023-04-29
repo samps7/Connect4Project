@@ -12,6 +12,7 @@ public class C4Game
     private int mode; // 0 = ez bot, 1 = medium bot, 2 = hard bot, 3 = pvp
     private int moveCount = 0; // for while loop
     private GUI_Skeleton gui;
+    private boolean waitingBot;
     // these are here for bot matches mostly
 
     private int playerTurn = 1;
@@ -176,19 +177,20 @@ public class C4Game
                 System.out.println("Bot is deciding on a move...");
                 if(mode < 3)
                 {
-
-                    int currMove =  players[1].getMove(moveChain);
-
+                    gui.setWaitTrue();
+                    int currMove = players[1].getMove(moveChain);
                     System.out.println("Bot went " + currMove);
                     // check for illegal move before next line and
 
                      gui.setBotNextMove(currMove);
+                     gui.setWaitFalse();
 
                     //gui.resetBotMove();
                     // exit to menu with ("bad connection to server") msg << UI here
                     grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                     currMove++; // change from 0-6 -> 1-7 (for moveChain)
                     moveChain += currMove;
+
                 }
 
             }
@@ -253,5 +255,17 @@ public class C4Game
         moveCount = 0;
     }
 
+    public void waitingOnBot(int move)
+    {
+        if(move>=0)
+            waitingBot = true;
+        else
+            waitingBot = false;
+    }
+
+    public boolean getWaitingBot()
+    {
+        return waitingBot;
+    }
 
 }

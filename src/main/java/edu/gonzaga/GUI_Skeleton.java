@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class GUI_Skeleton extends JFrame
 {
@@ -26,9 +27,9 @@ public class GUI_Skeleton extends JFrame
     private Color player1Hover, player2Hover;
     private String background_image_path;
     private final String ez_bg = "resources/img/easybot.gif";
-    private String medium_bg, hard_bg, pvp_bg;
     private int move = -1, botMove = -1;
-    MessageBean mBean = new MessageBean();
+    private boolean wait;
+
 
 
     public static void main(String[] args)
@@ -97,7 +98,6 @@ public class GUI_Skeleton extends JFrame
                 //placeholder for the actual part that would be going to the next page
                 onePlayer.setText("Starting One Player Game");
 
-                mBean.setValue("0");
                 gameMode = 0;
 
                 titlePane.setVisible(false);
@@ -138,7 +138,6 @@ public class GUI_Skeleton extends JFrame
                 //placeholder for the actual part that would be going to the next page
                 twoPlayer.setText("Starting Two Player Game");
 
-                mBean.setValue("1");
                 gameMode = 1;
 
                 titlePane.setVisible(false);
@@ -201,7 +200,6 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Name set to: " + playerOneInput.getText());
                 System.out.println("Player color set to: " + playerChoices.getSelectedItem());
 
-                mBean.setValue(playerOneInput.getText());
 
                 playerOneName = playerOneInput.getText();
                 setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
@@ -276,7 +274,6 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Two Name: " + playerTwoInput.getText());
                 System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
 
-                mBean.setValue(playerOneInput.getText());
 
                 playerOneName = playerOneInput.getText();
                 playerTwoName = playerTwoInput.getText();
@@ -497,22 +494,52 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mouseClicked(MouseEvent e)
                 {
+                    if(turn%2==1)
+                    {
+                        while(getWait())
+                        {
+                            System.out.println("Waiting on bot");
+                        }
+                    }
 
                     System.out.println("Column located: " + getCol_Located(finalCounter));
                     if(finalI%7==0 && oneCount>0)
+                    {
                         oneClicked();
+                        turn++;
+                    }
                     if(finalI%7==1 && twoCount>0)
+                    {
                         twoClicked();
+                        turn++;
+                    }
                     if(finalI%7==2 && threeCount>0)
+                    {
                         threeClicked();
+                        turn++;
+                    }
                     if(finalI%7==3 && fourCount>0)
+                    {
                         fourClicked();
+                        turn++;
+                    }
                     if(finalI%7==4 && fiveCount>0)
+                    {
                         fiveClicked();
+                        turn++;
+                    }
                     if(finalI%7==5 && sixCount>0)
+                    {
                         sixClicked();
+                        turn++;
+                    }
                     if(finalI%7==6 && sevenCount>0)
+                    {
                         sevenClicked();
+                        turn++;
+                    }
+
+
                     makeMove(finalI);
                     ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
@@ -611,8 +638,8 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[oneCount*7 - (7)].setBackground(player2Color);
         oneCount--;
-        turn++;
         this.buttons[(oneCount+1)*7 - 7].setOpaque(true); // Note: ordering is very intentional
+
     }
 
     private void twoClicked()
@@ -622,7 +649,6 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[twoCount*7 - (6)].setBackground(player2Color);
         twoCount--;
-        turn++;
         this.buttons[(twoCount+1)*7 - (6)].setOpaque(true);
     }
 
@@ -633,7 +659,6 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[threeCount*7 - (5)].setBackground(player2Color);
         threeCount--;
-        turn++;
         this.buttons[(threeCount+1)*7 - (5)].setOpaque(true);
     }
 
@@ -644,7 +669,6 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fourCount*7 - (4)].setBackground(player2Color);
         fourCount--;
-        turn++;
         this.buttons[(fourCount+1)*7 - (4)].setOpaque(true);
     }
 
@@ -655,7 +679,6 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fiveCount*7 - (3)].setBackground(player2Color);
         fiveCount--;
-        turn++;
         this.buttons[(fiveCount+1)*7 - (3)].setOpaque(true);
     }
 
@@ -666,7 +689,6 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sixCount*7 - (2)].setBackground(player2Color);
         sixCount--;
-        turn++;
         this.buttons[(sixCount+1)*7 - (2)].setOpaque(true);
     }
 
@@ -677,7 +699,6 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sevenCount*7 - (1)].setBackground(player2Color);
         sevenCount--;
-        turn++;
         this.buttons[(sevenCount+1)*7 - (1)].setOpaque(true);
     }
 
@@ -927,11 +948,6 @@ public class GUI_Skeleton extends JFrame
             this.background_image_path = this.ez_bg;
     }
 
-    private String getBackground_image_path()
-    {
-        return this.background_image_path;
-    }
-
     public void resetMoveInt()
     {
         this.move = -1;
@@ -966,10 +982,6 @@ public class GUI_Skeleton extends JFrame
         this.turn++;
     }
 
-    public void resetBotMove()
-    {
-        this.botMove = -1;
-    }
 
     public void botMovesFirst()
     {
@@ -992,4 +1004,18 @@ public class GUI_Skeleton extends JFrame
         sevenCount = 0;
     }
 
+    public void setWaitTrue()
+    {
+        this.wait = true;
+    }
+
+    public void setWaitFalse()
+    {
+        this.wait = false;
+    }
+
+    private boolean getWait()
+    {
+        return this.wait;
+    }
 }
