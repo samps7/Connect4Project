@@ -14,6 +14,7 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane twoPlayerCustomizationPane;
     JLayeredPane titlePane;
     JLayeredPane gamePane;
+    JLayeredPane endPane;
 
     JLabel background;
 
@@ -21,7 +22,7 @@ public class GUI_Skeleton extends JFrame
     private Integer turn = 0;
     private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
     private JLabel[] buttons;
-    private String playerOneName, playerTwoName;
+    private String playerOneName, playerTwoName, winningPlayer;
     private int gameMode = -1, difficulty = -1;
     private final Color botColor = Color.orange;
     private Color player1Color, player2Color;
@@ -629,6 +630,41 @@ public class GUI_Skeleton extends JFrame
 
         gamePane.setLayout(null);
         return gamePane;
+    }
+
+    private JLayeredPane winScreen()
+    {
+        JLayeredPane endPane = new JLayeredPane();
+        JPanel containedPanel = new JPanel();
+        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!");
+
+        winnerName.setBounds(225,25,125,25);
+
+        containedPanel.setLayout(new GridLayout(6, 7));
+        for(int i = 0; i<42; i++)
+            containedPanel.add(this.buttons[i]);
+        ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
+        JLabel grid = new JLabel(image);
+
+        containedPanel.setBounds(100,160,400,300);
+        grid.setBounds(100,160,400,300);
+
+        endPane.add(containedPanel,Integer.valueOf(1));
+        endPane.add(grid,Integer.valueOf(2));
+        endPane.add(winnerName,1);
+
+        endPane.setLayout(null);
+        return endPane;
+    }
+
+    public void gameEnd(String playerName)
+    {
+        this.winningPlayer = playerName;
+        this.endPane = winScreen();
+
+        this.gamePane.setVisible(false);
+
+        this.mainWindow.add(this.endPane);
     }
 
     public void setC4Game(C4Game game)
