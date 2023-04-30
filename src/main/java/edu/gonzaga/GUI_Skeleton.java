@@ -94,9 +94,15 @@ public class GUI_Skeleton extends JFrame
     private JLayeredPane getTitlePane()
     {
         JLayeredPane newPane = new JLayeredPane();
+
+        JLabel titleBG = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+
         JLabel gameTitle =  new JLabel("Connect4");
+        gameTitle.setOpaque(true);
         JLabel onePlayer = new JLabel("One Player");
+        onePlayer.setOpaque(true);
         JLabel twoPlayer = new JLabel("Two Player");
+        twoPlayer.setOpaque(true);
 
         //Adding mouse listener to make the JLabel clickable
         onePlayer.addMouseListener(new MouseListener()
@@ -183,9 +189,13 @@ public class GUI_Skeleton extends JFrame
         Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
         onePlayer.setBorder(border);
         twoPlayer.setBorder(border);
-        newPane.add(gameTitle,1);
-        newPane.add(onePlayer,1);
-        newPane.add(twoPlayer,1);
+
+        titleBG.setBounds(0,0,600,520);
+        newPane.add(titleBG, Integer.valueOf(0));
+
+        newPane.add(gameTitle,Integer.valueOf(1));
+        newPane.add(onePlayer,Integer.valueOf(1));
+        newPane.add(twoPlayer,Integer.valueOf(1));
 
 
         newPane.setLayout(null);
