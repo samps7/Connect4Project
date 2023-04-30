@@ -97,8 +97,9 @@ public class GUI_Skeleton extends JFrame
 
         JLabel titleBG = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
 
-        JLabel gameTitle =  new JLabel("Connect4");
-        gameTitle.setOpaque(true);
+        ImageIcon logoIcon = new ImageIcon("resources/img/C4_Logo.png");
+        JLabel gameTitle =  new JLabel(logoIcon);
+        gameTitle.setOpaque(false);
         JLabel onePlayer = new JLabel("One Player");
         onePlayer.setOpaque(true);
         JLabel twoPlayer = new JLabel("Two Player");
@@ -183,7 +184,7 @@ public class GUI_Skeleton extends JFrame
 
             }
         });
-        gameTitle.setBounds(250,50,125,75);
+        gameTitle.setBounds(50,50,500,150);
         onePlayer.setBounds(75,250,175,25);
         twoPlayer.setBounds(350,250,175,25);
         Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
