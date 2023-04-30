@@ -492,7 +492,6 @@ public class GUI_Skeleton extends JFrame
         for(int i = 0; i<42; i++)
         {
             buttons[i] = new JLabel();
-            //buttons[i].setText(String.valueOf(counter));
             buttons[i].setOpaque(true);
             buttons[i].setBackground(new Color(0,0,0,0));
 
@@ -646,12 +645,17 @@ public class GUI_Skeleton extends JFrame
         ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
         JLabel grid = new JLabel(image);
 
+        ImageIcon background_Theme = background_Theme_Used;
+        this.background = new JLabel(background_Theme);
+        background.setBounds(0,0,600,600);
+
         containedPanel.setBounds(100,160,400,300);
         grid.setBounds(100,160,400,300);
 
         endPane.add(containedPanel,Integer.valueOf(1));
         endPane.add(grid,Integer.valueOf(2));
         endPane.add(winnerName,1);
+        endPane.add(this.background);
 
         endPane.setLayout(null);
         return endPane;
