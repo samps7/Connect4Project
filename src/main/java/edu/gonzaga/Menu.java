@@ -50,9 +50,9 @@ public class Menu
         if(mode == 1)
         {
             C4Game game = new C4Game(3, mp, gui);
-            gui.setC4Game(game);
             while(playing == 1)
             {
+                gui.setC4Game(game);
                 game.startGame();
                 System.out.println("");
                 System.out.println("Play again?");
