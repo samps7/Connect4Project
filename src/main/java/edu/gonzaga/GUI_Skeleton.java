@@ -254,19 +254,16 @@ public class GUI_Skeleton extends JFrame
     {
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
         JLayeredPane newPane = new JLayeredPane();
-        JLabel playerOne = new JLabel("Player One Name: ");
-        playerOne.setForeground(Color.white);
-        playerOne.setBackground(Color.BLUE);
-        playerOne.setOpaque(true);
+        ImageIcon player1NameIcon = new ImageIcon(new ImageIcon("resources/img/player1NameBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOne = new JLabel(player1NameIcon);
 
-        JLabel playerOneColor = new JLabel("Color: ");
-        playerOneColor.setForeground(Color.white);
-        playerOneColor.setBackground(Color.BLUE);
-        playerOneColor.setOpaque(true);
+        ImageIcon player1ColorIcon = new ImageIcon(new ImageIcon("resources/img/player1ColorBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOneColor = new JLabel(player1ColorIcon);
 
         final JComboBox<String> playerChoices = new JComboBox<>(colorChoices);
         JTextField playerOneInput = new JTextField(16);
-        JLabel startGame = new JLabel("Start Game");
+        ImageIcon startIcon = new ImageIcon(new ImageIcon("resources/img/startBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel startGame = new JLabel(startIcon);
 
         JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
         background.setBounds(0,0,600,520);
@@ -312,17 +309,17 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        playerOne.setBounds(75,150,175,25);
-        playerOneInput.setBounds(250,150,175,25);
-        playerOneColor.setBounds(75,250,175,25);
-        playerChoices.setBounds(250,250,175,25);
-        startGame.setBounds(250,400,175,25);
+        playerOne.setBounds(75,150,150,50);
+        playerOneInput.setBounds(250,160,175,25);
+        playerOneColor.setBounds(75,250,150,50);
+        playerChoices.setBounds(250,260,175,25);
+        startGame.setBounds(250,400,150,50);
 
-        newPane.add(playerOne,1);
-        newPane.add(playerOneInput,1);
-        newPane.add(playerOneColor,1);
-        newPane.add(playerChoices,1);
-        newPane.add(startGame,1);
+        newPane.add(playerOne,Integer.valueOf(1));
+        newPane.add(playerOneInput,Integer.valueOf(1));
+        newPane.add(playerOneColor,Integer.valueOf(1));
+        newPane.add(playerChoices,Integer.valueOf(1));
+        newPane.add(startGame,Integer.valueOf(1));
         newPane.add(background,Integer.valueOf(0));
 
 
@@ -348,7 +345,8 @@ public class GUI_Skeleton extends JFrame
         JLabel playerTwoColor = new JLabel(player2ColorIcon);
         final JComboBox<String> playerTwoChoices = new JComboBox<>(colorChoices);
         JTextField playerTwoInput = new JTextField(16);
-        JLabel startGame = new JLabel("Start Game");
+        ImageIcon startIcon = new ImageIcon(new ImageIcon("resources/img/startBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel startGame = new JLabel(startIcon);
 
         //background
         JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
@@ -414,7 +412,7 @@ public class GUI_Skeleton extends JFrame
         playerTwoColor.setBounds(310,130,150,50);
         playerTwoChoices.setBounds(460,145,125,25);
 
-        startGame.setBounds(250,400,175,25);
+        startGame.setBounds(150,400,150,50);
 
         newPane.add(playerOne,Integer.valueOf(1));
         newPane.add(playerOneInput,1);
@@ -426,7 +424,7 @@ public class GUI_Skeleton extends JFrame
         newPane.add(playerTwoColor,Integer.valueOf(1));
         newPane.add(playerTwoChoices,1);
 
-        newPane.add(startGame,1);
+        newPane.add(startGame,Integer.valueOf(1));
         newPane.add(background, Integer.valueOf(0));
 
         newPane.setLayout(null);
