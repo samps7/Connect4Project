@@ -67,11 +67,13 @@ public class GUI_Skeleton extends JFrame
 
         this.titlePane = getTitlePane();
         this.gameModeSelectPane = new JLayeredPane();
+        
         this.playerOneCustomizationPane = new JLayeredPane();
         this.playerOneCustomizationPane.setVisible(false);
         this.twoPlayerCustomizationPane = new JLayeredPane();
         this.twoPlayerCustomizationPane.setVisible(false);
         this.gameModeSelectPane = new JLayeredPane();
+        
         this.gameModeSelectPane.setVisible(false);
         this.gamePane = new JLayeredPane();
         this.gamePane.setVisible(false);
@@ -80,6 +82,7 @@ public class GUI_Skeleton extends JFrame
         this.playerOneCustomizationPane = getOnePlayerCustomizePane();
         this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
         this.gameModeSelectPane = getGameModeSelectPane();
+        
         this.gamePane = getGame();
 
         this.mainWindow.add(this.titlePane);
@@ -107,6 +110,7 @@ public class GUI_Skeleton extends JFrame
         ImageIcon twoPlayerIcon = new ImageIcon(new ImageIcon("resources/img/MultiplaterButton.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
         JLabel twoPlayer = new JLabel(twoPlayerIcon);
         twoPlayer.setOpaque(false);
+
 
         //Adding mouse listener to make the JLabel clickable
         onePlayer.addMouseListener(new MouseListener()
@@ -187,6 +191,7 @@ public class GUI_Skeleton extends JFrame
 
             }
         });
+        
         gameTitle.setBounds(50,50,500,150);
         onePlayer.setBounds(150,250, 300,100);
         twoPlayer.setBounds(150,350,300,100);
@@ -655,7 +660,7 @@ public class GUI_Skeleton extends JFrame
 
         background.setBounds(0,0,600,600);
 
-        gamePane.add(background,0);
+        gamePane.add(background,Integer.valueOf(0));
         gamePane.add(containedPanel, Integer.valueOf(1));
         gamePane.add(grid, Integer.valueOf(2));
 
