@@ -313,7 +313,7 @@ public class GUI_Skeleton extends JFrame
         playerOneInput.setBounds(250,160,175,25);
         playerOneColor.setBounds(75,250,150,50);
         playerChoices.setBounds(250,260,175,25);
-        startGame.setBounds(250,400,150,50);
+        startGame.setBounds(225,400,150,50);
 
         newPane.add(playerOne,Integer.valueOf(1));
         newPane.add(playerOneInput,Integer.valueOf(1));
@@ -412,7 +412,7 @@ public class GUI_Skeleton extends JFrame
         playerTwoColor.setBounds(310,130,150,50);
         playerTwoChoices.setBounds(460,145,125,25);
 
-        startGame.setBounds(150,400,150,50);
+        startGame.setBounds(225,400,150,50);
 
         newPane.add(playerOne,Integer.valueOf(1));
         newPane.add(playerOneInput,1);
