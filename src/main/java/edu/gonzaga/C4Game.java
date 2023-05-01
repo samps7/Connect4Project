@@ -244,11 +244,12 @@ public class C4Game
             if(mode == 2)
             {
                 System.out.println("Hard Bot Wins By Draw");
-                gui.gameEnd("Hard Bot");
+                gui.gameEnd("By Draw: Hard Bot");
             }
             else
             {
                 System.out.println("Game Resulted In A Draw");
+                gui.gameEnd("By Draw: Neither Player");
             }
             
         }
