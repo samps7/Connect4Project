@@ -64,7 +64,6 @@ public class GUI_Skeleton extends JFrame
         this.mainWindow.setLocation(100,100);
         this.mainWindow.setResizable(false);
 
-
         this.titlePane = getTitlePane();
         this.gameModeSelectPane = new JLayeredPane();
         
@@ -86,7 +85,13 @@ public class GUI_Skeleton extends JFrame
         this.gamePane = getGame();
 
         this.mainWindow.add(this.titlePane);
+        
 
+    }
+
+    void menuGUI()
+    {
+        
     }
 
 

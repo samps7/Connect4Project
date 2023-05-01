@@ -12,14 +12,15 @@ public class Menu
     public Menu(MusicPlayer mp1)
     {
         mp = mp1;
+        gui.runGUI();
     }
     //Sam's original Text-based C4 game
     public void displayOptions() throws Exception
     {
-        gui.runGUI();
         mp.loopSound("resources/music/Botique.wav");
         int playing = 1;
         Scanner scan1 = new Scanner(System.in);
+        
 
 
         System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
@@ -100,6 +101,7 @@ public class Menu
                     System.out.println("0: Main Menu | 1: Play Again");
                     playing = scan1.nextInt();
                 }
+                gui.menuGUI();
                 displayOptions();
             }
             else if(mode == 1)
@@ -117,6 +119,7 @@ public class Menu
                     System.out.println("0: Main Menu | 1: Play Again");
                     playing = scan1.nextInt();
                 }
+                gui.menuGUI();
                 displayOptions();
             }
             else if(mode == 2)
@@ -134,7 +137,9 @@ public class Menu
                     System.out.println("0: Main Menu | 1: Play Again");
                     playing = scan1.nextInt();
                 }
+                gui.menuGUI();
                 displayOptions();
+                
             }
         }
     }
