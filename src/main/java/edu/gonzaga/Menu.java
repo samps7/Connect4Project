@@ -84,7 +84,7 @@ public class Menu
                     break;
                 }
                 else
-                    System.out.println("Difficulty Not Received");
+                    System.out.print("");
             }
             mode = gui.getDifficulty();
             if(mode == 0)
