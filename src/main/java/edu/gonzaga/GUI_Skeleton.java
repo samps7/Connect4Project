@@ -471,9 +471,15 @@ public class GUI_Skeleton extends JFrame
     {
         JLayeredPane newPane = new JLayeredPane();
         JLabel gameModeText = new JLabel("Select Game Mode");
-        JLabel easy = new JLabel("Easy");
-        JLabel medium = new JLabel("Medium");
-        JLabel hard = new JLabel("Hard");
+
+        ImageIcon easyIcon = new ImageIcon(new ImageIcon("resources/img/EasyBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel easy = new JLabel(easyIcon);
+
+        ImageIcon mediumIcon = new ImageIcon(new ImageIcon("resources/img/MedBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel medium = new JLabel(mediumIcon);
+
+        ImageIcon hardIcon = new ImageIcon(new ImageIcon("resources/img/hardBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel hard = new JLabel(hardIcon);
 
         JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
         background.setBounds(0,0,600,520);
@@ -583,14 +589,14 @@ public class GUI_Skeleton extends JFrame
         });
 
         gameModeText.setBounds(250,50,125,75);
-        easy.setBounds(175,250,50,25);
-        medium.setBounds(290,250,50,25);
-        hard.setBounds(405,250,50,25);
+        easy.setBounds(75,250,150,50);
+        medium.setBounds(225,250,150,50);
+        hard.setBounds(375,250,150,50);
 
         newPane.add(gameModeText,1);
-        newPane.add(easy,1);
-        newPane.add(medium,1);
-        newPane.add(hard,1);
+        newPane.add(easy,Integer.valueOf(1));
+        newPane.add(medium,Integer.valueOf(1));
+        newPane.add(hard,Integer.valueOf(1));
         newPane.add(background, Integer.valueOf(0));
 
         newPane.setLayout(null);
