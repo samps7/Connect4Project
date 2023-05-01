@@ -149,7 +149,7 @@ public class C4Game
                     if(gui.getMove()>=0 && gui.getMove()<7)
                         break;
                     else
-                        System.out.println("Waiting for move");
+                        System.out.print("");
                 }
                 int currMove = gui.getMove();
                 boolean valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
@@ -161,7 +161,7 @@ public class C4Game
                         if(gui.getMove()>=0 && gui.getMove()<7)
                             break;
                         else
-                            System.out.println("Waiting for move");
+                            System.out.print("");
                     }
                     currMove = gui.getMove();
                     valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);

@@ -43,7 +43,7 @@ public class Menu
                 break;
             }
             else
-                System.out.println("Game Mode Not Received");
+                System.out.print("");
         }
         int mode = gui.getGameMode();
 
@@ -59,6 +59,7 @@ public class Menu
                 System.out.println("0: Main Menu | 1: Play Again");
                 playing = scan1.nextInt();
             }
+            gui.menuGUI();
             displayOptions();
         }
         else if( mode == 0)
