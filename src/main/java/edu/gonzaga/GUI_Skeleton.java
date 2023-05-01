@@ -327,8 +327,11 @@ public class GUI_Skeleton extends JFrame
                 setPlayer2Hover(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
 
 
-                twoPlayerCustomizationPane.setVisible(false);
-                mainWindow.add(gamePane);
+                if(playerChoices.getSelectedItem().toString() != playerTwoChoices.getSelectedItem().toString())
+                {
+                    twoPlayerCustomizationPane.setVisible(false);
+                    mainWindow.add(gamePane);
+                }
             }
 
             @Override
