@@ -767,7 +767,7 @@ public class GUI_Skeleton extends JFrame
     {
         JLayeredPane endPane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
-        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!");
+        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!", SwingConstants.CENTER);
         winnerName.setForeground(Color.white);
 
         ImageIcon playAgainIcon = new ImageIcon(new ImageIcon("resources/img/playAgainBTN1.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
