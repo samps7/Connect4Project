@@ -307,6 +307,7 @@ public class GUI_Skeleton extends JFrame
                 setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 setPlayer1Hover(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 player2Color = botColor;
+                player2Hover = new Color(0,0,0,0);
 
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
