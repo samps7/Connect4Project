@@ -52,11 +52,11 @@ public class GUI_Skeleton extends JFrame
      */
     void runGUI()
     {
-        System.out.println("Starting GUI Connect4");
+        //System.out.println("Starting GUI Connect4");
         setupGUI();
 
         this.mainWindow.setVisible(true);
-        System.out.println("Done in GUI app");
+        //System.out.println("Done in GUI app");
     }
 
     /**
@@ -149,7 +149,7 @@ public class GUI_Skeleton extends JFrame
         turn = 0;
         playAgainNum = -1;
 
-        System.out.println("Restarting GUI");
+        //System.out.println("Restarting GUI");
 
         this.titlePane = getTitlePane();
         this.mainWindow.add(this.titlePane);
@@ -324,8 +324,8 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                System.out.println("Player Name set to: " + playerOneInput.getText());
-                System.out.println("Player color set to: " + playerChoices.getSelectedItem());
+                //System.out.println("Player Name set to: " + playerOneInput.getText());
+                //System.out.println("Player color set to: " + playerChoices.getSelectedItem());
 
 
                 playerOneName = playerOneInput.getText();
@@ -415,10 +415,10 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                System.out.println("Player One Name: " + playerOneInput.getText());
-                System.out.println("Player One Color: " + playerChoices.getSelectedItem());
-                System.out.println("Player Two Name: " + playerTwoInput.getText());
-                System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
+                //System.out.println("Player One Name: " + playerOneInput.getText());
+                //System.out.println("Player One Color: " + playerChoices.getSelectedItem());
+                //System.out.println("Player Two Name: " + playerTwoInput.getText());
+                //System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
 
 
                 playerOneName = playerOneInput.getText();
@@ -519,7 +519,7 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                System.out.println("Easy Mode Selected");
+                //System.out.println("Easy Mode Selected");
 
                 difficulty = 0;
                 setEz_bg();
@@ -555,7 +555,7 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                System.out.println("Medium Mode Selected");
+                //System.out.println("Medium Mode Selected");
 
                 difficulty = 1;
                 setMed_bg();
@@ -591,7 +591,7 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                System.out.println("Hard Mode Selected");
+                //System.out.println("Hard Mode Selected");
                 difficulty = 2;
                 gameModeSelectPane.setVisible(false);
                 setHard_bg();
@@ -676,11 +676,11 @@ public class GUI_Skeleton extends JFrame
                     {
                         while(getWait())
                         {
-                            System.out.println("Waiting on bot");
+                            //System.out.println("Waiting on bot");
                         }
                     }
 
-                    System.out.println("Column located: " + getCol_Located(finalCounter));
+                    //System.out.println("Column located: " + getCol_Located(finalCounter));
                     if(finalI%7==0 && oneCount>0)
                     {
                         oneClicked();
@@ -821,7 +821,7 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                System.out.println("Play Again Clicked");
+                //System.out.println("Play Again Clicked");
                 playAgainNum = 1;
             }
 
@@ -858,7 +858,7 @@ public class GUI_Skeleton extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                System.out.println("Main Menu Clicked");
+                //System.out.println("Main Menu Clicked");
                 playAgainNum = 2;
             }
 

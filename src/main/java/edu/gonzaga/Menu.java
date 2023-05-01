@@ -27,23 +27,23 @@ public class Menu
         
 
 
-        System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
+        //System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
 
         while(true)
         {
             if(gui.getGameMode() == 0)
             {
-                System.out.println(gui.getGameMode());
+                //System.out.println(gui.getGameMode());
                 break;
             }
             else if(gui.getGameMode() == 1)
             {
-                System.out.println(gui.getGameMode());
+                //System.out.println(gui.getGameMode());
                 break;
             }
             else if(gui.getGameMode() == 2)
             {
-                System.out.println(gui.getGameMode());
+                //System.out.println(gui.getGameMode());
                 break;
             }
             else
@@ -58,9 +58,9 @@ public class Menu
             {
                 gui.setC4Game(game);
                 game.startGame();
-                System.out.println("");
-                System.out.println("Play again?");
-                System.out.println("0: Main Menu | 1: Play Again");
+                //System.out.println("");
+                //System.out.println("Play again?");
+                //System.out.println("0: Main Menu | 1: Play Again");
                 //playing = scan1.nextInt();
                 while(gui.getPlayAgainNum() == -1)
                 {
@@ -78,23 +78,23 @@ public class Menu
         }
         else if( mode == 0)
         {
-            System.out.println("Type 0 for Easy | Type 1 for Medium | Type 2 for Hard");
+            //System.out.println("Type 0 for Easy | Type 1 for Medium | Type 2 for Hard");
             while(true)
             {
                 if(gui.getDifficulty() == 0)
                 {
-                    System.out.println(gui.getDifficulty());
+                    //System.out.println(gui.getDifficulty());
                     break;
                 }
 
                 else if(gui.getDifficulty() == 1)
                 {
-                    System.out.println(gui.getDifficulty());
+                    //System.out.println(gui.getDifficulty());
                     break;
                 }
                 else if(gui.getDifficulty() == 2)
                 {
-                    System.out.println(gui.getDifficulty());
+                    //System.out.println(gui.getDifficulty());
                     break;
                 }
                 else
@@ -112,9 +112,9 @@ public class Menu
                 {
                     gui.setC4Game(game);
                     game.startGame();
-                    System.out.println("");
-                    System.out.println("Play again?");
-                    System.out.println("0: Main Menu | 1: Play Again");
+                    //System.out.println("");
+                    //System.out.println("Play again?");
+                    //System.out.println("0: Main Menu | 1: Play Again");
                     //playing = scan1.nextInt();
                     while(gui.getPlayAgainNum() == -1)
                     {
@@ -141,9 +141,9 @@ public class Menu
                 {
                     gui.setC4Game(game);
                     game.startGame();
-                    System.out.println("");
-                    System.out.println("Play again?");
-                    System.out.println("0: Main Menu | 1: Play Again");
+                    //System.out.println("");
+                    //System.out.println("Play again?");
+                    //System.out.println("0: Main Menu | 1: Play Again");
                     //playing = scan1.nextInt();
                     while(gui.getPlayAgainNum() == -1)
                     {
@@ -170,9 +170,9 @@ public class Menu
                 {
                     gui.setC4Game(game);
                     game.startGame();
-                    System.out.println("");
-                    System.out.println("Play again?");
-                    System.out.println("0: Main Menu | 1: Play Again");
+                    //System.out.println("");
+                    //System.out.println("Play again?");
+                    //System.out.println("0: Main Menu | 1: Play Again");
                     //playing = scan1.nextInt();
                     while(gui.getPlayAgainNum() == -1)
                     {

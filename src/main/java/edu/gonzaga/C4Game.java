@@ -33,7 +33,7 @@ public class C4Game
         if(mode == 3)
         {
             // 2 player mode
-            System.out.println("Enter P1 name");
+            //System.out.println("Enter P1 name");
             // get name from UI textbox here
             // get coin from combobox here
 
@@ -46,14 +46,14 @@ public class C4Game
                 }
                 else if(gui.getPlayerOneName() != null && gui.getPlayerTwoName() != null)
                 {
-                    System.out.println("Waiting on names");
+                    //System.out.println("Waiting on names");
                     break;
                 }
                 else
                 {
-                    System.out.println("Here are the names");
-                    System.out.println(gui.getPlayerOneName());
-                    System.out.println(gui.getPlayerTwoName());
+                    //System.out.println("Here are the names");
+                    //System.out.println(gui.getPlayerOneName());
+                    //System.out.println(gui.getPlayerTwoName());
                     break;
                 }
             }
@@ -67,18 +67,18 @@ public class C4Game
         }
         else
         {
-            System.out.println("Enter P1 name");
+            //System.out.println("Enter P1 name");
             // get from UI textbox here
             // get coin from combobox here
             while(true)
             {
                 if(gui.getPlayerOneName() != null)
                 {
-                    System.out.println("Player 1 Name: " + gui.getPlayerOneName());
+                    //System.out.println("Player 1 Name: " + gui.getPlayerOneName());
                     break;
                 }
                 else
-                    System.out.println("Waiting on player 1 name");
+                    System.out.println("");
             }
             players[0] = new Player(gui.getPlayerOneName(), new Coin("X"));
 
@@ -138,16 +138,16 @@ public class C4Game
 
         while(moveCount < 42)
         {
-            System.out.println(players[playerTurn].getName() + "'s turn");
+            //System.out.println(players[playerTurn].getName() + "'s turn");
 
-            System.out.println();
-            System.out.println(grid.boardDisplay());
-            System.out.println();
+            //System.out.println();
+            //System.out.println(grid.boardDisplay());
+            //System.out.println();
 
 
             if(playerTurn == 0 || mode > 2) // player 1 turn or pvp (player 2 turn) fix this...
             {
-                System.out.println("Which column do you want to place a piece?");
+                //System.out.println("Which column do you want to place a piece?");
                 while(true)
                 {
                     if(gui.getMove()>=0 && gui.getMove()<7)
@@ -159,7 +159,7 @@ public class C4Game
                 boolean valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
                 while(!valid)
                 {
-                    System.out.println("invalid  column");
+                    //System.out.println("invalid  column");
                     while(true)
                     {
                         if(gui.getMove()>=0 && gui.getMove()<7)
@@ -177,12 +177,12 @@ public class C4Game
             }
             else
             {
-                System.out.println("Bot is deciding on a move...");
+                //System.out.println("Bot is deciding on a move...");
                 if(mode < 3)
                 {
                     gui.setWaitTrue();
                     int currMove = players[1].getMove(moveChain);
-                    System.out.println("Bot went " + currMove);
+                    //System.out.println("Bot went " + currMove);
                     // check for illegal move before next line and
 
                      gui.setBotNextMove(currMove);
@@ -197,7 +197,7 @@ public class C4Game
                 }
 
             }
-            System.out.println("movechain: " + moveChain);
+            //System.out.println("movechain: " + moveChain);
 
             if(mode == 3) // if pvp
             {
@@ -205,10 +205,10 @@ public class C4Game
                 {
                     mp.loopSound("resources/music/Results.wav");
                     
-                    System.out.println(players[playerTurn].getName()+ " wins!!!!");
-                    System.out.println();
+                    //System.out.println(players[playerTurn].getName()+ " wins!!!!");
+                    //System.out.println();
                     gui.gameEnd(players[playerTurn].getName());
-                    System.out.println(grid.boardDisplay());
+                    //System.out.println(grid.boardDisplay());
                     gui.gameEnd();
                     moveCount = 1000; // (to break from loop)
                 }
@@ -221,16 +221,16 @@ public class C4Game
 
                     if(playerTurn == 0)
                     {
-                        System.out.println("you win!");
+                        //System.out.println("you win!");
                         gui.gameEnd(players[0].getName());
                     }
                     else
                     {
-                        System.out.println("you lose!");
+                        //System.out.println("you lose!");
                         gui.gameEnd(players[1].getName());
                     }
 
-                    System.out.println(grid.boardDisplay());
+                    //System.out.println(grid.boardDisplay());
                     gui.gameEnd();
 
                     moveCount = 1000; // (to break from loop)
@@ -247,12 +247,12 @@ public class C4Game
         {
             if(mode == 2)
             {
-                System.out.println("Hard Bot Wins By Draw");
+                //System.out.println("Hard Bot Wins By Draw");
                 gui.gameEnd("By Draw: Hard Bot");
             }
             else
             {
-                System.out.println("Game Resulted In A Draw");
+                //System.out.println("Game Resulted In A Draw");
                 gui.gameEnd("By Draw: Neither Player");
             }
             
