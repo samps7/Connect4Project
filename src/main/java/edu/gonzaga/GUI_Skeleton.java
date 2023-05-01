@@ -757,6 +757,15 @@ public class GUI_Skeleton extends JFrame
         JLayeredPane endPane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
         JLabel winnerName = new JLabel(this.winningPlayer + " Wins!");
+        winnerName.setForeground(Color.white);
+
+        ImageIcon playAgainIcon = new ImageIcon(new ImageIcon("resources/img/playAgainBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playAgain = new JLabel(playAgainIcon);
+        playAgain.setBounds(125,75,150,50);
+
+        ImageIcon mainMenuIcon = new ImageIcon(new ImageIcon("resources/img/mainMenuBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel mainMenu = new JLabel(mainMenuIcon);
+        mainMenu.setBounds(325,75,150,50);
 
         winnerName.setBounds(225,25,125,25);
 
@@ -776,7 +785,10 @@ public class GUI_Skeleton extends JFrame
         endPane.add(containedPanel,Integer.valueOf(1));
         endPane.add(grid,Integer.valueOf(2));
         endPane.add(winnerName,1);
-        endPane.add(this.background);
+        endPane.add(this.background, Integer.valueOf(0));
+        endPane.add(playAgain, Integer.valueOf(1));
+        endPane.add(mainMenu, Integer.valueOf(1));
+
 
         endPane.setLayout(null);
         return endPane;
