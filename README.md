@@ -19,27 +19,45 @@
 ### Media Sources
 
 Main Menu
-BG: 
-OST: Results Display Screen - (Super Smash Bros. Brawl)
+
+BG:
+
+OST: Boutique - Pokemon XY
+
 
 Easy Bot
+
 BG:
+
 OST: Bramble Blast - (Super Smash Bros. Brawl)
 
+
 Medium Bot
+
 BG:
+
 OST: Die Mittsommernacht-Fantasie - Yu-Peng Chen
 
+
 Hard Bot
+
 BG: (Source: The Last Blade)
+
 OST: Furinkazan - Tsuki Sayu Yoru
 
+
 PVP
+
 BG: (Source: Art of Fighting 3)
+
 OST: Moonsiders 1st - Yoko Shimomura
 
+
 End Screen
+
 BG: varies
-OST: 
+
+OST: Results Display Screen - (Super Smash Bros. Brawl)
+
 
 
