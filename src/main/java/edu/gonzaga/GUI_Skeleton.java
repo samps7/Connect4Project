@@ -14,6 +14,7 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane twoPlayerCustomizationPane;
     JLayeredPane titlePane;
     JLayeredPane gamePane;
+    JLayeredPane endPane;
 
     JLabel background;
 
@@ -21,7 +22,7 @@ public class GUI_Skeleton extends JFrame
     private Integer turn = 0;
     private Integer oneCount = 6, twoCount = 6, threeCount = 6, fourCount = 6, fiveCount = 6, sixCount = 6, sevenCount = 6;
     private JLabel[] buttons;
-    private String playerOneName, playerTwoName;
+    private String playerOneName, playerTwoName, winningPlayer;
     private int gameMode = -1, difficulty = -1;
     private final Color botColor = Color.orange;
     private Color player1Color, player2Color;
@@ -73,11 +74,13 @@ public class GUI_Skeleton extends JFrame
 
         this.titlePane = getTitlePane();
         this.gameModeSelectPane = new JLayeredPane();
+        
         this.playerOneCustomizationPane = new JLayeredPane();
         this.playerOneCustomizationPane.setVisible(false);
         this.twoPlayerCustomizationPane = new JLayeredPane();
         this.twoPlayerCustomizationPane.setVisible(false);
         this.gameModeSelectPane = new JLayeredPane();
+        
         this.gameModeSelectPane.setVisible(false);
         this.gamePane = new JLayeredPane();
         this.gamePane.setVisible(false);
@@ -86,6 +89,7 @@ public class GUI_Skeleton extends JFrame
         this.playerOneCustomizationPane = getOnePlayerCustomizePane();
         this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
         this.gameModeSelectPane = getGameModeSelectPane();
+        
         this.gamePane = getGame();
 
         this.mainWindow.add(this.titlePane);
@@ -105,9 +109,15 @@ public class GUI_Skeleton extends JFrame
     private JLayeredPane getTitlePane()
     {
         JLayeredPane newPane = new JLayeredPane();
+        
+        JLabel titleBG = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT)));
+
         JLabel gameTitle =  new JLabel("Connect4");
+        gameTitle.setOpaque(true);
         JLabel onePlayer = new JLabel("One Player");
+        onePlayer.setOpaque(true);
         JLabel twoPlayer = new JLabel("Two Player");
+        twoPlayer.setOpaque(true);
 
         //Adding mouse listener to make the JLabel clickable
         onePlayer.addMouseListener(new MouseListener()
@@ -194,9 +204,14 @@ public class GUI_Skeleton extends JFrame
         Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
         onePlayer.setBorder(border);
         twoPlayer.setBorder(border);
-        newPane.add(gameTitle,1);
-        newPane.add(onePlayer,1);
-        newPane.add(twoPlayer,1);
+        
+        //newPane.setBounds(250,50,125,75);
+        titleBG.setBounds(0,0,600,600);
+        newPane.add(titleBG, Integer.valueOf(0));
+
+        newPane.add(gameTitle,Integer.valueOf(1));
+        newPane.add(onePlayer,Integer.valueOf(1));
+        newPane.add(twoPlayer,Integer.valueOf(1));
 
 
         newPane.setLayout(null);
@@ -658,7 +673,7 @@ public class GUI_Skeleton extends JFrame
 
         background.setBounds(0,0,600,600);
 
-        gamePane.add(background,0);
+        gamePane.add(background,Integer.valueOf(0));
         gamePane.add(containedPanel, Integer.valueOf(1));
         gamePane.add(grid, Integer.valueOf(2));
 
@@ -666,12 +681,48 @@ public class GUI_Skeleton extends JFrame
         return gamePane;
     }
 
+
     /**
      * This function sets the C4Game object for the current instance.
      * 
      * @param game The parameter "game" is an object of the class C4Game. The method "setC4Game" sets
      * the value of the instance variable "game" to the value of the parameter "game".
      */
+    private JLayeredPane winScreen()
+    {
+        JLayeredPane endPane = new JLayeredPane();
+        JPanel containedPanel = new JPanel();
+        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!");
+
+        winnerName.setBounds(225,25,125,25);
+
+        containedPanel.setLayout(new GridLayout(6, 7));
+        for(int i = 0; i<42; i++)
+            containedPanel.add(this.buttons[i]);
+        ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
+        JLabel grid = new JLabel(image);
+
+        containedPanel.setBounds(100,160,400,300);
+        grid.setBounds(100,160,400,300);
+
+        endPane.add(containedPanel,Integer.valueOf(1));
+        endPane.add(grid,Integer.valueOf(2));
+        endPane.add(winnerName,1);
+
+        endPane.setLayout(null);
+        return endPane;
+    }
+
+    public void gameEnd(String playerName)
+    {
+        this.winningPlayer = playerName;
+        this.endPane = winScreen();
+
+        this.gamePane.setVisible(false);
+
+        this.mainWindow.add(this.endPane);
+    }
+
     public void setC4Game(C4Game game)
     {
         this.game = game;
@@ -1191,11 +1242,6 @@ public class GUI_Skeleton extends JFrame
     public void setWaitFalse()
     {
         this.wait = false;
-    }
-
-    private void setBackground_image_path(int mode)
-    {
-        return this.wait;
     }
 
     public void setEz_bg()

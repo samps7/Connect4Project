@@ -207,6 +207,7 @@ public class C4Game
                     
                     System.out.println(players[playerTurn].getName()+ " wins!!!!");
                     System.out.println();
+                    gui.gameEnd(players[playerTurn].getName());
                     System.out.println(grid.boardDisplay());
                     gui.gameEnd();
                     moveCount = 1000; // (to break from loop)
@@ -221,10 +222,12 @@ public class C4Game
                     if(playerTurn == 0)
                     {
                         System.out.println("you win!");
+                        gui.gameEnd(players[0].getName());
                     }
                     else
                     {
                         System.out.println("you lose!");
+                        gui.gameEnd(players[1].getName());
                     }
 
                     System.out.println(grid.boardDisplay());
@@ -245,6 +248,7 @@ public class C4Game
             if(mode == 2)
             {
                 System.out.println("Hard Bot Wins By Draw");
+                gui.gameEnd("Hard Bot");
             }
             else
             {
