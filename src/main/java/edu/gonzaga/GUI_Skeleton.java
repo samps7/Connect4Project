@@ -90,6 +90,29 @@ public class GUI_Skeleton extends JFrame
 
     }
 
+    void playAgain()
+    {
+        this.endPane.setVisible(false);
+        playerOneName = null;
+        playerTwoName = null;
+        wait = false;
+        move = -1;
+        botMove = -1;
+        gameMode = -1;
+        difficulty = -1;
+
+        oneCount = 6;
+        twoCount = 6;
+        threeCount = 6;
+        fourCount = 6;
+        fiveCount = 6;
+        sevenCount = 6;
+        turn = 0;
+
+        this.mainWindow.repaint();
+        this.mainWindow.revalidate();
+    }
+
     void menuGUI()
     {
         this.endPane.setVisible(false);
