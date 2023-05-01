@@ -92,14 +92,11 @@ public class GUI_Skeleton extends JFrame
 
     void playAgain()
     {
+
         this.endPane.setVisible(false);
-        playerOneName = null;
-        playerTwoName = null;
         wait = false;
         move = -1;
         botMove = -1;
-        gameMode = -1;
-        difficulty = -1;
 
         oneCount = 6;
         twoCount = 6;
@@ -108,6 +105,10 @@ public class GUI_Skeleton extends JFrame
         fiveCount = 6;
         sevenCount = 6;
         turn = 0;
+
+        gamePane = getGame();
+        mainWindow.add(gamePane);
+        gamePane.setVisible(true);
 
         this.mainWindow.repaint();
         this.mainWindow.revalidate();

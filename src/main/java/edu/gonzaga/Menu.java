@@ -60,6 +60,7 @@ public class Menu
                 playing = scan1.nextInt();
                 if(playing == 1)
                 {
+                    gui.setC4Game(game);
                     gui.playAgain();
                 }
             }
@@ -108,6 +109,7 @@ public class Menu
                     playing = scan1.nextInt();
                     if(playing == 1)
                     {
+                        gui.setC4Game(game);
                         gui.playAgain();
                     }
                 }
@@ -131,6 +133,7 @@ public class Menu
                     playing = scan1.nextInt();
                     if(playing == 1)
                     {
+                        gui.setC4Game(game);
                         gui.playAgain();
                     }
                 }
@@ -154,6 +157,7 @@ public class Menu
                     playing = scan1.nextInt();
                     if(playing == 1)
                     {
+                        gui.setC4Game(game);
                         gui.playAgain();
                     }
                 }
