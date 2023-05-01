@@ -765,10 +765,74 @@ public class GUI_Skeleton extends JFrame
         ImageIcon playAgainIcon = new ImageIcon(new ImageIcon("resources/img/playAgainBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
         JLabel playAgain = new JLabel(playAgainIcon);
         playAgain.setBounds(125,75,150,50);
+        playAgain.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                System.out.println("Play Again Clicked");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
 
         ImageIcon mainMenuIcon = new ImageIcon(new ImageIcon("resources/img/mainMenuBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
         JLabel mainMenu = new JLabel(mainMenuIcon);
         mainMenu.setBounds(325,75,150,50);
+        mainMenu.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                System.out.println("Main Menu Clicked");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
 
         winnerName.setBounds(225,25,125,25);
 
