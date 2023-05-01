@@ -767,10 +767,10 @@ public class GUI_Skeleton extends JFrame
     {
         JLayeredPane endPane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
-        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!");
+        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!", SwingConstants.CENTER);
         winnerName.setForeground(Color.white);
 
-        ImageIcon playAgainIcon = new ImageIcon(new ImageIcon("resources/img/playAgainBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        ImageIcon playAgainIcon = new ImageIcon(new ImageIcon("resources/img/playAgainBTN1.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
         JLabel playAgain = new JLabel(playAgainIcon);
         playAgain.setBounds(125,75,150,50);
         playAgain.addMouseListener(new MouseListener()
@@ -807,7 +807,7 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        ImageIcon mainMenuIcon = new ImageIcon(new ImageIcon("resources/img/mainMenuBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        ImageIcon mainMenuIcon = new ImageIcon(new ImageIcon("resources/img/mainMenuBTN1.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
         JLabel mainMenu = new JLabel(mainMenuIcon);
         mainMenu.setBounds(325,75,150,50);
         mainMenu.addMouseListener(new MouseListener()
