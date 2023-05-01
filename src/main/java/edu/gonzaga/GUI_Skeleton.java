@@ -91,6 +91,7 @@ public class GUI_Skeleton extends JFrame
 
     void menuGUI()
     {
+        this.endPane.setVisible(false);
         playerOneName = null;
         playerTwoName = null;
         wait = false;
@@ -106,69 +107,25 @@ public class GUI_Skeleton extends JFrame
         fiveCount = 6;
         sevenCount = 6;
         turn = 0;
+
         System.out.println("Restarting GUI");
 
-        //this.mainWindow.setVisible(false);
-        this.mainWindow.removeAll();
+        this.titlePane = getTitlePane();
+        this.mainWindow.add(this.titlePane);
+        titlePane.setVisible(true);
+
         this.mainWindow.repaint();
         this.mainWindow.revalidate();
 
-        this.gamePane.removeAll();
-        this.gamePane.repaint();
-        this.gamePane.revalidate();
-        this.gamePane = getGame();
-        this.gamePane.setVisible(false);
-
-        this.endPane.removeAll();
-        this.endPane.repaint();
-        this.endPane.revalidate();
-        this.endPane.setVisible(false);
-
-
-        this.titlePane.removeAll();
-        this.titlePane.repaint();
-        this.titlePane.revalidate();
-        this.titlePane.setVisible(true);
-        this.titlePane = getTitlePane();
-        this.mainWindow.add(this.titlePane);
-
-        this.playerOneCustomizationPane.removeAll();
         this.playerOneCustomizationPane.repaint();
         this.playerOneCustomizationPane.revalidate();
         this.playerOneCustomizationPane = getOnePlayerCustomizePane();
         this.playerOneCustomizationPane.setVisible(false);
 
-        this.twoPlayerCustomizationPane.removeAll();
         this.twoPlayerCustomizationPane.repaint();
         this.twoPlayerCustomizationPane.revalidate();
         this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
         this.twoPlayerCustomizationPane.setVisible(false);
-
-        this.gameModeSelectPane.removeAll();
-        this.gameModeSelectPane.repaint();
-        this.gameModeSelectPane.revalidate();
-        this.gameModeSelectPane = getGameModeSelectPane();
-        this.gameModeSelectPane.setVisible(false);
-        /*
-        this.mainWindow.remove(gameModeSelectPane);
-        this.mainWindow.remove(playerOneCustomizationPane);
-        this.mainWindow.remove(twoPlayerCustomizationPane);
-        this.mainWindow.remove(titlePane);
-        this.mainWindow.remove(gamePane);
-        this.mainWindow.remove(endPane);
-
-        this.gameModeSelectPane = getGameModeSelectPane();
-        this.playerOneCustomizationPane = getOnePlayerCustomizePane();
-        this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
-        this.titlePane = getTitlePane();
-        this.endPane = null;
-
-
-
-        this.mainWindow.add(titlePane);
-        titlePane.setVisible(true);
-
-         */
 
     }
 
