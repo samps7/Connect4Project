@@ -41,8 +41,8 @@ public class C4Game
             {
                 if(gui.getPlayerOneName() == null && gui.getPlayerTwoName() == null)
                 {
-                    System.out.println("Player One Name Blank");
-                    System.out.println("Player Two Name Blank");
+                    System.out.print("");
+                    System.out.print("");
                 }
                 else if(gui.getPlayerOneName() != null && gui.getPlayerTwoName() != null)
                 {

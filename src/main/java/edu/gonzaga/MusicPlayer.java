@@ -30,8 +30,8 @@ public class MusicPlayer
             audIn = AudioSystem.getAudioInputStream(new File(str));
             clip = AudioSystem.getClip();
             clip.open(audIn);
-            clip.start();
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            //clip.start();
+            //clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
         catch(FileNotFoundException exception)
         {
