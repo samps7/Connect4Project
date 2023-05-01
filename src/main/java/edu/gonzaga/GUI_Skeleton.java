@@ -844,7 +844,7 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        winnerName.setBounds(275,25,125,50);
+        winnerName.setBounds(175,25,250,50);
         winnerName.setFont(new Font("Seriff", Font.PLAIN, 22));
 
         containedPanel.setLayout(new GridLayout(6, 7));
