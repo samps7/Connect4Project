@@ -58,6 +58,10 @@ public class Menu
                 System.out.println("Play again?");
                 System.out.println("0: Main Menu | 1: Play Again");
                 playing = scan1.nextInt();
+                if(playing == 1)
+                {
+                    gui.playAgain();
+                }
             }
             gui.menuGUI();
             displayOptions();
@@ -92,15 +96,20 @@ public class Menu
                 // easy bots stuff here
 
                 C4Game game = new C4Game(0, mp, gui);
-                gui.setC4Game(game);
+                
                 
                 while(playing == 1)
                 {
+                    gui.setC4Game(game);
                     game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
                     playing = scan1.nextInt();
+                    if(playing == 1)
+                    {
+                        gui.playAgain();
+                    }
                 }
                 gui.menuGUI();
                 displayOptions();
@@ -110,15 +119,20 @@ public class Menu
                 // medium bots stuff here
 
                 C4Game game = new C4Game(1, mp, gui);
-                gui.setC4Game(game);
+                
                 
                 while(playing == 1)
                 {
+                    gui.setC4Game(game);
                     game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
                     playing = scan1.nextInt();
+                    if(playing == 1)
+                    {
+                        gui.playAgain();
+                    }
                 }
                 gui.menuGUI();
                 displayOptions();
@@ -129,14 +143,19 @@ public class Menu
 
 
                 C4Game game = new C4Game(2, mp, gui);
-                gui.setC4Game(game);
+                
                 while(playing == 1)
                 {
+                    gui.setC4Game(game);
                     game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
                     playing = scan1.nextInt();
+                    if(playing == 1)
+                    {
+                        gui.playAgain();
+                    }
                 }
                 gui.menuGUI();
                 displayOptions();
