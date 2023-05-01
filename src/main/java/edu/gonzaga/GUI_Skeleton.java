@@ -1,6 +1,5 @@
 package edu.gonzaga;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -208,10 +207,22 @@ public class GUI_Skeleton extends JFrame
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
         JLayeredPane newPane = new JLayeredPane();
         JLabel playerOne = new JLabel("Player One Name: ");
+        playerOne.setForeground(Color.white);
+        playerOne.setBackground(Color.BLUE);
+        playerOne.setOpaque(true);
+
         JLabel playerOneColor = new JLabel("Color: ");
+        playerOneColor.setForeground(Color.white);
+        playerOneColor.setBackground(Color.BLUE);
+        playerOneColor.setOpaque(true);
+
         final JComboBox<String> playerChoices = new JComboBox<>(colorChoices);
         JTextField playerOneInput = new JTextField(16);
         JLabel startGame = new JLabel("Start Game");
+
+        JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+        background.setBounds(0,0,600,520);
+
         startGame.addMouseListener(new MouseListener()
         {
             @Override
@@ -263,6 +274,7 @@ public class GUI_Skeleton extends JFrame
         newPane.add(playerOneColor,1);
         newPane.add(playerChoices,1);
         newPane.add(startGame,1);
+        newPane.add(background,Integer.valueOf(0));
 
 
         newPane.setLayout(null);
