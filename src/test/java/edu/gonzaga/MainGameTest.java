@@ -4,11 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import java.util.Scanner;
 
 public class MainGameTest {
     @Test
-    void alwaysTrue() {
+    void mainExceptionTest() {
+        MainGame m1 = new MainGame();
         Assertions.assertTrue(true);
     }
+
 }

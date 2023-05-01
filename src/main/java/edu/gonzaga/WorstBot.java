@@ -14,6 +14,12 @@ public class WorstBot extends Bot
         super(name1, c1);
     }
 
+    // `public int getMove( String s)` is a method in the `WorstBot` class that overrides the `getMove`
+    // method in the `Bot` class. It takes in a `String` parameter `s` which represents the current
+    // state of the Connect Four board. The method uses the `HtmlUnit` library to scrape a website that
+    // provides the best move for the current board state. It then selects a move based on certain
+    // conditions and returns the column number of the selected move. If it is the first move, it
+    // selects a random column.
     @Override
     public int getMove( String s)
     {
@@ -152,6 +158,15 @@ public class WorstBot extends Bot
         }
     }
 
+    /**
+     * The function checks if a given string can be parsed as an integer.
+     * 
+     * @param str The parameter "str" is a String variable that represents the input value that we want
+     * to check if it is numeric or not.
+     * @return The method is checking if the input string can be parsed as an integer or not. If it can
+     * be parsed as an integer, the method returns true. If it cannot be parsed as an integer, the
+     * method returns false.
+     */
     public boolean isNumeric(String str)
     {
         try
@@ -164,6 +179,15 @@ public class WorstBot extends Bot
         return true;
     }
 
+    /**
+     * The function counts the number of occurrences of a given integer in a string.
+     * 
+     * @param str The input string that we want to count the occurrences of a specific integer in.
+     * @param num The parameter "num" in the method "intCount" is an integer that represents the number
+     * that we want to count the occurrences of in the given string "str".
+     * @return The method is returning an integer value which represents the number of times the given
+     * integer "num" appears in the given string "str".
+     */
     public int intCount(String str, int num)
     {
         int count = 0;

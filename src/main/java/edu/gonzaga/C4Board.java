@@ -9,6 +9,17 @@ public class C4Board
         
     }
 
+    /**
+     * This function accepts a coin and a column number, and places the coin in the lowest available
+     * slot in that column of a grid.
+     * 
+     * @param c The coin that is being inserted into the grid.
+     * @param col col is an integer parameter representing the column in which the coin is being
+     * inserted in a grid.
+     * @return The method is returning a boolean value. It returns true if the coin was successfully
+     * accepted and placed in the specified column of the grid, and false if the column is full or the
+     * specified column is out of bounds.
+     */
     public boolean acceptCoin(Coin c, int col)
     {
         int bot = 6;
@@ -35,6 +46,15 @@ public class C4Board
         return false;
     }
 
+    /**
+     * The function returns a string representation of a game board with letters or dashes in each
+     * cell.
+     * 
+     * @return The method `boardDisplay()` returns a string that represents the current state of the
+     * game board. The string includes a visual representation of the board with each cell either
+     * displaying a letter or a dash if the cell is empty. The last line of the string displays the
+     * column numbers for reference.
+     */
     public String boardDisplay()
     {
         String str = "This is the board: \n";
@@ -139,7 +159,21 @@ public class C4Board
         return false;
     }
 
-    
+    /**
+     * This Java function returns the element at the specified row and column index in a 2D array of
+     * Coin objects.
+     * 
+     * @param row The row index of the element in the 2D array that we want to retrieve.
+     * @param col The "col" parameter in the above code represents the column index of a 2D array
+     * called "grid". The method "returnArrayIndex" takes two parameters, "row" and "col", and returns
+     * the value at the specified row and column index in the "grid" array.
+     * @return The method `returnArrayIndex` is returning the `Coin` object located at the specified
+     * `row` and `col` indices in the `grid` array.
+     */
+    public Coin returnArrayIndex(int row, int col)
+    {
+        return grid[row][col];
+    }
 
 
 }

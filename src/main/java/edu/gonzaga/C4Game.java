@@ -97,6 +97,10 @@ public class C4Game
         }
     }
 
+    /**
+     * This function starts a game of Connect Four, alternating turns between players and bots, and
+     * checks for a winner or a draw.
+     */
     public void startGame() throws Exception
     {
         Scanner scan1 = new Scanner(System.in); // remove this once UI working
