@@ -100,10 +100,14 @@ public class GUI_Skeleton extends JFrame
         ImageIcon logoIcon = new ImageIcon("resources/img/C4_Logo.png");
         JLabel gameTitle =  new JLabel(logoIcon);
         gameTitle.setOpaque(false);
-        JLabel onePlayer = new JLabel("One Player");
-        onePlayer.setOpaque(true);
-        JLabel twoPlayer = new JLabel("Two Player");
-        twoPlayer.setOpaque(true);
+
+        ImageIcon onePlayerIcon = new ImageIcon(new ImageIcon("resources/img/OnePlayerButton.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+        JLabel onePlayer = new JLabel(onePlayerIcon);
+        onePlayer.setOpaque(false);
+
+        ImageIcon twoPlayerIcon = new ImageIcon(new ImageIcon("resources/img/MultiplaterButton.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+        JLabel twoPlayer = new JLabel(twoPlayerIcon);
+        twoPlayer.setOpaque(false);
 
         //Adding mouse listener to make the JLabel clickable
         onePlayer.addMouseListener(new MouseListener()
@@ -185,12 +189,8 @@ public class GUI_Skeleton extends JFrame
             }
         });
         gameTitle.setBounds(50,50,500,150);
-        onePlayer.setBounds(75,250,175,25);
-        twoPlayer.setBounds(350,250,175,25);
-        Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
-        onePlayer.setBorder(border);
-        twoPlayer.setBorder(border);
-
+        onePlayer.setBounds(150,250, 300,100);
+        twoPlayer.setBounds(150,350,300,100);
         titleBG.setBounds(0,0,600,520);
         newPane.add(titleBG, Integer.valueOf(0));
 
