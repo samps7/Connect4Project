@@ -4,10 +4,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.net.URL;
 import java.util.Objects;
-
+//hello
 public class GUI_Skeleton extends JFrame
 {
     JFrame mainWindow;
@@ -16,6 +14,8 @@ public class GUI_Skeleton extends JFrame
     JLayeredPane twoPlayerCustomizationPane;
     JLayeredPane titlePane;
     JLayeredPane gamePane;
+
+    JLabel background;
 
     private C4Game game;
     private Integer turn = 0;
@@ -26,9 +26,17 @@ public class GUI_Skeleton extends JFrame
     private final Color botColor = Color.orange;
     private Color player1Color, player2Color;
     private Color player1Hover, player2Hover;
-    private String background_image_path;
-    private String ez_bg = "resources/img/easybot.gif", medium_bg, hard_bg, pvp_bg;
-    MessageBean mBean = new MessageBean();
+    private final String ez_bg = "resources/img/easybot.gif";
+    private final String med_bg = "resources/img/medbot.gif";
+    private final String hard_bg = "resources/img/hardbot.gif";
+    private final String pvp_bg = "resources/img/PVP.gif";
+    private ImageIcon background_Theme_Used = new ImageIcon(new ImageIcon(pvp_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+    private ImageIcon ez_background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+    private ImageIcon med_background_Theme = new ImageIcon(new ImageIcon(med_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+    private ImageIcon hard_background_Theme = new ImageIcon(new ImageIcon(hard_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+    private int move = -1, botMove = -1;
+    private boolean wait = false;
+
 
 
     public static void main(String[] args)
@@ -60,6 +68,7 @@ public class GUI_Skeleton extends JFrame
         this.mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.mainWindow.setSize(600,500);
         this.mainWindow.setLocation(100,100);
+        this.mainWindow.setResizable(false);
 
 
         this.titlePane = getTitlePane();
@@ -109,7 +118,6 @@ public class GUI_Skeleton extends JFrame
                 //placeholder for the actual part that would be going to the next page
                 onePlayer.setText("Starting One Player Game");
 
-                mBean.setValue("0");
                 gameMode = 0;
 
                 titlePane.setVisible(false);
@@ -150,7 +158,6 @@ public class GUI_Skeleton extends JFrame
                 //placeholder for the actual part that would be going to the next page
                 twoPlayer.setText("Starting Two Player Game");
 
-                mBean.setValue("1");
                 gameMode = 1;
 
                 titlePane.setVisible(false);
@@ -218,7 +225,6 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Name set to: " + playerOneInput.getText());
                 System.out.println("Player color set to: " + playerChoices.getSelectedItem());
 
-                mBean.setValue(playerOneInput.getText());
 
                 playerOneName = playerOneInput.getText();
                 setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
@@ -299,12 +305,10 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Player Two Name: " + playerTwoInput.getText());
                 System.out.println("Player Two Color: " + playerTwoChoices.getSelectedItem());
 
-                mBean.setValue(playerOneInput.getText());
 
                 playerOneName = playerOneInput.getText();
                 playerTwoName = playerTwoInput.getText();
 
-                setBackground_image_path(-1); //-1 forces to default case, which is the pvp background
 
                 setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 setPlayer1Hover(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
@@ -388,8 +392,8 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Easy Mode Selected");
 
                 difficulty = 0;
-                setBackground_image_path(difficulty);
-
+                setEz_bg();
+                gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -423,7 +427,8 @@ public class GUI_Skeleton extends JFrame
                 System.out.println("Medium Mode Selected");
 
                 difficulty = 1;
-                setBackground_image_path(difficulty);
+                setMed_bg();
+                gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
             }
@@ -456,8 +461,9 @@ public class GUI_Skeleton extends JFrame
             {
                 System.out.println("Hard Mode Selected");
                 difficulty = 2;
-                setBackground_image_path(difficulty);
                 gameModeSelectPane.setVisible(false);
+                setHard_bg();
+                gamePane = getGame();
                 mainWindow.add(gamePane);
             }
 
@@ -507,9 +513,11 @@ public class GUI_Skeleton extends JFrame
         JLayeredPane gamePane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
         containedPanel.setBackground(new Color(0,0,0,0));
-        ImageIcon background_Theme = new ImageIcon(new ImageIcon(ez_bg).getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
-        JLabel background = new JLabel(background_Theme);
+        ImageIcon background_Theme = background_Theme_Used;
 
+
+        this.background = new JLabel(background_Theme);
+        background.setBounds(0,0,600,600);
 
 
 
@@ -518,7 +526,7 @@ public class GUI_Skeleton extends JFrame
         for(int i = 0; i<42; i++)
         {
             buttons[i] = new JLabel();
-            buttons[i].setText(String.valueOf(counter));
+            //buttons[i].setText(String.valueOf(counter));
             buttons[i].setOpaque(true);
             buttons[i].setBackground(new Color(0,0,0,0));
 
@@ -531,27 +539,57 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mouseClicked(MouseEvent e)
                 {
+                    if(turn%2==1)
+                    {
+                        while(getWait())
+                        {
+                            System.out.println("Waiting on bot");
+                        }
+                    }
 
                     System.out.println("Column located: " + getCol_Located(finalCounter));
-                    if(finalI%7==0)
+                    if(finalI%7==0 && oneCount>0)
+                    {
                         oneClicked();
-                    if(finalI%7==1)
+                        turn++;
+                    }
+                    if(finalI%7==1 && twoCount>0)
+                    {
                         twoClicked();
-                    if(finalI%7==2)
+                        turn++;
+                    }
+                    if(finalI%7==2 && threeCount>0)
+                    {
                         threeClicked();
-                    if(finalI%7==3)
+                        turn++;
+                    }
+                    if(finalI%7==3 && fourCount>0)
+                    {
                         fourClicked();
-                    if(finalI%7==4)
+                        turn++;
+                    }
+                    if(finalI%7==4 && fiveCount>0)
+                    {
                         fiveClicked();
-                    if(finalI%7==5)
+                        turn++;
+                    }
+                    if(finalI%7==5 && sixCount>0)
+                    {
                         sixClicked();
-                    if(finalI%7==6)
+                        turn++;
+                    }
+                    if(finalI%7==6 && sevenCount>0)
+                    {
                         sevenClicked();
-                    turn++;
-                    ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(490, 490, Image.SCALE_DEFAULT));
+                        turn++;
+                    }
+
+
+                    makeMove(finalI);
+                    ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
                     JLabel grid = new JLabel(image);
 
-                    grid.setBounds(25,25,400,400);
+                    grid.setBounds(100,160,400,300);
 
                 }
 
@@ -568,38 +606,38 @@ public class GUI_Skeleton extends JFrame
                 @Override
                 public void mouseEntered(MouseEvent e)
                 {
-                    if(finalI%7 == 0)
+                    if(finalI%7==0 && oneCount>0)
                         oneHovered();
-                    if(finalI%7==1)
+                    if(finalI%7==1 && twoCount>0)
                         twoHovered();
-                    if(finalI%7==2)
+                    if(finalI%7==2 && threeCount>0)
                         threeHovered();
-                    if(finalI%7==3)
+                    if(finalI%7==3 && fourCount>0)
                         fourHovered();
-                    if(finalI%7==4)
+                    if(finalI%7==4 && fiveCount>0)
                         fiveHovered();
-                    if(finalI%7==5)
+                    if(finalI%7==5 && sixCount>0)
                         sixHovered();
-                    if(finalI%7==6)
+                    if(finalI%7==6 && sevenCount>0)
                         sevenHovered();
                 }
 
                 @Override
                 public void mouseExited(MouseEvent e)
                 {
-                    if(finalI%7 == 0)
+                    if(finalI%7==0 && oneCount>0)
                         oneUnHovered();
-                    if(finalI%7==1)
+                    if(finalI%7==1 && twoCount>0)
                         twoUnHovered();
-                    if(finalI%7==2)
+                    if(finalI%7==2 && threeCount>0)
                         threeUnHovered();
-                    if(finalI%7==3)
+                    if(finalI%7==3 && fourCount>0)
                         fourUnHovered();
-                    if(finalI%7==4)
+                    if(finalI%7==4 && fiveCount>0)
                         fiveUnHovered();
-                    if(finalI%7==5)
+                    if(finalI%7==5 && sixCount>0)
                         sixUnHovered();
-                    if(finalI%7==6)
+                    if(finalI%7==6 && sevenCount>0)
                         sevenUnHovered();
                 }
             });
@@ -608,14 +646,14 @@ public class GUI_Skeleton extends JFrame
         }
 
         containedPanel.setLayout(new GridLayout(rows, cols));
-        containedPanel.setBounds(25,25,400,400);
+        containedPanel.setBounds(100,160,400,300);
 
         //containedPanel.setVisible(false);
 
-        ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT));
+        ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
         JLabel grid = new JLabel(image);
 
-        grid.setBounds(25,25,400,400);
+        grid.setBounds(100,160,400,300);
         //grid.setOpaque(true);
 
         background.setBounds(0,0,600,600);
@@ -665,6 +703,8 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[oneCount*7 - (7)].setBackground(player2Color);
         oneCount--;
+        this.buttons[(oneCount+1)*7 - 7].setOpaque(true); // Note: ordering is very intentional
+
     }
 
     /**
@@ -678,6 +718,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[twoCount*7 - (6)].setBackground(player2Color);
         twoCount--;
+        this.buttons[(twoCount+1)*7 - (6)].setOpaque(true);
     }
 
     /**
@@ -691,6 +732,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[threeCount*7 - (5)].setBackground(player2Color);
         threeCount--;
+        this.buttons[(threeCount+1)*7 - (5)].setOpaque(true);
     }
 
     /**
@@ -704,6 +746,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fourCount*7 - (4)].setBackground(player2Color);
         fourCount--;
+        this.buttons[(fourCount+1)*7 - (4)].setOpaque(true);
     }
 
     /**
@@ -717,6 +760,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[fiveCount*7 - (3)].setBackground(player2Color);
         fiveCount--;
+        this.buttons[(fiveCount+1)*7 - (3)].setOpaque(true);
     }
 
     /**
@@ -730,6 +774,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sixCount*7 - (2)].setBackground(player2Color);
         sixCount--;
+        this.buttons[(sixCount+1)*7 - (2)].setOpaque(true);
     }
 
     /**
@@ -743,6 +788,7 @@ public class GUI_Skeleton extends JFrame
         if(turn%2==1)
             this.buttons[sevenCount*7 - (1)].setBackground(player2Color);
         sevenCount--;
+        this.buttons[(sevenCount+1)*7 - (1)].setOpaque(true);
     }
 
     /**
@@ -779,6 +825,7 @@ public class GUI_Skeleton extends JFrame
             this.buttons[oneCount*7 - (7)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[oneCount*7 - (7)].setBackground(this.player2Hover);
+        this.buttons[oneCount*7 - 7].setOpaque(true);
     }
 
     /**
@@ -786,7 +833,7 @@ public class GUI_Skeleton extends JFrame
      */
     private void oneUnHovered()
     {
-            this.buttons[oneCount*7 - 7].setBackground(new Color(0,0,0,0));
+        this.buttons[oneCount*7 - 7].setOpaque(false);
     }
 
     /**
@@ -798,6 +845,7 @@ public class GUI_Skeleton extends JFrame
             this.buttons[twoCount*7 - (6)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[twoCount*7 - (6)].setBackground(this.player2Hover);
+        this.buttons[twoCount*7 - (6)].setOpaque(true);
     }
 
     /**
@@ -805,7 +853,7 @@ public class GUI_Skeleton extends JFrame
      */
     private void twoUnHovered()
     {
-        this.buttons[twoCount*7 - (6)].setBackground(new Color(0,0,0,0));
+        this.buttons[twoCount*7 - (6)].setOpaque(false);
     }
 
     /**
@@ -817,6 +865,7 @@ public class GUI_Skeleton extends JFrame
             this.buttons[threeCount*7 - (5)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[threeCount*7 - (5)].setBackground(this.player2Hover);
+        this.buttons[threeCount*7 - (5)].setOpaque(true);
     }
 
     /**
@@ -824,7 +873,7 @@ public class GUI_Skeleton extends JFrame
      */
     private void threeUnHovered()
     {
-        this.buttons[threeCount*7 - (5)].setBackground(new Color(0,0,0,0));
+        this.buttons[threeCount*7 - (5)].setOpaque(false);
     }
 
     /**
@@ -836,6 +885,7 @@ public class GUI_Skeleton extends JFrame
             this.buttons[fourCount*7 - (4)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[fourCount*7 - (4)].setBackground(this.player2Hover);
+        this.buttons[fourCount*7 - (4)].setOpaque(true);
     }
 
     /**
@@ -843,7 +893,7 @@ public class GUI_Skeleton extends JFrame
      */
     private void fourUnHovered()
     {
-        this.buttons[fourCount*7 - (4)].setBackground(new Color(0,0,0,0));
+        this.buttons[fourCount*7 - (4)].setOpaque(false);
     }
 
     /**
@@ -855,6 +905,7 @@ public class GUI_Skeleton extends JFrame
             this.buttons[fiveCount*7 - (3)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[fiveCount*7 - (3)].setBackground(this.player2Hover);
+        this.buttons[fiveCount*7 - (3)].setOpaque(true);
     }
 
     /**
@@ -862,7 +913,7 @@ public class GUI_Skeleton extends JFrame
      */
     private void fiveUnHovered()
     {
-        this.buttons[fiveCount*7 - (3)].setBackground(new Color(0,0,0,0));
+        this.buttons[fiveCount*7 - (3)].setOpaque(false);
     }
 
     /**
@@ -874,6 +925,7 @@ public class GUI_Skeleton extends JFrame
             this.buttons[sixCount*7 - (2)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[sixCount*7 - (2)].setBackground(this.player2Hover);
+        this.buttons[sixCount*7 - (2)].setOpaque(true);
     }
 
     /**
@@ -882,7 +934,7 @@ public class GUI_Skeleton extends JFrame
      */
     private void sixUnHovered()
     {
-        this.buttons[sixCount*7 - (2)].setBackground(new Color(0,0,0,0));
+        this.buttons[sixCount*7 - (2)].setOpaque(false);
     }
 
     /**
@@ -894,6 +946,7 @@ public class GUI_Skeleton extends JFrame
             this.buttons[sevenCount*7 - (1)].setBackground(this.player1Hover);
         if(turn%2==1)
             this.buttons[sevenCount*7 - (1)].setBackground(this.player2Hover);
+        this.buttons[sevenCount*7 - (1)].setOpaque(true);
     }
 
     /**
@@ -901,7 +954,7 @@ public class GUI_Skeleton extends JFrame
      */
     private void sevenUnHovered()
     {
-        this.buttons[sevenCount*7 - (1)].setBackground(new Color(0,0,0,0));
+        this.buttons[sevenCount*7 - (1)].setOpaque(false);
     }
 
     /**
@@ -1071,30 +1124,94 @@ public class GUI_Skeleton extends JFrame
                 break;
         }
     }
-
-    /**
-     * This function sets the background image path based on the mode parameter.
-     * 
-     * @param mode An integer variable that determines which background image path to set. If mode is
-     * 0, the background image path will be set to the value of the "ez_bg" variable. If mode is any
-     * other value, the background image path will also be set to the value of the "ez_bg"
-     */
-    private void setBackground_image_path(int mode)
+    
+    public void resetMoveInt()
     {
-        if(mode == 0)
-            this.background_image_path = this.ez_bg;
-        else
-            this.background_image_path = this.ez_bg;
+        this.move = -1;
     }
 
-    /**
-     * This is a private Java function that returns the background image path.
-     * 
-     * @return The method is returning a String value which represents the path of the background
-     * image.
-     */
-    private String getBackground_image_path()
+
+
+    private void makeMove(int column)
     {
-        return this.background_image_path;
+        this.move = column%7;
+    }
+
+    public int getMove()
+    {
+        return this.move;
+    }
+
+    public void setBotNextMove(int move)
+    {
+        if(move == 0)
+            oneClicked();
+        if(move == 1)
+            twoClicked();
+        if(move == 2)
+            threeClicked();
+        if(move == 3)
+            fourClicked();
+        if(move == 4)
+            fiveClicked();
+        if(move == 5)
+            sixClicked();
+        if(move == 6)
+            sevenClicked();
+        this.turn++;
+    }
+
+
+    public void botMovesFirst()
+    {
+        this.turn++;
+    }
+
+    public int getBotMove()
+    {
+        return this.botMove;
+    }
+
+    public void gameEnd()
+    {
+        oneCount = 0;
+        twoCount = 0;
+        threeCount = 0;
+        fourCount = 0;
+        fiveCount = 0;
+        sixCount = 0;
+        sevenCount = 0;
+    }
+
+    public void setWaitTrue()
+    {
+        this.wait = true;
+    }
+
+    public void setWaitFalse()
+    {
+        this.wait = false;
+    }
+
+    private void setBackground_image_path(int mode)
+    {
+        return this.wait;
+    }
+
+    public void setEz_bg()
+    {
+        background_Theme_Used = ez_background_Theme;
+        gamePane.repaint();
+        gamePane.revalidate();
+    }
+
+    public void setMed_bg()
+    {
+        background_Theme_Used = med_background_Theme;
+    }
+
+    public void setHard_bg()
+    {
+        background_Theme_Used = hard_background_Theme;
     }
 }
