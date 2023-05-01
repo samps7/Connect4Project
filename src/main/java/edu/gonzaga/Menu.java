@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Menu 
 {
     GUI_Skeleton gui = new GUI_Skeleton();
-    MessageBean mBean = new MessageBean();
     private MusicPlayer mp;
 
     public Menu(MusicPlayer mp1)

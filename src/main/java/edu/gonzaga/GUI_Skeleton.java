@@ -1079,6 +1079,11 @@ public class GUI_Skeleton extends JFrame
 
     }
 
+    private boolean getWait()
+    {
+        return this.wait;
+    }
+
     /**
      * The function sets the color of player 2 based on the input string.
      * 
