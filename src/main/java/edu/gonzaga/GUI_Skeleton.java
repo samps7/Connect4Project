@@ -376,6 +376,7 @@ public class GUI_Skeleton extends JFrame
                 if(playerChoices.getSelectedItem().toString() != playerTwoChoices.getSelectedItem().toString())
                 {
                     twoPlayerCustomizationPane.setVisible(false);
+                    gamePane = getGame();
                     mainWindow.add(gamePane);
                     gamePane.setVisible(true);
                 }
