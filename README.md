@@ -1,7 +1,7 @@
 # CPSC 224 Final Project: [Connect 4]
 
 ### Project Description:
-
+Connect 4 game implemented with the goals of having both front and backend, as well as having music and Intelligent CPU Players.
 
 ### Team Information:
 
