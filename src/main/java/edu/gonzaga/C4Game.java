@@ -41,8 +41,8 @@ public class C4Game
             {
                 if(gui.getPlayerOneName() == null && gui.getPlayerTwoName() == null)
                 {
-                    System.out.println("Player One Name Blank");
-                    System.out.println("Player Two Name Blank");
+                    System.out.print("");
+                    System.out.print("");
                 }
                 else if(gui.getPlayerOneName() != null && gui.getPlayerTwoName() != null)
                 {
@@ -153,7 +153,7 @@ public class C4Game
                     if(gui.getMove()>=0 && gui.getMove()<7)
                         break;
                     else
-                        System.out.println("Waiting for move");
+                        System.out.print("");
                 }
                 int currMove = gui.getMove();
                 boolean valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
@@ -165,7 +165,7 @@ public class C4Game
                         if(gui.getMove()>=0 && gui.getMove()<7)
                             break;
                         else
-                            System.out.println("Waiting for move");
+                            System.out.print("");
                     }
                     currMove = gui.getMove();
                     valid = grid.acceptCoin(players[playerTurn].getCoin(), currMove);
@@ -248,11 +248,12 @@ public class C4Game
             if(mode == 2)
             {
                 System.out.println("Hard Bot Wins By Draw");
-                gui.gameEnd("Hard Bot");
+                gui.gameEnd("By Draw: Hard Bot");
             }
             else
             {
                 System.out.println("Game Resulted In A Draw");
+                gui.gameEnd("By Draw: Neither Player");
             }
             
         }

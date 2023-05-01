@@ -12,6 +12,7 @@ public class Menu
     public Menu(MusicPlayer mp1)
     {
         mp = mp1;
+        gui.runGUI();
     }
     //Sam's original Text-based C4 game
     /**
@@ -20,10 +21,10 @@ public class Menu
      */
     public void displayOptions() throws Exception
     {
-        gui.runGUI();
         mp.loopSound("resources/music/Botique.wav");
         int playing = 1;
         Scanner scan1 = new Scanner(System.in);
+        
 
 
         System.out.println("Type 0 for Bot Match | Type 1 for PVP | Type 2 to Quit");
@@ -46,22 +47,33 @@ public class Menu
                 break;
             }
             else
-                System.out.println("Game Mode Not Received");
+                System.out.print("");
         }
         int mode = gui.getGameMode();
 
         if(mode == 1)
         {
             C4Game game = new C4Game(3, mp, gui);
-            gui.setC4Game(game);
             while(playing == 1)
             {
+                gui.setC4Game(game);
                 game.startGame();
                 System.out.println("");
                 System.out.println("Play again?");
                 System.out.println("0: Main Menu | 1: Play Again");
-                playing = scan1.nextInt();
+                //playing = scan1.nextInt();
+                while(gui.getPlayAgainNum() == -1)
+                {
+                    System.out.print("");
+                }
+                playing = gui.getPlayAgainNum();
+                if(playing == 1)
+                {
+                    gui.setC4Game(game);
+                    gui.playAgain();
+                }
             }
+            gui.menuGUI();
             displayOptions();
         }
         else if( mode == 0)
@@ -86,7 +98,7 @@ public class Menu
                     break;
                 }
                 else
-                    System.out.println("Difficulty Not Received");
+                    System.out.print("");
             }
             mode = gui.getDifficulty();
             if(mode == 0)
@@ -94,16 +106,28 @@ public class Menu
                 // easy bots stuff here
 
                 C4Game game = new C4Game(0, mp, gui);
-                gui.setC4Game(game);
+                
                 
                 while(playing == 1)
                 {
+                    gui.setC4Game(game);
                     game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
-                    playing = scan1.nextInt();
+                    //playing = scan1.nextInt();
+                    while(gui.getPlayAgainNum() == -1)
+                    {
+                        System.out.print("");
+                    }
+                    playing = gui.getPlayAgainNum();
+                    if(playing == 1)
+                    {
+                        gui.setC4Game(game);
+                        gui.playAgain();
+                    }
                 }
+                gui.menuGUI();
                 displayOptions();
             }
             else if(mode == 1)
@@ -111,16 +135,28 @@ public class Menu
                 // medium bots stuff here
 
                 C4Game game = new C4Game(1, mp, gui);
-                gui.setC4Game(game);
+                
                 
                 while(playing == 1)
                 {
+                    gui.setC4Game(game);
                     game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
-                    playing = scan1.nextInt();
+                    //playing = scan1.nextInt();
+                    while(gui.getPlayAgainNum() == -1)
+                    {
+                        System.out.print("");
+                    }
+                    playing = gui.getPlayAgainNum();
+                    if(playing == 1)
+                    {
+                        gui.setC4Game(game);
+                        gui.playAgain();
+                    }
                 }
+                gui.menuGUI();
                 displayOptions();
             }
             else if(mode == 2)
@@ -129,16 +165,29 @@ public class Menu
 
 
                 C4Game game = new C4Game(2, mp, gui);
-                gui.setC4Game(game);
+                
                 while(playing == 1)
                 {
+                    gui.setC4Game(game);
                     game.startGame();
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
-                    playing = scan1.nextInt();
+                    //playing = scan1.nextInt();
+                    while(gui.getPlayAgainNum() == -1)
+                    {
+                        System.out.print("");
+                    }
+                    playing = gui.getPlayAgainNum();
+                    if(playing == 1)
+                    {
+                        gui.setC4Game(game);
+                        gui.playAgain();
+                    }
                 }
+                gui.menuGUI();
                 displayOptions();
+                
             }
         }
     }

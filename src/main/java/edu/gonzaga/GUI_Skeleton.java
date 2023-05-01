@@ -1,6 +1,5 @@
 package edu.gonzaga;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -37,6 +36,7 @@ public class GUI_Skeleton extends JFrame
     private ImageIcon hard_background_Theme = new ImageIcon(new ImageIcon(hard_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
     private int move = -1, botMove = -1;
     private boolean wait = false;
+    private int playAgainNum = -1;
 
 
 
@@ -71,7 +71,6 @@ public class GUI_Skeleton extends JFrame
         this.mainWindow.setLocation(100,100);
         this.mainWindow.setResizable(false);
 
-
         this.titlePane = getTitlePane();
         this.gameModeSelectPane = new JLayeredPane();
         
@@ -93,6 +92,81 @@ public class GUI_Skeleton extends JFrame
         this.gamePane = getGame();
 
         this.mainWindow.add(this.titlePane);
+        titlePane.setVisible(true);
+        
+
+    }
+
+    int getPlayAgainNum()
+    {
+        return playAgainNum;
+    }
+
+    void playAgain()
+    {
+
+        this.endPane.setVisible(false);
+        wait = false;
+        move = -1;
+        botMove = -1;
+
+        oneCount = 6;
+        twoCount = 6;
+        threeCount = 6;
+        fourCount = 6;
+        fiveCount = 6;
+        sixCount = 6;
+        sevenCount = 6;
+        turn = 0;
+        playAgainNum = -1;
+
+        gamePane = getGame();
+        mainWindow.add(gamePane);
+        gamePane.setVisible(true);
+
+        this.mainWindow.repaint();
+        this.mainWindow.revalidate();
+    }
+
+    void menuGUI()
+    {
+        this.endPane.setVisible(false);
+        playerOneName = null;
+        playerTwoName = null;
+        wait = false;
+        move = -1;
+        botMove = -1;
+        gameMode = -1;
+        difficulty = -1;
+
+        oneCount = 6;
+        twoCount = 6;
+        threeCount = 6;
+        fourCount = 6;
+        fiveCount = 6;
+        sixCount = 6;
+        sevenCount = 6;
+        turn = 0;
+        playAgainNum = -1;
+
+        System.out.println("Restarting GUI");
+
+        this.titlePane = getTitlePane();
+        this.mainWindow.add(this.titlePane);
+        titlePane.setVisible(true);
+
+        this.mainWindow.repaint();
+        this.mainWindow.revalidate();
+
+        this.playerOneCustomizationPane.repaint();
+        this.playerOneCustomizationPane.revalidate();
+        this.playerOneCustomizationPane = getOnePlayerCustomizePane();
+        this.playerOneCustomizationPane.setVisible(false);
+
+        this.twoPlayerCustomizationPane.repaint();
+        this.twoPlayerCustomizationPane.revalidate();
+        this.twoPlayerCustomizationPane = getTwoPlayerCustomizationPane();
+        this.twoPlayerCustomizationPane.setVisible(false);
 
     }
 
@@ -109,15 +183,21 @@ public class GUI_Skeleton extends JFrame
     private JLayeredPane getTitlePane()
     {
         JLayeredPane newPane = new JLayeredPane();
-        
-        JLabel titleBG = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT)));
 
-        JLabel gameTitle =  new JLabel("Connect4");
-        gameTitle.setOpaque(true);
-        JLabel onePlayer = new JLabel("One Player");
-        onePlayer.setOpaque(true);
-        JLabel twoPlayer = new JLabel("Two Player");
-        twoPlayer.setOpaque(true);
+        JLabel titleBG = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+
+        ImageIcon logoIcon = new ImageIcon("resources/img/C4_Logo.png");
+        JLabel gameTitle =  new JLabel(logoIcon);
+        gameTitle.setOpaque(false);
+
+        ImageIcon onePlayerIcon = new ImageIcon(new ImageIcon("resources/img/OnePlayerButton.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+        JLabel onePlayer = new JLabel(onePlayerIcon);
+        onePlayer.setOpaque(false);
+
+        ImageIcon twoPlayerIcon = new ImageIcon(new ImageIcon("resources/img/MultiplaterButton.png").getImage().getScaledInstance(300, 100, Image.SCALE_DEFAULT));
+        JLabel twoPlayer = new JLabel(twoPlayerIcon);
+        twoPlayer.setOpaque(false);
+
 
         //Adding mouse listener to make the JLabel clickable
         onePlayer.addMouseListener(new MouseListener()
@@ -132,6 +212,7 @@ public class GUI_Skeleton extends JFrame
 
                 titlePane.setVisible(false);
                 mainWindow.add(playerOneCustomizationPane);
+                playerOneCustomizationPane.setVisible(true);
             }
 
             @Override
@@ -172,6 +253,7 @@ public class GUI_Skeleton extends JFrame
 
                 titlePane.setVisible(false);
                 mainWindow.add(twoPlayerCustomizationPane);
+                twoPlayerCustomizationPane.setVisible(true);
             }
 
             @Override
@@ -198,15 +280,11 @@ public class GUI_Skeleton extends JFrame
 
             }
         });
-        gameTitle.setBounds(250,50,125,75);
-        onePlayer.setBounds(75,250,175,25);
-        twoPlayer.setBounds(350,250,175,25);
-        Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
-        onePlayer.setBorder(border);
-        twoPlayer.setBorder(border);
         
-        //newPane.setBounds(250,50,125,75);
-        titleBG.setBounds(0,0,600,600);
+        gameTitle.setBounds(50,50,500,150);
+        onePlayer.setBounds(150,250, 300,100);
+        twoPlayer.setBounds(150,350,300,100);
+        titleBG.setBounds(0,0,600,520);
         newPane.add(titleBG, Integer.valueOf(0));
 
         newPane.add(gameTitle,Integer.valueOf(1));
@@ -227,11 +305,20 @@ public class GUI_Skeleton extends JFrame
     {
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
         JLayeredPane newPane = new JLayeredPane();
-        JLabel playerOne = new JLabel("Player One Name: ");
-        JLabel playerOneColor = new JLabel("Color: ");
+        ImageIcon player1NameIcon = new ImageIcon(new ImageIcon("resources/img/player1NameBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOne = new JLabel(player1NameIcon);
+
+        ImageIcon player1ColorIcon = new ImageIcon(new ImageIcon("resources/img/player1ColorBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOneColor = new JLabel(player1ColorIcon);
+
         final JComboBox<String> playerChoices = new JComboBox<>(colorChoices);
         JTextField playerOneInput = new JTextField(16);
-        JLabel startGame = new JLabel("Start Game");
+        ImageIcon startIcon = new ImageIcon(new ImageIcon("resources/img/startBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel startGame = new JLabel(startIcon);
+
+        JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+        background.setBounds(0,0,600,520);
+
         startGame.addMouseListener(new MouseListener()
         {
             @Override
@@ -245,9 +332,11 @@ public class GUI_Skeleton extends JFrame
                 setPlayer1Color(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 setPlayer1Hover(Objects.requireNonNull(playerChoices.getSelectedItem()).toString());
                 player2Color = botColor;
+                player2Hover = new Color(0,0,0,0);
 
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
+                gameModeSelectPane.setVisible(true);
 
             }
 
@@ -272,17 +361,18 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        playerOne.setBounds(75,150,175,25);
-        playerOneInput.setBounds(250,150,175,25);
-        playerOneColor.setBounds(75,250,175,25);
-        playerChoices.setBounds(250,250,175,25);
-        startGame.setBounds(250,400,175,25);
+        playerOne.setBounds(75,150,150,50);
+        playerOneInput.setBounds(250,160,175,25);
+        playerOneColor.setBounds(75,250,150,50);
+        playerChoices.setBounds(250,260,175,25);
+        startGame.setBounds(225,400,150,50);
 
-        newPane.add(playerOne,1);
-        newPane.add(playerOneInput,1);
-        newPane.add(playerOneColor,1);
-        newPane.add(playerChoices,1);
-        newPane.add(startGame,1);
+        newPane.add(playerOne,Integer.valueOf(1));
+        newPane.add(playerOneInput,Integer.valueOf(1));
+        newPane.add(playerOneColor,Integer.valueOf(1));
+        newPane.add(playerChoices,Integer.valueOf(1));
+        newPane.add(startGame,Integer.valueOf(1));
+        newPane.add(background,Integer.valueOf(0));
 
 
         newPane.setLayout(null);
@@ -300,16 +390,26 @@ public class GUI_Skeleton extends JFrame
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
         JLayeredPane newPane = new JLayeredPane();
         //Player 1
-        JLabel playerOne = new JLabel("Player One Name: ");
-        JLabel playerOneColor = new JLabel("Color: ");
+        ImageIcon player1NameIcon = new ImageIcon(new ImageIcon("resources/img/player1NameBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOne = new JLabel(player1NameIcon);
+        ImageIcon player1ColorIcon = new ImageIcon(new ImageIcon("resources/img/player1ColorBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOneColor = new JLabel(player1ColorIcon);
         final JComboBox<String> playerChoices = new JComboBox<>(colorChoices);
         JTextField playerOneInput = new JTextField(16);
         //Player 2
-        JLabel playerTwo = new JLabel("Player Two Name: ");
-        JLabel playerTwoColor = new JLabel("Color: ");
+        ImageIcon player2NameIcon = new ImageIcon(new ImageIcon("resources/img/player2NameBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerTwo = new JLabel(player2NameIcon);
+        ImageIcon player2ColorIcon = new ImageIcon(new ImageIcon("resources/img/player2ColorBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerTwoColor = new JLabel(player2ColorIcon);
         final JComboBox<String> playerTwoChoices = new JComboBox<>(colorChoices);
         JTextField playerTwoInput = new JTextField(16);
-        JLabel startGame = new JLabel("Start Game");
+        ImageIcon startIcon = new ImageIcon(new ImageIcon("resources/img/startBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel startGame = new JLabel(startIcon);
+
+        //background
+        JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+        background.setBounds(0,0,600,520);
+
         startGame.addMouseListener(new MouseListener()
         {
             @Override
@@ -331,8 +431,13 @@ public class GUI_Skeleton extends JFrame
                 setPlayer2Hover(Objects.requireNonNull(playerTwoChoices.getSelectedItem()).toString());
 
 
-                twoPlayerCustomizationPane.setVisible(false);
-                mainWindow.add(gamePane);
+                if(playerChoices.getSelectedItem().toString() != playerTwoChoices.getSelectedItem().toString())
+                {
+                    twoPlayerCustomizationPane.setVisible(false);
+                    gamePane = getGame();
+                    mainWindow.add(gamePane);
+                    gamePane.setVisible(true);
+                }
             }
 
             @Override
@@ -356,30 +461,30 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        playerOne.setBounds(25,75,125,25);
-        playerOneInput.setBounds(155,75,125,25);
-        playerOneColor.setBounds(25,100,50,25);
-        playerChoices.setBounds(80,100,125,25);
+        playerOne.setBounds(25,75,150,50);
+        playerOneInput.setBounds(180,85,125,25);
+        playerOneColor.setBounds(25,130,150,50);
+        playerChoices.setBounds(180,145,125,25);
 
-        playerTwo.setBounds(300,75,125,25);
-        playerTwoInput.setBounds(430,75,125,25);
-        playerTwoColor.setBounds(300,100,50,25);
-        playerTwoChoices.setBounds(355,100,125,25);
+        playerTwo.setBounds(310,75,150,50);
+        playerTwoInput.setBounds(460,85,125,25);
+        playerTwoColor.setBounds(310,130,150,50);
+        playerTwoChoices.setBounds(460,145,125,25);
 
-        startGame.setBounds(250,400,175,25);
+        startGame.setBounds(225,400,150,50);
 
-        newPane.add(playerOne,1);
+        newPane.add(playerOne,Integer.valueOf(1));
         newPane.add(playerOneInput,1);
-        newPane.add(playerOneColor,1);
+        newPane.add(playerOneColor,Integer.valueOf(1));
         newPane.add(playerChoices,1);
 
-        newPane.add(playerTwo,1);
+        newPane.add(playerTwo,Integer.valueOf(1));
         newPane.add(playerTwoInput,1);
-        newPane.add(playerTwoColor,1);
+        newPane.add(playerTwoColor,Integer.valueOf(1));
         newPane.add(playerTwoChoices,1);
 
-        newPane.add(startGame,1);
-
+        newPane.add(startGame,Integer.valueOf(1));
+        newPane.add(background, Integer.valueOf(0));
 
         newPane.setLayout(null);
         return newPane;
@@ -394,10 +499,20 @@ public class GUI_Skeleton extends JFrame
     private JLayeredPane getGameModeSelectPane()
     {
         JLayeredPane newPane = new JLayeredPane();
-        JLabel gameModeText = new JLabel("Select Game Mode");
-        JLabel easy = new JLabel("Easy");
-        JLabel medium = new JLabel("Medium");
-        JLabel hard = new JLabel("Hard");
+        ImageIcon difficultIcon = new ImageIcon(new ImageIcon("resources/img/difficultyBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel gameModeText = new JLabel(difficultIcon);
+
+        ImageIcon easyIcon = new ImageIcon(new ImageIcon("resources/img/EasyBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel easy = new JLabel(easyIcon);
+
+        ImageIcon mediumIcon = new ImageIcon(new ImageIcon("resources/img/MedBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel medium = new JLabel(mediumIcon);
+
+        ImageIcon hardIcon = new ImageIcon(new ImageIcon("resources/img/hardBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel hard = new JLabel(hardIcon);
+
+        JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+        background.setBounds(0,0,600,520);
 
         easy.addMouseListener(new MouseListener()
         {
@@ -411,6 +526,7 @@ public class GUI_Skeleton extends JFrame
                 gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
+                gamePane.setVisible(true);
             }
 
             @Override
@@ -446,6 +562,7 @@ public class GUI_Skeleton extends JFrame
                 gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
+                gamePane.setVisible(true);
             }
 
             @Override
@@ -480,6 +597,7 @@ public class GUI_Skeleton extends JFrame
                 setHard_bg();
                 gamePane = getGame();
                 mainWindow.add(gamePane);
+                gamePane.setVisible(true);
             }
 
             @Override
@@ -503,15 +621,16 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        gameModeText.setBounds(250,50,125,75);
-        easy.setBounds(175,250,50,25);
-        medium.setBounds(290,250,50,25);
-        hard.setBounds(405,250,50,25);
+        gameModeText.setBounds(225,50,150,50);
+        easy.setBounds(75,250,150,50);
+        medium.setBounds(225,250,150,50);
+        hard.setBounds(375,250,150,50);
 
         newPane.add(gameModeText,1);
-        newPane.add(easy,1);
-        newPane.add(medium,1);
-        newPane.add(hard,1);
+        newPane.add(easy,Integer.valueOf(1));
+        newPane.add(medium,Integer.valueOf(1));
+        newPane.add(hard,Integer.valueOf(1));
+        newPane.add(background, Integer.valueOf(0));
 
         newPane.setLayout(null);
         return newPane;
@@ -541,7 +660,6 @@ public class GUI_Skeleton extends JFrame
         for(int i = 0; i<42; i++)
         {
             buttons[i] = new JLabel();
-            //buttons[i].setText(String.valueOf(counter));
             buttons[i].setOpaque(true);
             buttons[i].setBackground(new Color(0,0,0,0));
 
@@ -692,9 +810,85 @@ public class GUI_Skeleton extends JFrame
     {
         JLayeredPane endPane = new JLayeredPane();
         JPanel containedPanel = new JPanel();
-        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!");
+        JLabel winnerName = new JLabel(this.winningPlayer + " Wins!", SwingConstants.CENTER);
+        winnerName.setForeground(Color.white);
 
-        winnerName.setBounds(225,25,125,25);
+        ImageIcon playAgainIcon = new ImageIcon(new ImageIcon("resources/img/playAgainBTN1.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playAgain = new JLabel(playAgainIcon);
+        playAgain.setBounds(125,75,150,50);
+        playAgain.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                System.out.println("Play Again Clicked");
+                playAgainNum = 1;
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        ImageIcon mainMenuIcon = new ImageIcon(new ImageIcon("resources/img/mainMenuBTN1.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel mainMenu = new JLabel(mainMenuIcon);
+        mainMenu.setBounds(325,75,150,50);
+        mainMenu.addMouseListener(new MouseListener()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                System.out.println("Main Menu Clicked");
+                playAgainNum = 2;
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e)
+            {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e)
+            {
+
+            }
+        });
+
+        winnerName.setBounds(175,25,250,50);
+        winnerName.setFont(new Font("Seriff", Font.PLAIN, 22));
 
         containedPanel.setLayout(new GridLayout(6, 7));
         for(int i = 0; i<42; i++)
@@ -702,12 +896,20 @@ public class GUI_Skeleton extends JFrame
         ImageIcon image  = new ImageIcon(new ImageIcon("resources/img/Connect4Board.png").getImage().getScaledInstance(400, 300, Image.SCALE_DEFAULT));
         JLabel grid = new JLabel(image);
 
+        ImageIcon background_Theme = background_Theme_Used;
+        this.background = new JLabel(background_Theme);
+        background.setBounds(0,0,600,600);
+
         containedPanel.setBounds(100,160,400,300);
         grid.setBounds(100,160,400,300);
 
         endPane.add(containedPanel,Integer.valueOf(1));
         endPane.add(grid,Integer.valueOf(2));
         endPane.add(winnerName,1);
+        endPane.add(this.background, Integer.valueOf(0));
+        endPane.add(playAgain, Integer.valueOf(1));
+        endPane.add(mainMenu, Integer.valueOf(1));
+
 
         endPane.setLayout(null);
         return endPane;
@@ -721,6 +923,7 @@ public class GUI_Skeleton extends JFrame
         this.gamePane.setVisible(false);
 
         this.mainWindow.add(this.endPane);
+        endPane.setVisible(true);
     }
 
     public void setC4Game(C4Game game)
