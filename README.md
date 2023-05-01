@@ -20,21 +20,21 @@
 
 #### Main Menu
 
-BG:
+BG: [gifer](https://gifer.com/en/TphJ)
 
 OST: Boutique - Pokemon XY
 
 
 #### Easy Bot
 
-BG:
+BG: Garou: Mark of the Wolves (Fatal Fury - SNK)
 
 OST: Bramble Blast - (Super Smash Bros. Brawl)
 
 
 #### Medium Bot
 
-BG:
+BG: Castle Of Light - Blloopy
 
 OST: Die Mittsommernacht-Fantasie - Yu-Peng Chen
 
