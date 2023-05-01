@@ -296,6 +296,11 @@ public class GUI_Skeleton extends JFrame
         final JComboBox<String> playerTwoChoices = new JComboBox<>(colorChoices);
         JTextField playerTwoInput = new JTextField(16);
         JLabel startGame = new JLabel("Start Game");
+
+        //background
+        JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+        background.setBounds(0,0,600,520);
+
         startGame.addMouseListener(new MouseListener()
         {
             @Override
@@ -365,7 +370,7 @@ public class GUI_Skeleton extends JFrame
         newPane.add(playerTwoChoices,1);
 
         newPane.add(startGame,1);
-
+        newPane.add(background, Integer.valueOf(0));
 
         newPane.setLayout(null);
         return newPane;
@@ -378,6 +383,9 @@ public class GUI_Skeleton extends JFrame
         JLabel easy = new JLabel("Easy");
         JLabel medium = new JLabel("Medium");
         JLabel hard = new JLabel("Hard");
+
+        JLabel background = new JLabel(new ImageIcon(new ImageIcon("resources/img/Menu.gif").getImage().getScaledInstance(600, 550, Image.SCALE_DEFAULT)));
+        background.setBounds(0,0,600,520);
 
         easy.addMouseListener(new MouseListener()
         {
@@ -492,6 +500,7 @@ public class GUI_Skeleton extends JFrame
         newPane.add(easy,1);
         newPane.add(medium,1);
         newPane.add(hard,1);
+        newPane.add(background, Integer.valueOf(0));
 
         newPane.setLayout(null);
         return newPane;
