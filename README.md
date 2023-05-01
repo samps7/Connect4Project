@@ -53,7 +53,7 @@ BG: (Source: Art of Fighting 3)
 OST: Moonsiders 1st - Yoko Shimomura
 
 
-End Screen
+#### End Screen
 
 BG: varies
 
