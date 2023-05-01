@@ -18,35 +18,35 @@
 
 ### Media Sources
 
-Main Menu
+#### Main Menu
 
 BG:
 
 OST: Boutique - Pokemon XY
 
 
-Easy Bot
+#### Easy Bot
 
 BG:
 
 OST: Bramble Blast - (Super Smash Bros. Brawl)
 
 
-Medium Bot
+#### Medium Bot
 
 BG:
 
 OST: Die Mittsommernacht-Fantasie - Yu-Peng Chen
 
 
-Hard Bot
+#### Hard Bot
 
 BG: (Source: The Last Blade)
 
 OST: Furinkazan - Tsuki Sayu Yoru
 
 
-PVP
+#### PVP
 
 BG: (Source: Art of Fighting 3)
 
