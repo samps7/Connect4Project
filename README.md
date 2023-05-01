@@ -20,6 +20,8 @@ Connect 4 game implemented with the goals of having both front and backend, as w
 
 #### Main Menu
 
+Logo: [Spiced](https://connect-4-game.vercel.app/)
+
 BG: [gifer](https://gifer.com/en/TphJ)
 
 OST: Boutique - Pokemon XY
