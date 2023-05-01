@@ -331,13 +331,17 @@ public class GUI_Skeleton extends JFrame
         String[] colorChoices = {"Green", "Blue", "Red", "Purple", "Black", "Yellow"};
         JLayeredPane newPane = new JLayeredPane();
         //Player 1
-        JLabel playerOne = new JLabel("Player One Name: ");
-        JLabel playerOneColor = new JLabel("Color: ");
+        ImageIcon player1NameIcon = new ImageIcon(new ImageIcon("resources/img/player1NameBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOne = new JLabel(player1NameIcon);
+        ImageIcon player1ColorIcon = new ImageIcon(new ImageIcon("resources/img/player1ColorBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerOneColor = new JLabel(player1ColorIcon);
         final JComboBox<String> playerChoices = new JComboBox<>(colorChoices);
         JTextField playerOneInput = new JTextField(16);
         //Player 2
-        JLabel playerTwo = new JLabel("Player Two Name: ");
-        JLabel playerTwoColor = new JLabel("Color: ");
+        ImageIcon player2NameIcon = new ImageIcon(new ImageIcon("resources/img/player2NameBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerTwo = new JLabel(player2NameIcon);
+        ImageIcon player2ColorIcon = new ImageIcon(new ImageIcon("resources/img/player2ColorBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel playerTwoColor = new JLabel(player2ColorIcon);
         final JComboBox<String> playerTwoChoices = new JComboBox<>(colorChoices);
         JTextField playerTwoInput = new JTextField(16);
         JLabel startGame = new JLabel("Start Game");
@@ -395,26 +399,26 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        playerOne.setBounds(25,75,125,25);
-        playerOneInput.setBounds(155,75,125,25);
-        playerOneColor.setBounds(25,100,50,25);
-        playerChoices.setBounds(80,100,125,25);
+        playerOne.setBounds(25,75,150,50);
+        playerOneInput.setBounds(180,85,125,25);
+        playerOneColor.setBounds(25,130,150,50);
+        playerChoices.setBounds(180,145,125,25);
 
-        playerTwo.setBounds(300,75,125,25);
-        playerTwoInput.setBounds(430,75,125,25);
-        playerTwoColor.setBounds(300,100,50,25);
-        playerTwoChoices.setBounds(355,100,125,25);
+        playerTwo.setBounds(310,75,150,50);
+        playerTwoInput.setBounds(460,85,125,25);
+        playerTwoColor.setBounds(310,130,150,50);
+        playerTwoChoices.setBounds(460,145,125,25);
 
         startGame.setBounds(250,400,175,25);
 
-        newPane.add(playerOne,1);
+        newPane.add(playerOne,Integer.valueOf(1));
         newPane.add(playerOneInput,1);
-        newPane.add(playerOneColor,1);
+        newPane.add(playerOneColor,Integer.valueOf(1));
         newPane.add(playerChoices,1);
 
-        newPane.add(playerTwo,1);
+        newPane.add(playerTwo,Integer.valueOf(1));
         newPane.add(playerTwoInput,1);
-        newPane.add(playerTwoColor,1);
+        newPane.add(playerTwoColor,Integer.valueOf(1));
         newPane.add(playerTwoChoices,1);
 
         newPane.add(startGame,1);
