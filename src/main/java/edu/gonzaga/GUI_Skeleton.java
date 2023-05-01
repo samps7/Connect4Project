@@ -470,7 +470,8 @@ public class GUI_Skeleton extends JFrame
     private JLayeredPane getGameModeSelectPane()
     {
         JLayeredPane newPane = new JLayeredPane();
-        JLabel gameModeText = new JLabel("Select Game Mode");
+        ImageIcon difficultIcon = new ImageIcon(new ImageIcon("resources/img/difficultyBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
+        JLabel gameModeText = new JLabel(difficultIcon);
 
         ImageIcon easyIcon = new ImageIcon(new ImageIcon("resources/img/EasyBTN.png").getImage().getScaledInstance(150, 50, Image.SCALE_DEFAULT));
         JLabel easy = new JLabel(easyIcon);
@@ -591,7 +592,7 @@ public class GUI_Skeleton extends JFrame
             }
         });
 
-        gameModeText.setBounds(250,50,125,75);
+        gameModeText.setBounds(225,50,150,50);
         easy.setBounds(75,250,150,50);
         medium.setBounds(225,250,150,50);
         hard.setBounds(375,250,150,50);
