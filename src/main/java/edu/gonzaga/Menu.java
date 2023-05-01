@@ -57,7 +57,12 @@ public class Menu
                 System.out.println("");
                 System.out.println("Play again?");
                 System.out.println("0: Main Menu | 1: Play Again");
-                playing = scan1.nextInt();
+                //playing = scan1.nextInt();
+                while(gui.getPlayAgainNum() == -1)
+                {
+                    System.out.print("");
+                }
+                playing = gui.getPlayAgainNum();
                 if(playing == 1)
                 {
                     gui.setC4Game(game);
@@ -106,7 +111,12 @@ public class Menu
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
-                    playing = scan1.nextInt();
+                    //playing = scan1.nextInt();
+                    while(gui.getPlayAgainNum() == -1)
+                    {
+                        System.out.print("");
+                    }
+                    playing = gui.getPlayAgainNum();
                     if(playing == 1)
                     {
                         gui.setC4Game(game);
@@ -130,7 +140,12 @@ public class Menu
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
-                    playing = scan1.nextInt();
+                    //playing = scan1.nextInt();
+                    while(gui.getPlayAgainNum() == -1)
+                    {
+                        System.out.print("");
+                    }
+                    playing = gui.getPlayAgainNum();
                     if(playing == 1)
                     {
                         gui.setC4Game(game);
@@ -154,7 +169,12 @@ public class Menu
                     System.out.println("");
                     System.out.println("Play again?");
                     System.out.println("0: Main Menu | 1: Play Again");
-                    playing = scan1.nextInt();
+                    //playing = scan1.nextInt();
+                    while(gui.getPlayAgainNum() == -1)
+                    {
+                        System.out.print("");
+                    }
+                    playing = gui.getPlayAgainNum();
                     if(playing == 1)
                     {
                         gui.setC4Game(game);

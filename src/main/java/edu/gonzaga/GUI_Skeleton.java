@@ -36,6 +36,7 @@ public class GUI_Skeleton extends JFrame
     private ImageIcon hard_background_Theme = new ImageIcon(new ImageIcon(hard_bg).getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
     private int move = -1, botMove = -1;
     private boolean wait = false;
+    private int playAgainNum = -1;
 
 
 
@@ -90,6 +91,11 @@ public class GUI_Skeleton extends JFrame
 
     }
 
+    int getPlayAgainNum()
+    {
+        return playAgainNum;
+    }
+
     void playAgain()
     {
 
@@ -106,6 +112,7 @@ public class GUI_Skeleton extends JFrame
         sixCount = 6;
         sevenCount = 6;
         turn = 0;
+        playAgainNum = -1;
 
         gamePane = getGame();
         mainWindow.add(gamePane);
@@ -134,6 +141,7 @@ public class GUI_Skeleton extends JFrame
         sixCount = 6;
         sevenCount = 6;
         turn = 0;
+        playAgainNum = -1;
 
         System.out.println("Restarting GUI");
 
@@ -771,6 +779,7 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Play Again Clicked");
+                playAgainNum = 1;
             }
 
             @Override
@@ -807,6 +816,7 @@ public class GUI_Skeleton extends JFrame
             public void mouseClicked(MouseEvent e)
             {
                 System.out.println("Main Menu Clicked");
+                playAgainNum = 2;
             }
 
             @Override
