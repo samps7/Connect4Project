@@ -85,6 +85,7 @@ public class GUI_Skeleton extends JFrame
         this.gamePane = getGame();
 
         this.mainWindow.add(this.titlePane);
+        titlePane.setVisible(true);
         
 
     }
@@ -165,6 +166,7 @@ public class GUI_Skeleton extends JFrame
 
                 titlePane.setVisible(false);
                 mainWindow.add(playerOneCustomizationPane);
+                playerOneCustomizationPane.setVisible(true);
             }
 
             @Override
@@ -205,6 +207,7 @@ public class GUI_Skeleton extends JFrame
 
                 titlePane.setVisible(false);
                 mainWindow.add(twoPlayerCustomizationPane);
+                twoPlayerCustomizationPane.setVisible(true);
             }
 
             @Override
@@ -284,6 +287,7 @@ public class GUI_Skeleton extends JFrame
 
                 playerOneCustomizationPane.setVisible(false);
                 mainWindow.add(gameModeSelectPane);
+                gameModeSelectPane.setVisible(true);
 
             }
 
@@ -371,6 +375,7 @@ public class GUI_Skeleton extends JFrame
                 {
                     twoPlayerCustomizationPane.setVisible(false);
                     mainWindow.add(gamePane);
+                    gamePane.setVisible(true);
                 }
             }
 
@@ -453,6 +458,7 @@ public class GUI_Skeleton extends JFrame
                 gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
+                gamePane.setVisible(true);
             }
 
             @Override
@@ -488,6 +494,7 @@ public class GUI_Skeleton extends JFrame
                 gamePane = getGame();
                 gameModeSelectPane.setVisible(false);
                 mainWindow.add(gamePane);
+                gamePane.setVisible(true);
             }
 
             @Override
@@ -522,6 +529,7 @@ public class GUI_Skeleton extends JFrame
                 setHard_bg();
                 gamePane = getGame();
                 mainWindow.add(gamePane);
+                gamePane.setVisible(true);
             }
 
             @Override
@@ -755,6 +763,7 @@ public class GUI_Skeleton extends JFrame
         this.gamePane.setVisible(false);
 
         this.mainWindow.add(this.endPane);
+        endPane.setVisible(true);
     }
 
     public void setC4Game(C4Game game)
