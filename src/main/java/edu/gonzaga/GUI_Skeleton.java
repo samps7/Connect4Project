@@ -103,6 +103,7 @@ public class GUI_Skeleton extends JFrame
         threeCount = 6;
         fourCount = 6;
         fiveCount = 6;
+        sixCount = 6;
         sevenCount = 6;
         turn = 0;
 
@@ -130,6 +131,7 @@ public class GUI_Skeleton extends JFrame
         threeCount = 6;
         fourCount = 6;
         fiveCount = 6;
+        sixCount = 6;
         sevenCount = 6;
         turn = 0;
 
