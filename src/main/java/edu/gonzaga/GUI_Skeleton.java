@@ -39,14 +39,15 @@ public class GUI_Skeleton extends JFrame
     private int playAgainNum = -1;
 
 
-
+    /*
     public static void main(String[] args)
     {
         GUI_Skeleton app = new GUI_Skeleton();
         app.runGUI();
 
     }
-
+    */
+    
     /**
      * This function sets up and displays a GUI for a Connect4 game.
      */
