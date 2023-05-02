@@ -1,5 +1,16 @@
 # CPSC 224 Final Project: [Connect 4]
 
+### How to Run:
+- VSCode
+  - Install VSCode Extensions:
+    - Project Manager for Java
+    - Maven for Java
+  - Run project with MainGame.java (from project's main directory)
+
+### Additional Notes:
+- Turn down volume if using headphones
+- Bot matches require wifi
+
 ### Project Description:
 Connect 4 game implemented with the goals of having both front and backend, as well as having music and Intelligent CPU Players.
 
