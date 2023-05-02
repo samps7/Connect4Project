@@ -61,5 +61,9 @@ BG: varies
 
 OST: Results Display Screen - (Super Smash Bros. Brawl)
 
+#### Bot Algorithm
+
+Source: [Algorithm Base](https://connect4.gamesolver.org/)
+
 
 
