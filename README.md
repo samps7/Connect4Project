@@ -18,9 +18,9 @@ Connect 4 game implemented with the goals of having both front and backend, as w
 
 - Team Name: SIC
 - Students on team:
-  - Samuel Sovi
-  - Ian Myers
-  - Connor Jones
+  - Samuel Sovi: [github](https://github.com/samps7)
+  - Ian Myers: [github](https://github.com/imyers236)
+  - Connor Jones: [github](https://github.com/Aldriik0)
 - Semester: Spring 2023
 
 
