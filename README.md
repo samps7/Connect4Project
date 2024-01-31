@@ -26,8 +26,8 @@ Connect 4 game implemented with the goals of having both front and backend, as w
 ### Key Features of our Connect 4 project:
 - Dynamic Backgrounds
 - Varying Difficulties of Connect 4 AI including:
-      - Easy Bot that will not lose to immediate simple 3 in a row 
-      - Better Than Perfect :tm:  AI for our hard bot
+  - Easy Bot that will not lose to immediate simple 3 in a row 
+  - Better Than Perfect :tm:  AI for our hard bot
 - Music
 and more..!
 
