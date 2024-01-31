@@ -16,9 +16,9 @@
         </dependency>
         <!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit -->
         <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
+            <groupId>org.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>2.56.0</version>
+            <version>3.10.0</version>
         </dependency>
     </dependencies>
 
