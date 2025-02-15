@@ -1,6 +1,6 @@
 # CPSC 224 Final Project: [Connect 4]
 
-### 2/14/2024
+### 2/14/2024 Update
 - AI is down until we patch a fix for it to use the current version of the website
 
 ### How to Run:
